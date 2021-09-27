@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.PriceDao">
+	<select id ='getPrice' parameterType = "HashMap" resultType = "com.example.demo.vo.PriceVo">
+		SELECT
+			name,
+			open,
+			close,
+			high,
+			low,
+			TO_CHAR(time, 'YYYYMMDD') as time
+		FROM example
+		<if test = "name!=NULL and name!=''">
+			WHERE name = #{name}
+		</if>
+		ORDER BY time
+	</select>
+	<insert id ='insertPrice' parameterType='com.example.demo.vo.PriceVo'>
+		INSERT INTO example(
+			name,
+			open,
+			close,
+			high,
+			low,
+			time)
+		VALUES(
+			#{name},
+			#{open},
+			#{close},
+			#{high},
+			#{low},
+			TO_DATE(#{time},'YYYYMMDD')
+		)
+	</insert>
+</mapper>
