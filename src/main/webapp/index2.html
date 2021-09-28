@@ -50,7 +50,7 @@
 </style>
 </head>
 <body>
-    <h1>!!雷Rich Girl Kira, Not Asuka Kirara.錢!!</h1>
+    <h1>!!Rich Girl Kira, Not Asuka Kirara.錢!!</h1>
     <div class='top'>
         <div class ="main-rate-of-return">
             <div id="kospi">
@@ -90,10 +90,11 @@
             </div>
         </div>
         <div class="main-chart">
-            <div id ="lineChart1" class ='chart' style="width: 600;height: 350;"></div>
-            <div id ="lineChart2" class ='chart' style="width: 600;height: 350;"></div>
         </div>
-
+        <div id='dashboard'>
+            <div id ='controller'></div>
+            <div id = 'chart'></div>
+        </div>
     </div>
 <button>click</button>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -107,8 +108,26 @@
         console.log($("button"))
         google.charts.load('current', {'packages': ['corechart','controls']});
         google.charts.setOnLoadCallback(function(){drawChart1('kospi', 'lineChart1')});
-        google.charts.setOnLoadCallback(function(){drawChart2('s&p500','lineChart2')});    	  
-                  
+        
+        function yyyymmdd() {
+            var x = new Date();
+            var y = x.getFullYear().toString();
+            var m = (x.getMonth() + 1).toString();
+            var d = x.getDate().toString();
+            (d.length == 1) && (d = '0' + d);
+            (m.length == 1) && (m = '0' + m);
+            var yyyymmdd = y + m + d;
+            return yyyymmdd;
+        }          
+        function parse(str) {
+            var y = str.substr(0, 4);
+            var m = str.substr(4, 2);
+            var d = str.substr(6, 2);
+            return new Date(y,m-1,d);
+        }
+
+
+
         function drawChart1(ticker, which){
         	  var PriceVo ={
                       name : ticker
@@ -122,18 +141,33 @@
                   	console.log(result[0])
               
             var data = new google.visualization.DataTable();
-            data.addColumn('string','Date');
+            data.addColumn('date','Date');
             data.addColumn('number','price');
             for(var i = 0; i < result.length; i++){
-            	data.addRow([result[i].time, result[i].close])
+                console.log(yyyymmdd(result[i].time))
+            	data.addRow([parse(result[i].time), result[i].close])
             }
-            var options= {
-            	title : ticker,
-                width : 600,
-                height : 350
-            }
-            var chart = new google.visualization.LineChart(document.getElementById(which));
-        chart.draw(data, options);
+            var dashboard = new google.visualization.Dashboard(
+                document.getElementById('dashboard')
+            )
+            var slider = new google.visualization.ControlWrapper({
+                'controlType' : 'DateRangeFilter',
+                'containerId': 'controller',
+                'options': {
+                    'filterColumnIndex': 0
+                }
+            })
+            var lineChart = new google.visualization.ChartWrapper({
+                'chartType':'LineChart',
+                'containerId' : 'chart',
+                'options' :{
+                    title : which,
+                    width : 600,
+                    height : 350
+                }
+            })
+            dashboard.bind(slider, lineChart);
+            dashboard.draw(data)
     })
         }
         function drawChart2(ticker){
