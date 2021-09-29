@@ -14,9 +14,9 @@ import com.example.demo.vo.PriceVo;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class StockApplicationTests {
-
 	@Test
 	void contextLoads() {
+		System.out.print("hello");
 	}
 
 }
