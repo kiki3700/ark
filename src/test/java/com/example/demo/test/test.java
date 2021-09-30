@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.demo.dao.PriceDao;
 import com.example.demo.vo.LineChartDto;
 import com.example.demo.vo.PriceVo;
 import com.google.gson.Gson;
@@ -16,6 +17,8 @@ import com.google.gson.Gson;
 public class test {
 	LineChartDto dto = new LineChartDto();
 	
+	@Autowired
+	PriceDao dao;
 	@Test
 	public void test() {
 		dto.addColumn("date", null, null, "date");

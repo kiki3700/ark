@@ -2,6 +2,7 @@ package com.example.demo.vo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,15 +10,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({ "cols", "rows" })
 public class LineChartDto {
-	private HashMap<String, Object> result;
-	@JsonProperty("cols")
+	private LinkedHashMap<String, Object> result;
 	private List<HashMap<String, Object>> cols;
-	@JsonProperty("rows")
 	private List<HashMap<String, Object>> rows;
 	
 		
 		public LineChartDto(){
-			this.result = new HashMap<String, Object>();
+			this.result = new LinkedHashMap<String, Object>();
 			this.cols = new ArrayList<HashMap<String, Object>>();
 			this.rows = new ArrayList<HashMap<String, Object>>();
 			
