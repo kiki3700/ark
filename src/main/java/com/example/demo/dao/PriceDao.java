@@ -9,5 +9,5 @@ import com.example.demo.vo.PriceVo;
 
 public interface PriceDao {
 	List<PriceVo> getPrice(HashMap param);
-	void insertPrice(com.example.demo.vo.PriceVo vo);
+	void insertPrice(PriceVo vo);
 }
