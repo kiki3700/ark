@@ -26,7 +26,6 @@ public class DataAccessConfig {
 		sessionFactory.setVfs(SpringBootVFS.class);
 		sessionFactory.setTypeAliasesPackage("com.example.demo.vo");
 		org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-		sessionFactory.setConfigLocation(applicationContext.getResource("classpath:mapper/mybatis-config.xml"));
 		configuration.setMapUnderscoreToCamelCase(true);
 		configuration.setJdbcTypeForNull(null);
 		sessionFactory.setConfiguration(configuration);

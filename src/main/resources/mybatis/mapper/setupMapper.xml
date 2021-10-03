@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.setupMapper">
+	<insert id = "insertItem" parameterType = "ItemDto">
+		INSERT INTO item(
+			id,
+			ticker,
+			name,
+			is_active,
+			curreny_id,
+			market,
+			sector,
+			category,
+			industry
+			)
+		VALUES(
+			item_id.NEXTVAL,
+			#{ticker},
+			#{name},
+			#{isAcitve},
+			#{currencyId},
+			#{market},
+			#{sector},
+			#{industry}
+		)
+	</insert>
+	<insert id ="insertHistoryData" parameterType ="HistoryDataDto">
+		INSERT INTO HISTORY_DATA(
+			ID,
+			TRADING_DATE,
+			ITEM_ID,
+			OPEN,
+			CLOSE,
+			LOW,
+			HIGH,
+			VOLUME
+		)
+		VALUES(
+			HISTORY_DATA_ID.NEXTVAL,
+			#{tradingDate},
+			#{itemId},
+			#{open},
+			#{close},
+			#{low},
+			#{high},
+			#{volume}
+		)
+	</insert>
+
+</mapper>

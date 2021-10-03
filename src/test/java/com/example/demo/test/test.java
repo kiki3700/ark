@@ -12,8 +12,7 @@ import com.example.demo.vo.LineChartDto;
 import com.example.demo.vo.PriceVo;
 import com.google.gson.Gson;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+
 public class test {
 	LineChartDto dto = new LineChartDto();
 	
