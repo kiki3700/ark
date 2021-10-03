@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -14,6 +16,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 @Configuration
 @MapperScan(basePackages = "com.example.demo.dao")
 public class DataAccessConfig {
+	@Autowired
+	ApplicationContext applicationContext;
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
@@ -22,6 +26,7 @@ public class DataAccessConfig {
 		sessionFactory.setVfs(SpringBootVFS.class);
 		sessionFactory.setTypeAliasesPackage("com.example.demo.vo");
 		org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+		sessionFactory.setConfigLocation(applicationContext.getResource("classpath:mapper/mybatis-config.xml"));
 		configuration.setMapUnderscoreToCamelCase(true);
 		configuration.setJdbcTypeForNull(null);
 		sessionFactory.setConfiguration(configuration);

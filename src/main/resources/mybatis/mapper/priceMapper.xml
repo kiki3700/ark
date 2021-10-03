@@ -15,7 +15,7 @@
 		</if>
 		ORDER BY time
 	</select>
-	<insert id ='insertPrice' parameterType='com.example.demo.vo.PriceVo'>
+	<insert id ='insertPrice' parameterType='PriceVo'>
 		INSERT INTO example(
 			name,
 			open,
