@@ -22,6 +22,7 @@ public enum USTYPE implements ComEnum {
    * The value of this constant is 2
    * </p>
    */
+  /*나바별 지수를 얻을 수 있다. 이게 내가 필요했던 것이다.*/
   USTYPE_COUNTRY(2),
   /**
    * <p>
@@ -31,6 +32,7 @@ public enum USTYPE implements ComEnum {
    * The value of this constant is 3
    * </p>
    */
+  /*업종별 지수를 보여준다.*/
   USTYPE_UPJONG(3),
   /**
    * <p>
@@ -67,6 +69,7 @@ public enum USTYPE implements ComEnum {
    * The value of this constant is 7
    * </p>
    */
+  /*환율*/
   USTYPE_EXCHANGE(7),
   ;
 

@@ -1,5 +1,6 @@
 package com.example.demo.vo;
 
+
 import java.util.Date;
 
 public class HistoryDataDto {
@@ -10,7 +11,7 @@ public class HistoryDataDto {
 	private float close;
 	private float low;
 	private float high;
-	private int volume;
+	private double volume;
 	
 	public HistoryDataDto() {
 		super();
@@ -37,32 +38,51 @@ public class HistoryDataDto {
 	public float getOpen() {
 		return open;
 	}
-	public void setOpen(float open) {
-		this.open = open;
+	public void setOpen(Number open) {
+		this.open = open.floatValue();
 	}
 	public float getClose() {
 		return close;
 	}
-	public void setClose(float close) {
-		this.close = close;
+	public void setClose(Number close) {
+		this.close = close.floatValue();
 	}
 	public float getLow() {
 		return low;
 	}
-	public void setLow(float low) {
-		this.low = low;
+	public void setLow(Number low) {
+		this.low = low.floatValue();
 	}
 	public float getHigh() {
-		return high;
+		return  high;
+	}
+	public void setHigh(Number high) {
+		this.high = high.floatValue();
+	}
+	public void setOpen(float open) {
+		this.open = open;
+	}
+	public void setClose(float close) {
+		this.close = close;
+	}
+	public void setLow(float low) {
+		this.low = low;
 	}
 	public void setHigh(float high) {
 		this.high = high;
 	}
-	public int getVolume() {
-		return volume;
-	}
-	public void setVolume(int volume) {
+	public void setVolume(double volume) {
 		this.volume = volume;
 	}
-	
+	public double getVolume() {
+		return volume;
+	}
+	public void setVolume(Number volume) {
+		this.volume = volume.doubleValue();
+	}
+	@Override
+	public String toString() {
+		return "HistoryDataDto [id=" + id + ", tradingDate=" + tradingDate + ", itemId=" + itemId + ", open=" + open
+				+ ", close=" + close + ", low=" + low + ", high=" + high + ", volume=" + volume + "]";
+	}
 }
