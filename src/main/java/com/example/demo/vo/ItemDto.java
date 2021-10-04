@@ -1,12 +1,27 @@
 package com.example.demo.vo;
 
+import java.util.Date;
+
 public class ItemDto {
 	private int id;
+	private Date listingDate;
 	private String ticker;
 	private String name;
-	private boolean isActive;
+	private String isActive;
 	private int currentId;
 	private String market;
+	public Date getListingDate() {
+		return listingDate;
+	}
+	public void setListingDate(Date listingDate) {
+		this.listingDate = listingDate;
+	}
+	public String getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
+	}
 	private String sector;
 	private String category;
 	private String industry;
@@ -33,10 +48,10 @@ public class ItemDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean isActive() {
+	public String isActive() {
 		return isActive;
 	}
-	public void setActive(boolean isActive) {
+	public void setActive(String isActive) {
 		this.isActive = isActive;
 	}
 	public int getCurrentId() {
@@ -69,4 +84,11 @@ public class ItemDto {
 	public void setIndustry(String industry) {
 		this.industry = industry;
 	}
+	@Override
+	public String toString() {
+		return "ItemDto [id=" + id + ", listingDate=" + listingDate + ", ticker=" + ticker + ", name=" + name
+				+ ", isActive=" + isActive + ", currentId=" + currentId + ", market=" + market + ", sector=" + sector
+				+ ", category=" + category + ", industry=" + industry + "]";
+	}
+	
 }
