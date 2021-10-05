@@ -41,61 +41,76 @@ public class SetupTest {
 		}
 	
 	}
-//	@Test
-//	public void foreinInd() {
-//		dashin.cputil.ICpUsCode usCode = ClassFactory.createCpUsCode();
-//		Object[] tickers = (Object[]) usCode.getUsCodeList(dashin.cputil.USTYPE.USTYPE_COUNTRY);
-//		for(int i = 0; i < tickers.length; i++) {
-//			System.out.println(tickers[i]);
-//			System.out.println(usCode.getNameByUsCode((String) tickers[i]));
-//		}
-//		dashin.cpdib.IDib chart  = dashin.cpdib.ClassFactory.createCpFore8312();
-//		chart.setInputValue(0, "SPX");
-//		chart.setInputValue(1,(int) '1');
-//		chart.setInputValue(3, 30);
-//		chart.request();
-//		Object header = chart.getHeaderValue(2);
-//		System.out.println(Integer.parseInt(header.toString()));
-//		for(int i =0; i<Integer.parseInt(header.toString());i++) {
-//			String time = Long.toString((long) chart.getDataValue(0, i));
-//			float open = (float) chart.getDataValue(1, i);
-//			float high = (float) chart.getDataValue(2, i);
-//			float low = (float) chart.getDataValue(3, i);
-//			float close = (float) chart.getDataValue(4, i);
-//			System.out.println("date : "+time+", open : "+open);
-//		}
-// 	}
-//	@Test
-//	public void indexPrice() {
-//		dashin.cputil.ICpCybos cybos = dashin.cputil.ClassFactory.createCpCybos();
-//		System.out.println(cybos.isConnect());
-//		dashin.cpsysdib.ISysDib chart =dashin.cpsysdib.ClassFactory.createStockChart();
-//		chart.setInputValue(0, "U001");
-//		chart.setInputValue(1, (int) '1');
-////		chart.setInputValue(3,"20000101");
-//		chart.setInputValue(5, new int[] {0,2,3,4, 5, 8});
-//		chart.setInputValue(6,(int) 'D');
-//		chart.setInputValue(9,(int) '1');
-//		do {
-//		chart.blockRequest();
-//		Object data = chart.getHeaderValue(3);
-//		System.out.println(chart.getHeaderValue(5));
-//		for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
-//			String time = Long.toString((long) chart.getDataValue(0, i));
-//			float open = (float) chart.getDataValue(1, i);
-//			float high = (float) chart.getDataValue(2, i);
-//			float low = (float) chart.getDataValue(3, i);
-//			System.out.print(chart.getDataValue(4, i).getClass());
-//			Number close = (Number) chart.getDataValue(4, i);
-//			System.out.print(chart.getDataValue(5, i).getClass());
-//			Number volume = (Number) chart.getDataValue(5, i);
-//			HistoryDataDto vo = new HistoryDataDto();
-//			vo.setOpen(open);
-//			vo.setHigh(high);
-//			System.out.println((float) close);
-//			}
-//		}while(1==((int) chart._continue()));	
-//	}
+	@Test
+	public void foreinInd() {
+		dashin.cputil.ICpUsCode usCode = ClassFactory.createCpUsCode();
+		Object[] tickers = (Object[]) usCode.getUsCodeList(dashin.cputil.USTYPE.USTYPE_COUNTRY);
+		for(int i = 0; i < tickers.length; i++) {
+			System.out.println(tickers[i]);
+			System.out.println(usCode.getNameByUsCode((String) tickers[i]));
+			
+		}
+		dashin.cpdib.IDib chart  = dashin.cpdib.ClassFactory.createCpFore8312();
+		chart.setInputValue(0,"SPX");
+		chart.setInputValue(1,(int) '2');
+		chart.setInputValue(3, 30);
+		chart.request();
+		System.out.println("length : "+chart.getHeaderValue(2));
+		System.out.println("ticker" +chart.getHeaderValue(0));
+		System.out.println(chart.getHeaderValue(1));
+		for(int i =0; i<(int) chart.getHeaderValue(2);i++) {
+			String time = Long.toString((long) chart.getDataValue(0, i));
+			float open = (float) chart.getDataValue(1, i);
+			float high = (float) chart.getDataValue(2, i);
+			float low = (float) chart.getDataValue(3, i);
+			float close = (float) chart.getDataValue(4, i);
+			System.out.println("date : "+time+", open : "+open);
+		}
+		
+		dashin.cpdib.IDib ind = dashin.cpdib.ClassFactory.createCpFore8311();
+		ind.setInputValue(0, (int) '1');
+		ind.blockRequest();
+		
+		short len = (short) ind.getHeaderValue(0);
+		System.out.print("len"+len);
+		for(int i =0; i< len ; i++) {
+			System.out.println(ind.getDataValue(0, i));
+			System.out.println(ind.getDataValue(1, i));
+			System.out.println(ind.getDataValue(2, i));
+			System.out.println(ind.getDataValue(3, i));
+		}
+ 	}
+	@Test
+	public void indexPrice() {
+		dashin.cputil.ICpCybos cybos = dashin.cputil.ClassFactory.createCpCybos();
+		System.out.println(cybos.isConnect());
+		dashin.cpsysdib.ISysDib chart =dashin.cpsysdib.ClassFactory.createStockChart();
+		chart.setInputValue(0, "U001");
+		chart.setInputValue(1, (int) '1');
+		chart.setInputValue(3,"20000101");
+		chart.setInputValue(5, new int[] {0,2,3,4, 5, 8});
+		chart.setInputValue(6,(int) 'D');
+		chart.setInputValue(9,(int) '1');
+		do {
+		chart.blockRequest();
+		Object data = chart.getHeaderValue(3);
+		System.out.println(chart.getHeaderValue(5));
+		for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
+			String time = Long.toString((long) chart.getDataValue(0, i));
+			float open = (float) chart.getDataValue(1, i);
+			float high = (float) chart.getDataValue(2, i);
+			float low = (float) chart.getDataValue(3, i);
+			System.out.print(chart.getDataValue(4, i).getClass());
+			Number close = (Number) chart.getDataValue(4, i);
+			System.out.print(chart.getDataValue(5, i).getClass());
+			Number volume = (Number) chart.getDataValue(5, i);
+			HistoryDataDto vo = new HistoryDataDto();
+			vo.setOpen(open);
+			vo.setHigh(high);
+			System.out.println((float) close);
+			}
+		}while(1==((int) chart._continue()));	
+	}
 	@Test
 	public void priceGetter() throws ParseException {
 		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
