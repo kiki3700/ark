@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.service.impl.SetupServiceImpl;
+import com.example.demo.data.service.impl.SetupServiceImpl;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.PriceVo;

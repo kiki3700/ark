@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.data.dao;
 
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;

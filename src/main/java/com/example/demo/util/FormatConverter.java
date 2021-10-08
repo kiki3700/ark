@@ -1,11 +1,13 @@
 package com.example.demo.util;
 
 
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;
@@ -65,4 +67,8 @@ public class FormatConverter {
 		}while(1==((int) chart._continue()));
 		return dataList;
 	}
+	static int formatStringToInt(String str) throws ParseException {
+		return (int) NumberFormat.getNumberInstance(Locale.FRANCE).parse(str);
+	}
+	
 }

@@ -1,4 +1,4 @@
-package com.example.demo.service.impl;
+package com.example.demo.data.service.impl;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.demo.cybosApi.SetupApi;
-import com.example.demo.dao.SetupDao;
-import com.example.demo.service.SetupService;
+import com.example.demo.data.cybosApi.SetupApi;
+import com.example.demo.data.dao.SetupDao;
+import com.example.demo.data.service.SetupService;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;

@@ -1,4 +1,4 @@
-package com.example.demo.service.impl;
+package com.example.demo.data.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.PriceDao;
-import com.example.demo.service.PriceService;
+import com.example.demo.data.dao.PriceDao;
+import com.example.demo.data.service.PriceService;
 import com.example.demo.vo.PriceVo;
 
 @Service
