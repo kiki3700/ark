@@ -1,9 +1,13 @@
 package com.example.demo.util;
+
+import org.springframework.stereotype.Component;
+
 /*
  * 문서 작성자 : 이성현
  */
 //싸이보스 연결과 요청에 관한 문서
-//주 메서드 
+//주 메서드
+@Component
 public class CybosConnection {
 	private dashin.cputil.ICpCybos cybos = dashin.cputil.ClassFactory.createCpCybos();
 	public int connectionCheck() {

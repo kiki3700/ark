@@ -14,7 +14,7 @@ import com.example.demo.vo.PriceVo;
 public class PriceServiceImpl implements PriceService {
 
 	@Autowired
-	private PriceDao priceDao;
+	PriceDao priceDao;
 	
 	@Override
 	public List<PriceVo> getPrice(HashMap param) {

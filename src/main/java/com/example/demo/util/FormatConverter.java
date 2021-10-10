@@ -9,9 +9,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.stereotype.Component;
+
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;
-
+@Component
 public class FormatConverter {
 	static public Date stringToDate(String dateString) throws ParseException {
 	SimpleDateFormat format = new SimpleDateFormat("yyyMMdd");
@@ -67,8 +69,8 @@ public class FormatConverter {
 		}while(1==((int) chart._continue()));
 		return dataList;
 	}
-	static int formatStringToInt(String str) throws ParseException {
-		return (int) NumberFormat.getNumberInstance(Locale.FRANCE).parse(str);
+	public static double separatorStringToDouble(String str) throws ParseException {
+		return Double.parseDouble(str.replaceAll(",", ""));
 	}
 	
 }
