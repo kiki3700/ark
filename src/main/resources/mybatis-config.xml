@@ -6,6 +6,7 @@
 <configuration>
 	<!-- 별칭 -->
 	<typeAliases>
+		<typeAlias type="com.example.demo.vo.IndexHistoryDataDto" alias="IndexHistoryDataDto"/>
 		<typeAlias type="com.example.demo.vo.HistoryDataDto" alias="HistoryDataDto"/>
 		<typeAlias type="com.example.demo.vo.ItemDto" alias="ItemDto"/>
 		<typeAlias type="com.example.demo.vo.PriceVo" alias="PriceVo"/>
