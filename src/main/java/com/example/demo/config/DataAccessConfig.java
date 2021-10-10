@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages = "com.example.demo.dao")
+@MapperScan(basePackages = "com.example.demo")
 public class DataAccessConfig {
 	@Autowired
 	ApplicationContext applicationContext;
