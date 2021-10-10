@@ -1,6 +1,7 @@
 package com.example.demo.vo;
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class HistoryDataDto {
@@ -11,7 +12,7 @@ public class HistoryDataDto {
 	private float close;
 	private float low;
 	private float high;
-	private double volume;
+	private BigDecimal volume;
 	
 	public HistoryDataDto() {
 		super();
@@ -71,14 +72,14 @@ public class HistoryDataDto {
 	public void setHigh(float high) {
 		this.high = high;
 	}
-	public void setVolume(double volume) {
+	public void setVolume(BigDecimal volume) {
 		this.volume = volume;
 	}
-	public double getVolume() {
+	public BigDecimal getVolume() {
 		return volume;
 	}
 	public void setVolume(Number volume) {
-		this.volume = volume.doubleValue();
+		this.volume = new BigDecimal(volume.toString());
 	}
 	@Override
 	public String toString() {

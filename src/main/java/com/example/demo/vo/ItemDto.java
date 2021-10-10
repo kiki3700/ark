@@ -10,31 +10,37 @@ public class ItemDto {
 	private String isActive;
 	private int currentId;
 	private String market;
-	public Date getListingDate() {
-		return listingDate;
-	}
-	public void setListingDate(Date listingDate) {
-		this.listingDate = listingDate;
-	}
-	public String getIsActive() {
-		return isActive;
-	}
-	public void setIsActive(String isActive) {
-		this.isActive = isActive;
-	}
-	private String sector;
+	private String size;
 	private String category;
 	private String industry;
-	
 	public ItemDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getIndustry() {
+		return industry;
+	}
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Date getListingDate() {
+		return listingDate;
+	}
+	public void setListingDate(Date listingDate) {
+		this.listingDate = listingDate;
 	}
 	public String getTicker() {
 		return ticker;
@@ -48,10 +54,10 @@ public class ItemDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String isActive() {
+	public String getIsActive() {
 		return isActive;
 	}
-	public void setActive(String isActive) {
+	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
 	public int getCurrentId() {
@@ -66,29 +72,17 @@ public class ItemDto {
 	public void setMarket(String market) {
 		this.market = market;
 	}
-	public String getSector() {
-		return sector;
+	public String getSize() {
+		return size;
 	}
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getIndustry() {
-		return industry;
-	}
-	public void setIndustry(String industry) {
-		this.industry = industry;
+	public void setSize(String size) {
+		this.size = size;
 	}
 	@Override
 	public String toString() {
 		return "ItemDto [id=" + id + ", listingDate=" + listingDate + ", ticker=" + ticker + ", name=" + name
-				+ ", isActive=" + isActive + ", currentId=" + currentId + ", market=" + market + ", sector=" + sector
+				+ ", isActive=" + isActive + ", currentId=" + currentId + ", market=" + market + ", size=" + size
 				+ ", category=" + category + ", industry=" + industry + "]";
 	}
-	
+
 }

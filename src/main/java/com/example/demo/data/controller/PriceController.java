@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.data.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.service.PriceService;
-import com.example.demo.service.impl.PriceServiceImpl;
+import com.example.demo.data.service.PriceService;
+import com.example.demo.data.service.impl.PriceServiceImpl;
 import com.example.demo.vo.PriceVo;
 
 import dashin.cpsysdib.ClassFactory;
