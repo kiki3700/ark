@@ -28,7 +28,7 @@ public class SetupApi {
 		item.setName(name);
 		item.setIsActive(isActive.name());
 		item.setMarket(market.name());
-		item.setCurrentId(0);
+		item.setCurrencyId(0);
 		item.setCategory(category.name());
 		item.setIndustry(industry);
 		return item;
