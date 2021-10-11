@@ -41,7 +41,7 @@ public class PriceServiceImpl implements PriceService {
 		IDib index = ClassFactory.createCpSvr8300();
 		index.setInputValue(0, inParam.get("indexCode"));
 		index.setInputValue(1, (int) 'D'); // 여기서 컨버팅 에러남 char를 variant로 변형시키지 못함
-		index.setInputValue(2, inParam.get("quant"));
+		index.setInputValue(3, inParam.get("quant"));
 		
 		index.blockRequest();
 		
