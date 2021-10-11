@@ -1,5 +1,6 @@
 package com.example.demo.data.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,36 +40,39 @@ public class PriceServiceImpl implements PriceService {
 		
 		IDib index = ClassFactory.createCpSvr8300();
 		index.setInputValue(0, inParam.get("indexCode"));
-		index.setInputValue(1, (char) inParam.get("ydm")); // 여기서 컨버팅 에러남 char를 variant로 변형시키지 못함
-		index.setInputValue(2, inParam.get("quant"));
+		index.setInputValue(1, (int) 'D'); // 여기서 컨버팅 에러남 char를 variant로 변형시키지 못함
+		index.setInputValue(3, inParam.get("quant"));
 		
-		index.request();
+		index.blockRequest();
 		
 		IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
 		
 		String indexCode = (String) index.getHeaderValue(0);
-		int indexQuant = (Integer) index.getHeaderValue(3);
+		short indexQuant = (short) index.getHeaderValue(3);
 		System.out.println("indexCode" + indexCode );
 		System.out.println("indexQuant" + indexQuant );
 		historyDataDto.setINDEX_NAME(indexCode);
 		for(int i=0;i<indexQuant;i++) {
 			
-			Long date = (Long) index.getDataValue(0, i);
+			int date = (int) index.getDataValue(0, i);
 			float open = (float) index.getDataValue(1, i);
 			float high = (float) index.getDataValue(2, i);
 			float low = (float) index.getDataValue(3, i);
 			float close = (float) index.getDataValue(4, i);
-			Long volume = (Long) index.getDataValue(5, i);
+			Long volumeL = (Long) index.getDataValue(5, i);
+			BigDecimal volume =  BigDecimal.valueOf(volumeL);
 			System.out.println("date : " +  date + "==========");
 			System.out.println("open : " +  open);
 			System.out.println("high : " +  high);
 			System.out.println("low : " +  low);
 			System.out.println("close : " +  close);
+			System.out.println("volumeL : " +  volumeL);
 			historyDataDto.setTradingDate(date);
 			historyDataDto.setClose(close);
 			historyDataDto.setHigh(high);
 			historyDataDto.setLow(low);
 			historyDataDto.setOpen(open);
+			historyDataDto.setVolume(volume);
 			
 			System.out.println("==========================");
 			System.out.println("DTO : " + historyDataDto);

@@ -44,20 +44,25 @@ public class IndexTest {
 		String[] tickers =  (String[]) usCode.getUsCodeList(dashin.cputil.USTYPE.USTYPE_COUNTRY);
 		List<String> usCodeList = new ArrayList<String>();
 		for(int i = 0; i < tickers.length; i++) {
-			if(tickers[i].equals("SPX") || tickers[i].equals("SHANG")) {
+			//if(tickers[i].equals("SPX") || tickers[i].equals("SHANG")) {
+			if(i==0 || i == 1) {
 				usCodeList.add(tickers[i]);
-			} 
+				
+			}
+			//} 
 		}
 		
 		for(int i=0;i < usCodeList.size();i++ ) {
+			short quant = 5;
 			inParam = new HashMap<>();
 			inParam.put("indexCode",usCodeList.get(i));
 			inParam.put("ydm",'D');
-			inParam.put("quant","5");
+			inParam.put("quant",quant);
 			IndexHistoryDataDto dto = priceService.getIndexHistory(inParam);
-			System.out.print(usCodeList.get(i) + "===============");
-			System.out.print(dto);
-			System.out.print("================");
+			System.out.println("123====================================================");
+			System.out.println(usCodeList.get(i) + "===============");
+			System.out.println(dto);
+			System.out.println("================");
 		}
 	}
 	

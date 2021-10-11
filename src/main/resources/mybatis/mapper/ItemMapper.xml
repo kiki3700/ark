@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.data.dao.ItemDao">
+	<insert id = 'insertItem' parameterType = 'ItemDto'>
+		INSERT INTO ITEM(
+			ID,
+			TICKER,
+			NAME,
+			IS_ACTIVE,
+			CURRENCY_ID,
+			MARKET,
+			CATEGORY,
+			INDUSTRY,
+			CORP_SIZE,
+			LISTING_DATE
+		)
+		VALUES(
+			ITEM_ID.NEXTVAL,
+			#{ticker},
+			#{name},
+			#{isActive},
+			#{currencyId},
+			#{market},
+			#{category},
+			#{industry},
+			#{corpSize},
+			#{listingDate}
+			)
+	</insert>
+</mapper>

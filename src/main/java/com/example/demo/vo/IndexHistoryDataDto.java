@@ -6,7 +6,7 @@ import java.util.Date;
 public class IndexHistoryDataDto {
 	private int id;
 	private String INDEX_NAME;
-	private Long tradingDate;
+	private int tradingDate;
 	private float open;
 	private float close;
 	private float low;
@@ -25,10 +25,10 @@ public class IndexHistoryDataDto {
 	public void setINDEX_NAME(String iNDEX_NAME) {
 		INDEX_NAME = iNDEX_NAME;
 	}
-	public Long getTradingDate() {
+	public int getTradingDate() {
 		return tradingDate;
 	}
-	public void setTradingDate(Long tradingDate) {
+	public void setTradingDate(int tradingDate) {
 		this.tradingDate = tradingDate;
 	}
 	public float getOpen() {
