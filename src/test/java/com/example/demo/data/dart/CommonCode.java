@@ -71,15 +71,15 @@ public class CommonCode {
 	    	
 	    }
 	    
-	    try (ZipInputStream zipIn = new ZipInputStream(inputStream))
-	    {
-	      DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-	      ZipEntry entry;
-	        
-	          Document doc = db.parse(new UncloseableInputStream(zipIn));
-	        
-	      
-	    }
+//	    try (ZipInputStream zipIn = new ZipInputStream(inputStream))
+//	    {
+//	      DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+//	      ZipEntry entry;
+//	        
+//	          Document doc = db.parse(new UncloseableInputStream(zipIn));
+//	        
+//	      
+//	    }
 	   
 	}
 }

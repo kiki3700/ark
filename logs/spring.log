@@ -417,3 +417,11 @@ Caused by: java.lang.ClassNotFoundException: com.fasterxml.jackson.core.exc.Stre
 2021-10-12 12:38:34.666  INFO 4384 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
 2021-10-12 12:38:41.924  INFO 4384 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
 2021-10-12 12:38:42.774  INFO 4384 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 8.626 seconds (JVM running for 10.149)
+2021-10-12 13:15:18.218  INFO 9636 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 9636 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:15:18.222  INFO 9636 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:15:19.730  INFO 7876 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 7876 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:15:19.732  INFO 7876 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:15:24.520  INFO 9636 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:15:25.103  INFO 7876 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:15:25.176  INFO 9636 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 7.426 seconds (JVM running for 8.621)
+2021-10-12 13:15:25.742  INFO 7876 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.4 seconds (JVM running for 7.507)
