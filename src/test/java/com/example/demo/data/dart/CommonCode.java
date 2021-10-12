@@ -68,18 +68,18 @@ public class CommonCode {
 	    System.out.println(zipEntry);
 	    Scanner sc = new Scanner(zip);
 	    for(int i = 0; i< 1000; i++){
-	    	System.out.println(sc.nextLine());
+	    	
 	    }
 	    
-//	    try (ZipInputStream zipIn = new ZipInputStream(inputStream))
-//	    {
-//	      DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-//	      ZipEntry entry;
-//	        
-//	          Document doc = db.parse(new UncloseableInputStream(zipIn));
-//	        
-//	      
-//	    }
+	    try (ZipInputStream zipIn = new ZipInputStream(inputStream))
+	    {
+	      DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+	      ZipEntry entry;
+	        
+	          Document doc = db.parse(new UncloseableInputStream(zipIn));
+	        
+	      
+	    }
 	   
 	}
 }
