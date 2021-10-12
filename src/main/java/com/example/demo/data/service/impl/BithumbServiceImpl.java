@@ -21,7 +21,7 @@ public class BithumbServiceImpl {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	public void setCrytoCurrencyHistory(Map<String, Object>inParams) {
+	public void getCrytoCurrencyHistory(Map<String, Object>inParams) {
 		List<HistoryDataDto> resultList = new LinkedList<HistoryDataDto>();
 		String targetUrl = url+"/public/candlestick/{nm}_KRW/24h";
 		Map<String, String> map = new HashMap<>();
@@ -35,7 +35,7 @@ public class BithumbServiceImpl {
 			for(int i = 0; i < len; i++) {
 				HistoryDataDto historyDataDto = new HistoryDataDto();
 				Object[] data = datas.get(i);
-				historyDataDto.setTradingDate(new Date(Integer.parseInt((String) data[0])));
+				historyDataDto.setTradingDate(new Date(Long.parseLong((String) data[0])));
 				historyDataDto.setOpen(Integer.parseInt((String) data[1]));
 				historyDataDto.setClose(Integer.parseInt((String) data[2]));
 				historyDataDto.setHigh(Integer.parseInt((String) data[3]));
