@@ -28,6 +28,7 @@ import com.example.demo.data.service.impl.DartServiceImpl;
 import com.example.demo.util.wrapper.UncloseableInputStream;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.zip.*;
@@ -56,29 +57,14 @@ public class CommonCode {
 	@Test
 	@DisplayName("집파일 받기")
 	public void parseTest() throws IOException, ParserConfigurationException, SAXException {
-	    RestTemplate restTemplate = new RestTemplate();
-	    List<ZipEntry> entries = new ArrayList<>();
-	    String url = "https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key=044ec3f15e4539438354808f49cd3879982c4201";
-	    byte[] arr = restTemplate.getForObject(url, byte[].class);
-	    InputStream inputStream = new ByteArrayInputStream(arr);
-	
-	    ZipInputStream zip = new ZipInputStream(inputStream);
-
-	    ZipEntry zipEntry = zip.getNextEntry();
-	    System.out.println(zipEntry);
-	    Scanner sc = new Scanner(zip);
-	    for(int i = 0; i< 1000; i++){
-	    	
-	    }
+		
+	    
 	    
 //	    try (ZipInputStream zipIn = new ZipInputStream(inputStream))
 //	    {
 //	      DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-//	      ZipEntry entry;
-//	        
-//	          Document doc = db.parse(new UncloseableInputStream(zipIn));
-//	        
-//	      
+//	      ZipEntry entry;  
+//	      Document doc = db.parse(new UncloseableInputStream(zipIn));
 //	    }
 	   
 	}

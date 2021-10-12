@@ -425,3 +425,147 @@ Caused by: java.lang.ClassNotFoundException: com.fasterxml.jackson.core.exc.Stre
 2021-10-12 13:15:25.103  INFO 7876 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
 2021-10-12 13:15:25.176  INFO 9636 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 7.426 seconds (JVM running for 8.621)
 2021-10-12 13:15:25.742  INFO 7876 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.4 seconds (JVM running for 7.507)
+2021-10-12 13:22:04.231  INFO 14648 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 14648 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:22:04.233  INFO 14648 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:22:09.308  INFO 14648 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:22:09.889  INFO 14648 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.018 seconds (JVM running for 7.04)
+2021-10-12 13:24:41.352  INFO 13836 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 13836 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:24:41.354  INFO 13836 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:24:46.403  INFO 13836 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:24:46.971  INFO 13836 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.977 seconds (JVM running for 7.035)
+2021-10-12 13:25:08.224  INFO 15344 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15344 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:25:08.228  INFO 15344 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:25:13.649  INFO 15344 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:25:14.244  INFO 15344 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.422 seconds (JVM running for 7.473)
+2021-10-12 13:26:04.181  INFO 16244 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 16244 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:26:04.183  INFO 16244 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:26:09.289  INFO 16244 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:26:09.875  INFO 16244 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.059 seconds (JVM running for 7.032)
+2021-10-12 13:26:40.299  INFO 15024 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15024 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:26:40.302  INFO 15024 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:26:45.692  INFO 15024 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:26:46.280  INFO 15024 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.373 seconds (JVM running for 7.447)
+2021-10-12 13:28:16.400  INFO 19940 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 19940 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:28:16.403  INFO 19940 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:28:21.977  INFO 19940 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:28:22.583  INFO 19940 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.573 seconds (JVM running for 7.545)
+2021-10-12 13:45:39.382  INFO 16484 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 16484 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:45:39.384  INFO 16484 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:45:43.863  INFO 16484 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:45:44.314  INFO 16484 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.252 seconds (JVM running for 6.114)
+2021-10-12 13:55:36.130  INFO 13188 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 13188 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 13:55:36.133  INFO 13188 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 13:55:40.629  INFO 13188 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 13:55:41.099  INFO 13188 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.28 seconds (JVM running for 6.123)
+2021-10-12 14:01:43.038  INFO 18268 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18268 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:01:43.040  INFO 18268 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:01:47.421  INFO 18268 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:01:47.854  INFO 18268 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.119 seconds (JVM running for 5.952)
+2021-10-12 14:02:47.074  INFO 1040 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 1040 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:02:47.076  INFO 1040 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:02:51.432  INFO 1040 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:02:51.873  INFO 1040 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.115 seconds (JVM running for 5.966)
+2021-10-12 14:07:59.608  INFO 15316 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15316 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:07:59.611  INFO 15316 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:08:03.953  INFO 15316 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:08:04.397  INFO 15316 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.105 seconds (JVM running for 5.905)
+2021-10-12 14:09:23.408  INFO 10824 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 10824 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:09:23.410  INFO 10824 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:09:27.736  INFO 10824 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:09:28.175  INFO 10824 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.069 seconds (JVM running for 5.931)
+2021-10-12 14:17:19.238  INFO 13720 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 13720 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:17:19.240  INFO 13720 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:17:23.744  INFO 13720 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:17:24.196  INFO 13720 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.264 seconds (JVM running for 6.103)
+2021-10-12 14:18:58.422  INFO 5836 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 5836 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:18:58.424  INFO 5836 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:19:02.760  INFO 5836 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:19:03.192  INFO 5836 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.067 seconds (JVM running for 5.912)
+2021-10-12 14:19:23.270  INFO 19336 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 19336 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:19:23.272  INFO 19336 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:19:27.604  INFO 19336 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:19:28.035  INFO 19336 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.06 seconds (JVM running for 5.881)
+2021-10-12 14:20:47.576  INFO 12884 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12884 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:20:47.578  INFO 12884 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:20:52.126  INFO 12884 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:20:52.342  INFO 15308 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15308 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:20:52.345  INFO 15308 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:20:52.640  INFO 12884 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.368 seconds (JVM running for 6.222)
+2021-10-12 14:20:56.793  INFO 15308 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:20:57.241  INFO 15308 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.222 seconds (JVM running for 6.041)
+2021-10-12 14:59:10.432  INFO 13656 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 13656 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 14:59:10.434  INFO 13656 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 14:59:14.972  INFO 13656 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 14:59:15.430  INFO 13656 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.326 seconds (JVM running for 6.206)
+2021-10-12 15:00:48.368  INFO 21336 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 21336 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:00:48.370  INFO 21336 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:00:52.726  INFO 21336 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:00:53.172  INFO 21336 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.107 seconds (JVM running for 5.927)
+2021-10-12 15:01:34.926  INFO 18972 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18972 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:01:34.928  INFO 18972 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:01:39.281  INFO 18972 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:01:39.740  INFO 18972 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.115 seconds (JVM running for 5.932)
+2021-10-12 15:07:24.724  INFO 11308 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 11308 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:07:24.726  INFO 11308 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:07:29.104  INFO 11308 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:07:29.552  INFO 11308 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.127 seconds (JVM running for 6.031)
+2021-10-12 15:09:25.389  INFO 15972 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15972 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:09:25.392  INFO 15972 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:09:29.877  INFO 15972 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:09:30.341  INFO 15972 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.277 seconds (JVM running for 6.152)
+2021-10-12 15:12:10.340  INFO 7612 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 7612 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:12:10.342  INFO 7612 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:12:14.824  INFO 7612 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:12:15.279  INFO 7612 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.247 seconds (JVM running for 6.103)
+2021-10-12 15:13:45.613  INFO 15536 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15536 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:13:45.615  INFO 15536 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:13:49.983  INFO 15536 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:13:50.424  INFO 15536 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.122 seconds (JVM running for 5.953)
+2021-10-12 15:16:55.222  INFO 10696 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 10696 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:16:55.224  INFO 10696 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:16:59.683  INFO 10696 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:17:00.166  INFO 10696 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.25 seconds (JVM running for 6.088)
+2021-10-12 15:19:43.048  INFO 15848 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15848 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:19:43.050  INFO 15848 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:19:47.428  INFO 15848 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:19:47.869  INFO 15848 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.124 seconds (JVM running for 5.94)
+2021-10-12 15:19:59.059  INFO 13204 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 13204 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:19:59.062  INFO 13204 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:20:03.480  INFO 13204 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:20:03.928  INFO 13204 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.183 seconds (JVM running for 6.028)
+2021-10-12 15:20:39.863  INFO 17508 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17508 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:20:39.866  INFO 17508 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:20:44.362  INFO 17508 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:20:44.810  INFO 17508 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.261 seconds (JVM running for 6.139)
+2021-10-12 15:21:38.209  INFO 5240 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 5240 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:21:38.211  INFO 5240 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:21:42.586  INFO 5240 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:21:43.037  INFO 5240 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.128 seconds (JVM running for 5.969)
+2021-10-12 15:22:53.998  INFO 16992 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 16992 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:22:54.000  INFO 16992 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:22:58.363  INFO 16992 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:22:58.809  INFO 16992 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.115 seconds (JVM running for 5.95)
+2021-10-12 15:23:59.647  INFO 2596 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 2596 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:23:59.650  INFO 2596 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:24:04.026  INFO 2596 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:24:04.490  INFO 2596 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.143 seconds (JVM running for 5.956)
+2021-10-12 15:24:44.197  INFO 19680 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 19680 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:24:44.199  INFO 19680 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:24:48.672  INFO 19680 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:24:49.120  INFO 19680 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.232 seconds (JVM running for 6.053)
+2021-10-12 15:25:32.821  INFO 18636 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18636 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:25:32.823  INFO 18636 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:25:37.345  INFO 18636 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:25:37.807  INFO 18636 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.298 seconds (JVM running for 6.136)
+2021-10-12 15:28:25.357  INFO 3920 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 3920 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:28:25.360  INFO 3920 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:28:29.943  INFO 3920 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:28:30.428  INFO 3920 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.408 seconds (JVM running for 6.315)
+2021-10-12 15:30:47.841  INFO 20652 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 20652 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:30:47.843  INFO 20652 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:30:52.229  INFO 20652 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:30:52.681  INFO 20652 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.156 seconds (JVM running for 6.009)
+2021-10-12 15:31:29.817  INFO 11172 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 11172 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-12 15:31:29.819  INFO 11172 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
+2021-10-12 15:31:34.379  INFO 11172 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-12 15:31:34.828  INFO 11172 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 5.325 seconds (JVM running for 6.204)

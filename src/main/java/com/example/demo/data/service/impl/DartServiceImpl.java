@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -22,7 +23,7 @@ import org.springframework.web.client.RestTemplate;
 import org.w3c.dom.Document;
 
 import com.example.demo.data.service.DartService;
-import com.example.demo.util.BalanceSheetUtil;
+import com.example.demo.util.DartUtil;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.vo.BalanceSheetDto;
 
@@ -37,7 +38,7 @@ public class DartServiceImpl implements DartService{
 	private RestTemplate restTemplate;
 	
 	@Autowired
-	private BalanceSheetUtil balanceSheetUtil;
+	private DartUtil balanceSheetUtil;
 	
 	@Autowired
 	private FormatConverter formatConverter;
@@ -110,20 +111,30 @@ public class DartServiceImpl implements DartService{
 		
 	}
 	
-	public Document getZip() throws IOException {
-	    // Given
-	    RestTemplate restTemplate = new RestTemplate();
-	    List<ZipEntry> entries = new ArrayList<>();
-	    String url = "https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key=044ec3f15e4539438354808f49cd3879982c4201";
-	    byte[] arr = restTemplate.getForObject(url, byte[].class);
+	public HashMap<String,String> getCorpCodeMap() throws IOException{
+		String targetUrl = dartUrl+"/api/corpCode.xml?crtfc_key={crtfcKey}";
+	    byte[] arr = restTemplate.getForObject(targetUrl, byte[].class);
 	    InputStream inputStream = new ByteArrayInputStream(arr);
-	    ZipInputStream zipInputStream = new ZipInputStream(inputStream);
-        Document tmpDocument = null;
-        try {
-            tmpDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(zipInputStream);
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-	    return tmpDocument;
+	    ZipInputStream zip = new ZipInputStream(inputStream);
+	    Scanner sc = new Scanner(zip);
+	    HashMap<String, String> map = new HashMap<>();
+	    String a = new String();
+	    String b = new String();
+	    while(sc.hasNext()){
+	    	String str = sc.next();
+	    	if(str.equals("<list>")) {
+	    		a= new String();
+	    		b= new String();
+	    		continue;
+	    	}
+	    	if(str.contains("<corp_code>")&str.contains("</corp_code>")) {
+	    		a = str.replace("<corp_code>", "").replace("</corp_code>", "");
+	    	}else if(str.contains("<stock_code>")&str.contains("</stock_code>")) {
+	    		b = str.replace("<stock_code>", "").replace("</stock_code>", "");
+	    	}else if(str.equals("</list>")&!b.isEmpty()) {
+	    		map.put(b, a);
+	    	}
+	    }
+		return map;
 	}
 }
