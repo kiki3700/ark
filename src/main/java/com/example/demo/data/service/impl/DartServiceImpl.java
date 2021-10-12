@@ -1,16 +1,25 @@
 package com.example.demo.data.service.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.w3c.dom.Document;
 
 import com.example.demo.data.service.DartService;
 import com.example.demo.util.BalanceSheetUtil;
@@ -99,5 +108,22 @@ public class DartServiceImpl implements DartService{
 	public int insertBalanceSheeat(BalanceSheetDto balaceSheetDto) {
 		return 1;
 		
+	}
+	
+	public Document getZip() throws IOException {
+	    // Given
+	    RestTemplate restTemplate = new RestTemplate();
+	    List<ZipEntry> entries = new ArrayList<>();
+	    String url = "https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key=044ec3f15e4539438354808f49cd3879982c4201";
+	    byte[] arr = restTemplate.getForObject(url, byte[].class);
+	    InputStream inputStream = new ByteArrayInputStream(arr);
+	    ZipInputStream zipInputStream = new ZipInputStream(inputStream);
+        Document tmpDocument = null;
+        try {
+            tmpDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(zipInputStream);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+	    return tmpDocument;
 	}
 }
