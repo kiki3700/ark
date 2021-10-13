@@ -11,17 +11,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.demo.data.service.BithumbService;
 import com.example.demo.vo.HistoryDataDto;
 
 @Service
-public class BithumbServiceImpl {
+public class BithumbServiceImpl implements BithumbService{
 	@Value("${bithumb.url")
 	String url;
 	
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	public void getCrytoCurrencyHistory(Map<String, Object>inParams) {
+	public List<HistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams) {
 		List<HistoryDataDto> resultList = new LinkedList<HistoryDataDto>();
 		String targetUrl = url+"/public/candlestick/{nm}_KRW/24h";
 		Map<String, String> map = new HashMap<>();
@@ -44,5 +45,6 @@ public class BithumbServiceImpl {
 				resultList.add(historyDataDto);
 			}
 		}
+		return resultList;
 	}
 }

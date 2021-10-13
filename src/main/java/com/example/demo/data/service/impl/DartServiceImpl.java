@@ -87,21 +87,20 @@ public class DartServiceImpl implements DartService{
 			balanceSheetDto.setCurrentAsset(currentAsset);
 			balanceSheetDto.setDebt(debt);
 			balanceSheetDto.setEquity(equity);
-//			balanceSheetDto.setFCF(FCF);
 			balanceSheetDto.setFsNm(fsNm);
-//			balanceSheetDto.setICF(ICF);
-//			balanceSheetDto.setItemId((int) inParam.get("itemId"));
 			balanceSheetDto.setLongTermDebt(longTermDebt);
 			balanceSheetDto.setNetIncome(netIncome);
-//			balanceSheetDto.setOCF(OCF);
 			balanceSheetDto.setOperatinIncome(operatingIncome);
-			
 			balanceSheetDto.setReportCode(reportCode);
 			balanceSheetDto.setReportingYear(reportingYear);
 			balanceSheetDto.setRevenue(revenue);
 			balanceSheetDto.setShortTermDebt(shortTermDebt);
 			balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
 			balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
+//			balanceSheetDto.setOCF(OCF);
+//			balanceSheetDto.setICF(ICF);
+//			balanceSheetDto.setItemId((int) inParam.get("itemId"));
+//			balanceSheetDto.setFCF(FCF);
 		}
 		return balanceSheetDto;
 	}
@@ -111,6 +110,7 @@ public class DartServiceImpl implements DartService{
 		
 	}
 	
+	@Override
 	public HashMap<String,String> getCorpCodeMap() throws IOException{
 		String targetUrl = dartUrl+"/api/corpCode.xml?crtfc_key={crtfcKey}";
 	    byte[] arr = restTemplate.getForObject(targetUrl, byte[].class);
