@@ -6,11 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.example.demo.data.cybosApi.SetupApi;
 import com.example.demo.data.dao.SetupDao;
 import com.example.demo.data.service.SetupService;
 import com.example.demo.util.FormatConverter;
+import com.example.demo.util.ItemUtil;
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;
 
@@ -22,7 +21,7 @@ public class SetupServiceImpl implements SetupService {
 	SetupDao setupDao;
 	
 	@Autowired
-	SetupApi setupApi;
+	ItemUtil itemUtil;
 
 
 	
@@ -32,10 +31,10 @@ public class SetupServiceImpl implements SetupService {
 		// TODO Auto-generated method stub
 		dashin.cputil.ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
 		Object[] tickers = (Object[]) codeMgr.getStockListByMarket(dashin.cputil.CPE_MARKET_KIND.CPC_MARKET_KOSPI);
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < tickers.length; i++) {
 			String ticker = (String) tickers[i];
 			//종목명
-			ItemDto item = setupApi.getKoreanStockItemDto(ticker);
+			ItemDto item = itemUtil.getKoreanStockItemDto(ticker);
 			setupDao.insertItem(item);
 			}
 		return 0;
