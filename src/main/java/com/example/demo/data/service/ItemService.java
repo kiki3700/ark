@@ -11,4 +11,5 @@ public interface ItemService {
 	ItemDto getItemDto(Map<String, Object> inParam);
 	List<ItemDto> getItemList();
 	int updateCorpCode(HashMap map);
+	int insertKoreaItem();
 }

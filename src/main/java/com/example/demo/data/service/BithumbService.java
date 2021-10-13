@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.demo.vo.HistoryDataDto;
+import com.example.demo.vo.IndexHistoryDataDto;
 
 public interface BithumbService {
-	List<HistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams);
+	List<IndexHistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams);
 
 }
