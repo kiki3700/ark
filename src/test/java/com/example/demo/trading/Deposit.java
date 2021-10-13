@@ -8,9 +8,15 @@ import dashin.cptrade.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Deposit {
-	ICpTdUtil tdUtil = ClassFactory.createCpTdUtil();
+	static ICpTdUtil tdUtil = ClassFactory.createCpTdUtil();
 	@Test
 	public void test() {
-		String account = (String) tdUtil.accountNumber();
+		tdUtil.tradeInit(0);
+		String[] accounts = (String[])  tdUtil.accountNumber();
+		int len = accounts.length;
+		System.out.println(len);
+		for(int i = 0; i< len ; i++) {
+			System.out.println(i+" "+accounts[i]);
+		}
 	}
 }
