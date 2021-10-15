@@ -17,14 +17,6 @@ public class Connection {
 	
 	@Test
 	public void test() {
-		if(connection.connectionCheck()== 2) {
-			System.out.println("hts");
-		}else if(connection.connectionCheck()== 1) {
-			System.out.print("connet");
-		}else {
-			System.out.print("not yet try to  con");
-			connection.runCybos("kiki3700", "lo50!@", "Lolo5050!@");
-			System.out.print(connection.connectionCheck());
-		}
+
 	}
 }
