@@ -1,4 +1,6 @@
-package com.example.demo.data.dart;
+package com.example.demo.interceptor;
+
+import java.io.IOException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,13 +12,13 @@ import com.example.demo.util.CybosConnection;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Connection {
+public class conntection {
 
 	@Autowired
-	CybosConnection connection;
+	CybosConnection con;
 	
 	@Test
-	public void test() {
-
+	public void test() throws IOException {
+		con.runCybos();
 	}
 }
