@@ -60,7 +60,8 @@ public class BokServiceImpl implements BokService {
 		endDate =  inParam.get("END_DATE");
 		atcl_Code1 =  inParam.get("ATCL_CODE2");
 		
-		String surl = base_url + serviceName + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1;
+		String surl = base_url + serviceName + "/" + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1;
+		System.out.println(surl);
 		HttpURLConnection con = null;
 		Gson gson = new Gson();
 		
@@ -82,7 +83,7 @@ public class BokServiceImpl implements BokService {
         System.out.println(sb.toString());
         resultMap = gson.fromJson(sb.toString(), resultMap.getClass() );
         
-		System.out.println(resultMap.get("UNIT_NAME"));
+		System.out.println(resultMap.get("StatisticSearch"));
 		System.out.println(resultMap.get("DATA_VALUE"));
 		return resultMap;
 	}
