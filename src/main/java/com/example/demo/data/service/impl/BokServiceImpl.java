@@ -81,8 +81,8 @@ public class BokServiceImpl implements BokService {
             sb.append(line);
         }
         System.out.println(sb.toString());
-        resultMap = gson.fromJson(sb.toString(), resultMap.getClass() );
-        
+        resultMap = restTemplate.getForObject(surl, HashMap.class, inParam);
+        //resultMap = gson.fromJson(sb.toString(), resultMap.getClass() );
 		System.out.println(resultMap.get("StatisticSearch"));
 		System.out.println(resultMap.get("DATA_VALUE"));
 		return resultMap;

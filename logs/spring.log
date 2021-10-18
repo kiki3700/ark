@@ -62,3 +62,19 @@
 2021-10-18 22:32:51.060  INFO 16312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
 2021-10-18 22:32:51.089  INFO 16312 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 2021-10-18 22:32:51.105  INFO 16312 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.6 seconds (JVM running for 5.364)
+2021-10-18 22:34:05.408  INFO 12984 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 12984 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
+2021-10-18 22:34:05.411  INFO 12984 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
+2021-10-18 22:34:08.996  INFO 12984 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-18 22:34:09.301  INFO 12984 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-18 22:34:09.748  INFO 12984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-18 22:34:09.768  INFO 12984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-18 22:34:09.794  INFO 12984 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-18 22:34:09.810  INFO 12984 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.674 seconds (JVM running for 5.44)
+2021-10-18 23:40:46.614  INFO 9832 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 9832 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
+2021-10-18 23:40:46.619  INFO 9832 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
+2021-10-18 23:40:50.258  INFO 9832 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-18 23:40:50.560  INFO 9832 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-18 23:40:51.002  INFO 9832 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-18 23:40:51.023  INFO 9832 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-18 23:40:51.050  INFO 9832 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-18 23:40:51.067  INFO 9832 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.732 seconds (JVM running for 5.5)
