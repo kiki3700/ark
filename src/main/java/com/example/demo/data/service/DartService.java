@@ -11,7 +11,7 @@ public interface DartService {
 
 	BalanceSheetDto getBalaceSheet(Map inParam) throws ParseException;
 
-	int insertBalanceSheeat(BalanceSheetDto balaceSheetDto);
+	public int insertBalanceSheeat(BalanceSheetDto balaceSheetDto);
 
 	HashMap<String, String> getCorpCodeMap() throws IOException;
 }
