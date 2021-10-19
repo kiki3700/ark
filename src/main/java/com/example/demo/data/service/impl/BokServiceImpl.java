@@ -97,8 +97,11 @@ public class BokServiceImpl implements BokService {
                 .retrieve()
                 .bodyToMono(HashMap.class)
        ;
+        monoMap.subscribe(response -> {
+        	System.out.println(response);} , e->{
+        		System.out.println("error message : " + e.getMessage());
+        });
         //resultMap = gson.fromJson(sb.toString(), resultMap.getClass() );
-		System.out.println( monoMap.just("StatisticSearch"));
 		return resultMap;
 	}
 

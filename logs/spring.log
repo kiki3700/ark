@@ -1,112 +1,88 @@
-2021-10-18 22:22:04.647  INFO 17124 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 17124 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:22:04.655  INFO 17124 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:22:09.165  INFO 17124 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:22:09.512  INFO 17124 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:22:10.009  INFO 17124 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:22:10.035  INFO 17124 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:22:10.064  INFO 17124 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:22:10.084  INFO 17124 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 5.795 seconds (JVM running for 6.737)
-2021-10-18 22:23:34.482  INFO 3036 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 3036 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:23:34.484  INFO 3036 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:23:38.271  INFO 3036 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:23:38.600  INFO 3036 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:23:39.098  INFO 3036 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:23:39.120  INFO 3036 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:23:39.152  INFO 3036 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:23:39.170  INFO 3036 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.993 seconds (JVM running for 5.836)
-2021-10-18 22:24:14.915  INFO 7556 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 7556 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:24:14.917  INFO 7556 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:24:18.638  INFO 7556 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:24:18.968  INFO 7556 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:24:19.454  INFO 7556 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:24:19.479  INFO 7556 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:24:19.506  INFO 7556 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:24:19.523  INFO 7556 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.909 seconds (JVM running for 5.805)
-2021-10-18 22:24:45.603  INFO 15308 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 15308 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:24:45.605  INFO 15308 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:24:49.382  INFO 15308 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:24:49.708  INFO 15308 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:24:50.180  INFO 15308 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:24:50.201  INFO 15308 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:24:50.228  INFO 15308 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:24:50.245  INFO 15308 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.931 seconds (JVM running for 5.746)
-2021-10-18 22:25:26.257  INFO 1340 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 1340 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:25:26.259  INFO 1340 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:25:29.877  INFO 1340 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:25:30.180  INFO 1340 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:25:30.616  INFO 1340 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:25:30.637  INFO 1340 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:25:30.667  INFO 1340 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:25:30.683  INFO 1340 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.703 seconds (JVM running for 5.454)
-2021-10-18 22:27:16.713  INFO 18364 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 18364 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:27:16.715  INFO 18364 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:27:20.385  INFO 18364 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:27:20.697  INFO 18364 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:27:21.141  INFO 18364 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:27:21.162  INFO 18364 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:27:21.192  INFO 18364 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:27:21.208  INFO 18364 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.782 seconds (JVM running for 5.575)
-2021-10-18 22:31:57.356  INFO 12896 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 12896 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:31:57.358  INFO 12896 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:32:00.921  INFO 12896 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:32:01.218  INFO 12896 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:32:01.645  INFO 12896 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:32:01.669  INFO 12896 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:32:01.694  INFO 12896 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:32:01.710  INFO 12896 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.621 seconds (JVM running for 5.351)
-2021-10-18 22:32:46.778  INFO 16312 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 16312 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:32:46.780  INFO 16312 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:32:50.311  INFO 16312 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:32:50.608  INFO 16312 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:32:51.039  INFO 16312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:32:51.060  INFO 16312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:32:51.089  INFO 16312 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:32:51.105  INFO 16312 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.6 seconds (JVM running for 5.364)
-2021-10-18 22:34:05.408  INFO 12984 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 12984 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 22:34:05.411  INFO 12984 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 22:34:08.996  INFO 12984 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 22:34:09.301  INFO 12984 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 22:34:09.748  INFO 12984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 22:34:09.768  INFO 12984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 22:34:09.794  INFO 12984 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 22:34:09.810  INFO 12984 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.674 seconds (JVM running for 5.44)
-2021-10-18 23:40:46.614  INFO 9832 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 9832 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-18 23:40:46.619  INFO 9832 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-18 23:40:50.258  INFO 9832 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-18 23:40:50.560  INFO 9832 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-18 23:40:51.002  INFO 9832 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-18 23:40:51.023  INFO 9832 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-18 23:40:51.050  INFO 9832 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-18 23:40:51.067  INFO 9832 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 4.732 seconds (JVM running for 5.5)
-2021-10-19 23:41:33.811  INFO 10184 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 10184 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-19 23:41:33.813  INFO 10184 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-19 23:41:39.123  INFO 10184 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-19 23:41:39.587  INFO 10184 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-19 23:41:40.205  INFO 10184 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-19 23:41:40.243  INFO 10184 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-19 23:41:40.278  INFO 10184 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-19 23:41:40.297  INFO 10184 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.87 seconds (JVM running for 8.222)
-2021-10-19 23:42:40.404  INFO 8664 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 8664 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-19 23:42:40.407  INFO 8664 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-19 23:42:45.169  INFO 8664 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-19 23:42:45.630  INFO 8664 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-19 23:42:46.239  INFO 8664 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-19 23:42:46.276  INFO 8664 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-19 23:42:46.309  INFO 8664 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-19 23:42:46.329  INFO 8664 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.288 seconds (JVM running for 7.452)
-2021-10-19 23:44:40.970  INFO 6596 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 6596 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-19 23:44:40.972  INFO 6596 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-19 23:44:45.800  INFO 6596 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-19 23:44:46.242  INFO 6596 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-19 23:44:46.811  INFO 6596 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-19 23:44:46.840  INFO 6596 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-19 23:44:46.942  INFO 6596 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-19 23:44:46.963  INFO 6596 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.337 seconds (JVM running for 7.49)
-2021-10-19 23:48:59.520  INFO 4208 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 4208 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-19 23:48:59.522  INFO 4208 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-19 23:49:04.298  INFO 4208 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-19 23:49:04.738  INFO 4208 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-19 23:49:05.312  INFO 4208 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-19 23:49:05.408  INFO 4208 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-19 23:49:05.442  INFO 4208 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-19 23:49:05.462  INFO 4208 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.3 seconds (JVM running for 7.474)
+2021-10-20 00:21:36.656  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 14884 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
+2021-10-20 00:21:36.678  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
+2021-10-20 00:21:41.543  INFO 14884 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-20 00:21:41.990  INFO 14884 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-20 00:21:42.609  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-20 00:21:42.646  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-20 00:21:42.679  INFO 14884 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-20 00:21:42.698  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.386 seconds (JVM running for 7.544)
+2021-10-20 00:21:43.665 ERROR 14884 --- [reactor-http-nio-2] reactor.core.publisher.Operators         : Operator called default onErrorDropped
+
+reactor.core.Exceptions$ErrorCallbackNotImplemented: org.springframework.web.reactive.function.client.WebClientRequestException: executor not accepting a task; nested exception is java.lang.IllegalStateException: executor not accepting a task
+Caused by: org.springframework.web.reactive.function.client.WebClientRequestException: executor not accepting a task; nested exception is java.lang.IllegalStateException: executor not accepting a task
+	at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:141) ~[spring-webflux-5.3.9.jar:5.3.9]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET http://ecos.bok.or.kr/api/StatisticSearch/Z6FXM84XSIA9JTSDCCQN/json/kr/1/12/098Y001/MM/202001/202012 [DefaultWebClient]
+Stack trace:
+		at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:141) ~[spring-webflux-5.3.9.jar:5.3.9]
+		at reactor.core.publisher.MonoErrorSupplied.subscribe(MonoErrorSupplied.java:55) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4338) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:93) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoFlatMapMany$FlatMapManyMain.onError(MonoFlatMapMany.java:204) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.SerializedSubscriber.onError(SerializedSubscriber.java:124) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.whenError(FluxRetryWhen.java:225) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenOtherSubscriber.onError(FluxRetryWhen.java:274) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.drain(FluxConcatMap.java:414) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onNext(FluxConcatMap.java:251) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.EmitterProcessor.drain(EmitterProcessor.java:491) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.EmitterProcessor.tryEmitNext(EmitterProcessor.java:299) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.SinkManySerialized.tryEmitNext(SinkManySerialized.java:100) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.InternalManySink.emitNext(InternalManySink.java:27) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.onError(FluxRetryWhen.java:190) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.http.client.HttpClientConnect$MonoHttpConnect$ClientTransportSubscriber.onError(HttpClientConnect.java:304) [reactor-netty-http-1.0.10.jar:1.0.10]
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.resources.DefaultPooledConnectionProvider$DisposableAcquire.onError(DefaultPooledConnectionProvider.java:172) [reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.netty.internal.shaded.reactor.pool.AbstractPool$Borrower.fail(AbstractPool.java:445) [reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.netty.internal.shaded.reactor.pool.SimpleDequePool.lambda$drainLoop$9(SimpleDequePool.java:400) [reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.core.publisher.FluxDoOnEach$DoOnEachSubscriber.onError(FluxDoOnEach.java:186) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.resources.DefaultPooledConnectionProvider$PooledConnectionAllocator$PooledConnectionInitializer.onError(DefaultPooledConnectionProvider.java:554) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.secondError(MonoFlatMap.java:192) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoFlatMap$FlatMapInner.onError(MonoFlatMap.java:259) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4338) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:157) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.transport.TransportConnector$MonoChannelPromise._subscribe(TransportConnector.java:579) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.netty.transport.TransportConnector$MonoChannelPromise.lambda$subscribe$0(TransportConnector.java:499) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+		at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at java.lang.Thread.run(Unknown Source) ~[na:1.8.0_301]
+Caused by: java.lang.IllegalStateException: executor not accepting a task
+	at io.netty.resolver.AddressResolverGroup.getResolver(AddressResolverGroup.java:61) ~[netty-resolver-4.1.67.Final.jar:4.1.67.Final]
+	at reactor.netty.transport.TransportConnector.doResolveAndConnect(TransportConnector.java:261) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at reactor.netty.transport.TransportConnector.lambda$connect$6(TransportConnector.java:110) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:125) ~[reactor-core-3.4.9.jar:3.4.9]
+	at reactor.netty.transport.TransportConnector$MonoChannelPromise._subscribe(TransportConnector.java:579) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at reactor.netty.transport.TransportConnector$MonoChannelPromise.lambda$subscribe$0(TransportConnector.java:499) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at java.lang.Thread.run(Unknown Source) ~[na:1.8.0_301]
+
+2021-10-20 00:26:17.854  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 14740 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
+2021-10-20 00:26:17.858  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
+2021-10-20 00:26:22.728  INFO 14740 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-20 00:26:23.183  INFO 14740 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-20 00:26:23.799  INFO 14740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-20 00:26:23.837  INFO 14740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-20 00:26:23.869  INFO 14740 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-20 00:26:23.891  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.4 seconds (JVM running for 7.566)
