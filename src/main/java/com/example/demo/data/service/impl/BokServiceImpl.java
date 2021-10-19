@@ -10,13 +10,18 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.constants.BokConst;
 import com.example.demo.data.service.BokService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import reactor.core.publisher.Mono;
 
 @Service
 public class BokServiceImpl implements BokService {
@@ -28,6 +33,9 @@ public class BokServiceImpl implements BokService {
 	String bok_key;
 	@Value("${bokbaseurl}")
 	String base_url;
+	
+	@Autowired
+	WebClient webClient;
 	
 	
 	@Override
@@ -60,13 +68,11 @@ public class BokServiceImpl implements BokService {
 		endDate =  inParam.get("END_DATE");
 		atcl_Code1 =  inParam.get("ATCL_CODE2");
 		
-		String surl = base_url + serviceName + "/" + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1;
+		String surl =  serviceName + "/" + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1;
 		System.out.println(surl);
-		HttpURLConnection con = null;
-		Gson gson = new Gson();
 		
+		/* HttpURLConnection con = null;
 		URL url = new URL(surl);
-
         con = (HttpURLConnection)url.openConnection();
         con.setConnectTimeout(5000);
         con.setReadTimeout(5000);
@@ -80,11 +86,19 @@ public class BokServiceImpl implements BokService {
         while ((line = br.readLine()) != null) {
             sb.append(line);
         }
-        System.out.println(sb.toString());
-        resultMap = restTemplate.getForObject(surl, HashMap.class, inParam);
+        System.out.println(sb.toString());*/
+        
+        Mono<HashMap>  monoMap = webClient.mutate()
+                .baseUrl(base_url)
+                .build()
+                .get()
+                .uri(surl)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(HashMap.class)
+       ;
         //resultMap = gson.fromJson(sb.toString(), resultMap.getClass() );
-		System.out.println(resultMap.get("StatisticSearch"));
-		System.out.println(resultMap.get("DATA_VALUE"));
+		System.out.println( monoMap.just("StatisticSearch"));
 		return resultMap;
 	}
 
