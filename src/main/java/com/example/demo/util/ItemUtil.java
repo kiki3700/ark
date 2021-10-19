@@ -1,16 +1,15 @@
-package com.example.demo.data.cybosApi;
-
+package com.example.demo.util;
 import java.util.Date;
+
+import org.springframework.stereotype.Component;
 
 import com.example.demo.util.FormatConverter;
 import com.example.demo.vo.BalanceSheetDto;
 import com.example.demo.vo.ItemDto;
 
 import dashin.cputil.ClassFactory;
-
-public class SetupApi {
-	
-	
+@Component
+public class ItemUtil {
 	public ItemDto getKoreanStockItemDto(String ticker) {
 		dashin.cputil.ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
 		String name = codeMgr.codeToName(ticker);

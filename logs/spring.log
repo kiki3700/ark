@@ -1,0 +1,88 @@
+2021-10-20 00:21:36.656  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 14884 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
+2021-10-20 00:21:36.678  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
+2021-10-20 00:21:41.543  INFO 14884 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-20 00:21:41.990  INFO 14884 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-20 00:21:42.609  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-20 00:21:42.646  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-20 00:21:42.679  INFO 14884 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-20 00:21:42.698  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.386 seconds (JVM running for 7.544)
+2021-10-20 00:21:43.665 ERROR 14884 --- [reactor-http-nio-2] reactor.core.publisher.Operators         : Operator called default onErrorDropped
+
+reactor.core.Exceptions$ErrorCallbackNotImplemented: org.springframework.web.reactive.function.client.WebClientRequestException: executor not accepting a task; nested exception is java.lang.IllegalStateException: executor not accepting a task
+Caused by: org.springframework.web.reactive.function.client.WebClientRequestException: executor not accepting a task; nested exception is java.lang.IllegalStateException: executor not accepting a task
+	at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:141) ~[spring-webflux-5.3.9.jar:5.3.9]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ Request to GET http://ecos.bok.or.kr/api/StatisticSearch/Z6FXM84XSIA9JTSDCCQN/json/kr/1/12/098Y001/MM/202001/202012 [DefaultWebClient]
+Stack trace:
+		at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:141) ~[spring-webflux-5.3.9.jar:5.3.9]
+		at reactor.core.publisher.MonoErrorSupplied.subscribe(MonoErrorSupplied.java:55) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4338) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:93) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoFlatMapMany$FlatMapManyMain.onError(MonoFlatMapMany.java:204) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.SerializedSubscriber.onError(SerializedSubscriber.java:124) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.whenError(FluxRetryWhen.java:225) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenOtherSubscriber.onError(FluxRetryWhen.java:274) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.drain(FluxConcatMap.java:414) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onNext(FluxConcatMap.java:251) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.EmitterProcessor.drain(EmitterProcessor.java:491) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.EmitterProcessor.tryEmitNext(EmitterProcessor.java:299) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.SinkManySerialized.tryEmitNext(SinkManySerialized.java:100) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.InternalManySink.emitNext(InternalManySink.java:27) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.onError(FluxRetryWhen.java:190) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.http.client.HttpClientConnect$MonoHttpConnect$ClientTransportSubscriber.onError(HttpClientConnect.java:304) [reactor-netty-http-1.0.10.jar:1.0.10]
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.resources.DefaultPooledConnectionProvider$DisposableAcquire.onError(DefaultPooledConnectionProvider.java:172) [reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.netty.internal.shaded.reactor.pool.AbstractPool$Borrower.fail(AbstractPool.java:445) [reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.netty.internal.shaded.reactor.pool.SimpleDequePool.lambda$drainLoop$9(SimpleDequePool.java:400) [reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.core.publisher.FluxDoOnEach$DoOnEachSubscriber.onError(FluxDoOnEach.java:186) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.resources.DefaultPooledConnectionProvider$PooledConnectionAllocator$PooledConnectionInitializer.onError(DefaultPooledConnectionProvider.java:554) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.secondError(MonoFlatMap.java:192) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoFlatMap$FlatMapInner.onError(MonoFlatMap.java:259) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4338) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) [reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:157) ~[reactor-core-3.4.9.jar:3.4.9]
+		at reactor.netty.transport.TransportConnector$MonoChannelPromise._subscribe(TransportConnector.java:579) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+		at reactor.netty.transport.TransportConnector$MonoChannelPromise.lambda$subscribe$0(TransportConnector.java:499) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+		at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+		at java.lang.Thread.run(Unknown Source) ~[na:1.8.0_301]
+Caused by: java.lang.IllegalStateException: executor not accepting a task
+	at io.netty.resolver.AddressResolverGroup.getResolver(AddressResolverGroup.java:61) ~[netty-resolver-4.1.67.Final.jar:4.1.67.Final]
+	at reactor.netty.transport.TransportConnector.doResolveAndConnect(TransportConnector.java:261) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at reactor.netty.transport.TransportConnector.lambda$connect$6(TransportConnector.java:110) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:125) ~[reactor-core-3.4.9.jar:3.4.9]
+	at reactor.netty.transport.TransportConnector$MonoChannelPromise._subscribe(TransportConnector.java:579) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at reactor.netty.transport.TransportConnector$MonoChannelPromise.lambda$subscribe$0(TransportConnector.java:499) ~[reactor-netty-core-1.0.10.jar:1.0.10]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
+	at java.lang.Thread.run(Unknown Source) ~[na:1.8.0_301]
+
+2021-10-20 00:26:17.854  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 14740 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
+2021-10-20 00:26:17.858  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
+2021-10-20 00:26:22.728  INFO 14740 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-20 00:26:23.183  INFO 14740 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-20 00:26:23.799  INFO 14740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-20 00:26:23.837  INFO 14740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-20 00:26:23.869  INFO 14740 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-20 00:26:23.891  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.4 seconds (JVM running for 7.566)

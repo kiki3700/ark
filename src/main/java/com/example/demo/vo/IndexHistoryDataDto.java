@@ -1,6 +1,7 @@
 package com.example.demo.vo;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class IndexHistoryDataDto {
@@ -30,6 +31,11 @@ public class IndexHistoryDataDto {
 	}
 	public void setTradingDate(int tradingDate) {
 		this.tradingDate = tradingDate;
+	}
+	public void setTradingDate(Date tradingDate) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String formattedDate = format.format(tradingDate);
+		this.tradingDate =  Integer.parseInt(formattedDate);
 	}
 	public float getOpen() {
 		return open;
