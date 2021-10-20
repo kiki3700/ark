@@ -41,10 +41,7 @@ public class BithumbServiceImpl implements BithumbService{
 		//HashMap<String, Object> result = restTemplate.getForObject(targetUrl, HashMap.class, queryMap);
 		HashMap<String, Object> result = webClient.mutate().baseUrl(targetUrl)
 				.build()
-				.get()
-				.retrieve()
-				.bodyToMono(HashMap.class)
-				.block();
+				.get().retrieve().bodyToFlux(HashMap.class).blockLast();
 		String msg =(String) result.get("status");
 		List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
 		if(msg.equals("0000")) {
