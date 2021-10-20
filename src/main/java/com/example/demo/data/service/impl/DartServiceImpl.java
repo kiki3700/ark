@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.w3c.dom.Document;
 
 import com.example.demo.data.service.DartService;
@@ -38,7 +39,13 @@ public class DartServiceImpl implements DartService{
 	private RestTemplate restTemplate;
 	
 	@Autowired
+	private WebClient webClient;
+	
+	
+	@Autowired
 	private DartUtil dartUtil;
+	
+	
 	
 	@Autowired
 	private FormatConverter formatConverter;

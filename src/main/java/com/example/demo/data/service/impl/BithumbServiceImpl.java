@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.data.dao.PriceDao;
 import com.example.demo.data.service.BithumbService;
@@ -26,18 +27,26 @@ public class BithumbServiceImpl implements BithumbService{
 	private RestTemplate restTemplate;
 	
 	@Autowired
+	private WebClient webClient;
+	
+	@Autowired
 	private PriceDao priceDao;
 
 	@Override
 	public List<IndexHistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams) {
-		String targetUrl = url+"/public/candlestick/{nm}_KRW/24h";
-		List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
-		Map<String, String> queryMap = new HashMap<>();
-		queryMap.put("nm",(String) inParams.get("name"));
-		
-		HashMap<String, Object> result = restTemplate.getForObject(targetUrl, HashMap.class, queryMap);
-		
+		String targetUrl = url+"/public/candlestick/BTC_KRW/24h";
+//		Map<String, String> queryMap = new HashMap<>();
+//		queryMap.put("nm",(String) inParams.get("name"));
+		String name = (String) inParams.get("name");
+		//HashMap<String, Object> result = restTemplate.getForObject(targetUrl, HashMap.class, queryMap);
+		HashMap<String, Object> result = webClient.mutate().baseUrl(targetUrl)
+				.build()
+				.get()
+				.retrieve()
+				.bodyToMono(HashMap.class)
+				.block();
 		String msg =(String) result.get("status");
+		List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
 		if(msg.equals("0000")) {
 			List<Object[]> datas = (List<Object[]>) result.get("data");
 			
