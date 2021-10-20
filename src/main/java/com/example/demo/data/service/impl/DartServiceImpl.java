@@ -55,14 +55,26 @@ public class DartServiceImpl implements DartService{
 		String targetUrl = dartUrl+"/api/fnlttSinglAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}";
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("crtfcKey", crtfcKey);
-		System.out.print(crtfcKey);
-		map.put("corpCode", (String) inParam.getOrDefault("corpCode", null));
-		map.put("year", (String) inParam.getOrDefault("year", null));
-		map.put("reprtCode", (String) inParam.getOrDefault("reprtCode", null));
-		HashMap<String, Object> resultMap = restTemplate.getForObject(targetUrl, HashMap.class, map);
+//		System.out.print(crtfcKey);
+		String corpCode = (String) inParam.getOrDefault("corpCode", null);
+		String year = (String) inParam.getOrDefault("year", null);
+		String reprtCode = (String) inParam.getOrDefault("reprtCode", null);
+		map.put("corpCode", corpCode);
+		map.put("year", year);
+		map.put("reprtCode", reprtCode);
+		HashMap<String, Object> resultMap = webClient.mutate()
+				.baseUrl(dartUrl)
+				.build()
+				.get()
+				.uri("/api/fnlttSinglAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}",map)
+				.retrieve()
+				.bodyToMono(HashMap.class)
+				.block();
+				
+				//restTemplate.getForObject(targetUrl, HashMap.class, map);
 		
-		System.out.println(resultMap.get("status"));
-		System.out.println(resultMap.get("message"));
+//		System.out.println(resultMap.get("status"));
+//		System.out.println(resultMap.get("message"));
 		BalanceSheetDto balanceSheetDto = new BalanceSheetDto();
 		if(((String) resultMap.get("status")).equals("000")) {
 			List<Map<String, Object>> bs =(List<Map<String, Object>>) resultMap.get("list");

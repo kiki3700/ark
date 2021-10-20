@@ -1,192 +1,64 @@
-2021-10-20 00:21:36.656  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 14884 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-20 00:21:36.678  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-20 00:21:41.543  INFO 14884 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 00:21:41.990  INFO 14884 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 00:21:42.609  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 00:21:42.646  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 00:21:42.679  INFO 14884 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 00:21:42.698  INFO 14884 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.386 seconds (JVM running for 7.544)
-2021-10-20 00:21:43.665 ERROR 14884 --- [reactor-http-nio-2] reactor.core.publisher.Operators         : Operator called default onErrorDropped
-
-reactor.core.Exceptions$ErrorCallbackNotImplemented: org.springframework.web.reactive.function.client.WebClientRequestException: executor not accepting a task; nested exception is java.lang.IllegalStateException: executor not accepting a task
-Caused by: org.springframework.web.reactive.function.client.WebClientRequestException: executor not accepting a task; nested exception is java.lang.IllegalStateException: executor not accepting a task
-	at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:141) ~[spring-webflux-5.3.9.jar:5.3.9]
-	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
-Error has been observed at the following site(s):
-	|_ checkpoint ⇢ Request to GET http://ecos.bok.or.kr/api/StatisticSearch/Z6FXM84XSIA9JTSDCCQN/json/kr/1/12/098Y001/MM/202001/202012 [DefaultWebClient]
-Stack trace:
-		at org.springframework.web.reactive.function.client.ExchangeFunctions$DefaultExchangeFunction.lambda$wrapException$9(ExchangeFunctions.java:141) ~[spring-webflux-5.3.9.jar:5.3.9]
-		at reactor.core.publisher.MonoErrorSupplied.subscribe(MonoErrorSupplied.java:55) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.Mono.subscribe(Mono.java:4338) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:222) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:93) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoFlatMapMany$FlatMapManyMain.onError(MonoFlatMapMany.java:204) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.SerializedSubscriber.onError(SerializedSubscriber.java:124) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.whenError(FluxRetryWhen.java:225) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxRetryWhen$RetryWhenOtherSubscriber.onError(FluxRetryWhen.java:274) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.drain(FluxConcatMap.java:414) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onNext(FluxConcatMap.java:251) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.EmitterProcessor.drain(EmitterProcessor.java:491) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.EmitterProcessor.tryEmitNext(EmitterProcessor.java:299) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.SinkManySerialized.tryEmitNext(SinkManySerialized.java:100) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.InternalManySink.emitNext(InternalManySink.java:27) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber.onError(FluxRetryWhen.java:190) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.netty.http.client.HttpClientConnect$MonoHttpConnect$ClientTransportSubscriber.onError(HttpClientConnect.java:304) [reactor-netty-http-1.0.10.jar:1.0.10]
-		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.netty.resources.DefaultPooledConnectionProvider$DisposableAcquire.onError(DefaultPooledConnectionProvider.java:172) [reactor-netty-core-1.0.10.jar:1.0.10]
-		at reactor.netty.internal.shaded.reactor.pool.AbstractPool$Borrower.fail(AbstractPool.java:445) [reactor-netty-core-1.0.10.jar:1.0.10]
-		at reactor.netty.internal.shaded.reactor.pool.SimpleDequePool.lambda$drainLoop$9(SimpleDequePool.java:400) [reactor-netty-core-1.0.10.jar:1.0.10]
-		at reactor.core.publisher.FluxDoOnEach$DoOnEachSubscriber.onError(FluxDoOnEach.java:186) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:189) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.netty.resources.DefaultPooledConnectionProvider$PooledConnectionAllocator$PooledConnectionInitializer.onError(DefaultPooledConnectionProvider.java:554) ~[reactor-netty-core-1.0.10.jar:1.0.10]
-		at reactor.core.publisher.MonoFlatMap$FlatMapMain.secondError(MonoFlatMap.java:192) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoFlatMap$FlatMapInner.onError(MonoFlatMap.java:259) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.Mono.subscribe(Mono.java:4338) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) [reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:157) ~[reactor-core-3.4.9.jar:3.4.9]
-		at reactor.netty.transport.TransportConnector$MonoChannelPromise._subscribe(TransportConnector.java:579) ~[reactor-netty-core-1.0.10.jar:1.0.10]
-		at reactor.netty.transport.TransportConnector$MonoChannelPromise.lambda$subscribe$0(TransportConnector.java:499) ~[reactor-netty-core-1.0.10.jar:1.0.10]
-		at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-		at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.67.Final.jar:4.1.67.Final]
-		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-		at java.lang.Thread.run(Unknown Source) ~[na:1.8.0_301]
-Caused by: java.lang.IllegalStateException: executor not accepting a task
-	at io.netty.resolver.AddressResolverGroup.getResolver(AddressResolverGroup.java:61) ~[netty-resolver-4.1.67.Final.jar:4.1.67.Final]
-	at reactor.netty.transport.TransportConnector.doResolveAndConnect(TransportConnector.java:261) ~[reactor-netty-core-1.0.10.jar:1.0.10]
-	at reactor.netty.transport.TransportConnector.lambda$connect$6(TransportConnector.java:110) ~[reactor-netty-core-1.0.10.jar:1.0.10]
-	at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:125) ~[reactor-core-3.4.9.jar:3.4.9]
-	at reactor.netty.transport.TransportConnector$MonoChannelPromise._subscribe(TransportConnector.java:579) ~[reactor-netty-core-1.0.10.jar:1.0.10]
-	at reactor.netty.transport.TransportConnector$MonoChannelPromise.lambda$subscribe$0(TransportConnector.java:499) ~[reactor-netty-core-1.0.10.jar:1.0.10]
-	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:469) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) ~[netty-transport-4.1.67.Final.jar:4.1.67.Final]
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.67.Final.jar:4.1.67.Final]
-	at java.lang.Thread.run(Unknown Source) ~[na:1.8.0_301]
-
-2021-10-20 00:26:17.854  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 14740 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
-2021-10-20 00:26:17.858  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
-2021-10-20 00:26:22.728  INFO 14740 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 00:26:23.183  INFO 14740 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 00:26:23.799  INFO 14740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 00:26:23.837  INFO 14740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 00:26:23.869  INFO 14740 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 00:26:23.891  INFO 14740 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 6.4 seconds (JVM running for 7.566)
-2021-10-20 09:13:01.512  INFO 9564 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 9564 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:13:01.521  INFO 9564 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:13:10.629  INFO 9564 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:13:11.607  INFO 9564 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:13:12.608  INFO 9564 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:13:12.653  INFO 9564 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:13:12.700  INFO 9564 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:13:12.731  INFO 9564 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 11.805 seconds (JVM running for 13.553)
-2021-10-20 09:24:57.647  INFO 16168 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 16168 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:24:57.650  INFO 16168 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:25:05.948  INFO 16168 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:25:06.828  INFO 16168 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:25:07.626  INFO 16168 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:25:07.664  INFO 16168 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:25:07.737  INFO 16168 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:25:07.780  INFO 16168 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.729 seconds (JVM running for 12.254)
-2021-10-20 09:27:02.241  INFO 3160 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 3160 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:27:02.244  INFO 3160 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:27:10.433  INFO 3160 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:27:11.228  INFO 3160 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:27:11.988  INFO 3160 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:27:12.023  INFO 3160 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:27:12.072  INFO 3160 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:27:12.099  INFO 3160 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.403 seconds (JVM running for 11.913)
-2021-10-20 09:27:51.651  INFO 17112 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17112 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:27:51.656  INFO 17112 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:27:59.757  INFO 17112 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:28:00.543  INFO 17112 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:28:01.459  INFO 17112 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:28:01.515  INFO 17112 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:28:01.557  INFO 17112 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:28:01.586  INFO 17112 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.454 seconds (JVM running for 12.097)
-2021-10-20 09:29:01.467  INFO 12356 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12356 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:29:01.470  INFO 12356 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:29:09.738  INFO 12356 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:29:10.333  INFO 12356 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:29:11.207  INFO 12356 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:29:11.250  INFO 12356 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:29:11.306  INFO 12356 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:29:11.352  INFO 12356 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.427 seconds (JVM running for 11.885)
-2021-10-20 09:29:43.543  INFO 10384 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 10384 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:29:43.546  INFO 10384 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:29:51.835  INFO 10384 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:29:52.597  INFO 10384 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:29:53.427  INFO 10384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:29:53.473  INFO 10384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:29:53.538  INFO 10384 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:29:53.572  INFO 10384 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.588 seconds (JVM running for 12.122)
-2021-10-20 09:31:14.033  INFO 8308 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8308 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:31:14.036  INFO 8308 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:31:22.201  INFO 8308 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:31:22.862  INFO 8308 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:31:23.748  INFO 8308 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:31:23.794  INFO 8308 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:31:23.858  INFO 8308 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:31:23.886  INFO 8308 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.371 seconds (JVM running for 11.827)
-2021-10-20 09:47:23.464  INFO 8972 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8972 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:47:23.470  INFO 8972 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:47:30.940  INFO 8972 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:47:31.400  INFO 8972 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:47:31.924  INFO 8972 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:47:31.964  INFO 8972 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:47:32.019  INFO 8972 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:47:32.050  INFO 8972 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 9.117 seconds (JVM running for 10.718)
-2021-10-20 09:50:12.370  INFO 12616 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12616 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:50:12.374  INFO 12616 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:50:21.573  INFO 12616 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:50:22.281  INFO 12616 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:50:23.196  INFO 12616 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:50:23.240  INFO 12616 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:50:23.286  INFO 12616 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:50:23.316  INFO 12616 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 11.414 seconds (JVM running for 13.068)
-2021-10-20 09:52:28.322  INFO 2364 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 2364 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:52:28.327  INFO 2364 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:52:37.129  INFO 2364 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:52:37.809  INFO 2364 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:52:38.734  INFO 2364 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:52:38.769  INFO 2364 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:52:38.826  INFO 2364 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:52:38.856  INFO 2364 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 11.124 seconds (JVM running for 12.761)
-2021-10-20 09:53:56.739  INFO 6268 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 6268 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:53:56.745  INFO 6268 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:54:05.033  INFO 6268 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:54:05.778  INFO 6268 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:54:06.458  INFO 6268 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:54:06.502  INFO 6268 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:54:06.548  INFO 6268 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:54:06.579  INFO 6268 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.402 seconds (JVM running for 11.93)
-2021-10-20 09:56:41.747  INFO 8236 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8236 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:56:41.750  INFO 8236 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:56:50.222  INFO 8236 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:56:51.045  INFO 8236 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:56:51.820  INFO 8236 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:56:51.868  INFO 8236 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:56:51.916  INFO 8236 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:56:51.955  INFO 8236 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 10.816 seconds (JVM running for 12.339)
-2021-10-20 09:57:45.026  INFO 17388 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17388 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-20 09:57:45.032  INFO 17388 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-20 09:57:53.726  INFO 17388 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-20 09:57:54.729  INFO 17388 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-20 09:57:55.552  INFO 17388 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-20 09:57:55.618  INFO 17388 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-20 09:57:55.670  INFO 17388 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-20 09:57:55.700  INFO 17388 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 11.15 seconds (JVM running for 12.852)
+2021-10-21 05:34:30.536  INFO 8676 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8676 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 05:34:30.545  INFO 8676 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
+2021-10-21 05:34:36.345  INFO 8676 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 05:34:36.733  INFO 8676 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 05:34:37.280  INFO 8676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 05:34:37.309  INFO 8676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 05:34:37.339  INFO 8676 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 05:34:37.361  INFO 8676 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 7.157 seconds (JVM running for 8.183)
+2021-10-21 05:35:15.523  INFO 17288 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17288 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 05:35:15.525  INFO 17288 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
+2021-10-21 05:35:20.634  INFO 17288 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 05:35:21.039  INFO 17288 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 05:35:21.510  INFO 17288 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 05:35:21.534  INFO 17288 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 05:35:21.563  INFO 17288 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 05:35:21.586  INFO 17288 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.355 seconds (JVM running for 7.247)
+2021-10-21 05:41:31.939  INFO 12780 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12780 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 05:41:31.941  INFO 12780 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
+2021-10-21 05:41:37.047  INFO 12780 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 05:41:37.451  INFO 12780 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 05:41:37.912  INFO 12780 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 05:41:37.934  INFO 12780 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 05:41:37.962  INFO 12780 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 05:41:37.981  INFO 12780 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.329 seconds (JVM running for 7.159)
+2021-10-21 05:42:31.523  INFO 18276 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18276 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 05:42:31.525  INFO 18276 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
+2021-10-21 05:42:36.633  INFO 18276 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 05:42:37.041  INFO 18276 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 05:42:37.491  INFO 18276 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 05:42:37.519  INFO 18276 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 05:42:37.547  INFO 18276 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 05:42:37.567  INFO 18276 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.339 seconds (JVM running for 7.15)
+2021-10-21 05:45:07.060  INFO 8072 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8072 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 05:45:07.062  INFO 8072 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
+2021-10-21 05:45:12.111  INFO 8072 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 05:45:12.465  INFO 8072 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 05:45:12.992  INFO 8072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 05:45:13.015  INFO 8072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 05:45:13.043  INFO 8072 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 05:45:13.065  INFO 8072 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.294 seconds (JVM running for 7.151)
+2021-10-21 05:46:26.287  INFO 15984 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15984 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 05:46:26.290  INFO 15984 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
+2021-10-21 05:46:31.485  INFO 15984 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 05:46:31.850  INFO 15984 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 05:46:32.381  INFO 15984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 05:46:32.409  INFO 15984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 05:46:32.439  INFO 15984 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 05:46:32.459  INFO 15984 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.474 seconds (JVM running for 7.381)
+2021-10-21 06:01:25.642  INFO 12188 --- [main] com.example.demo.data.dart.DartTest      : Starting DartTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12188 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 06:01:25.645  INFO 12188 --- [main] com.example.demo.data.dart.DartTest      : No active profile set, falling back to default profiles: default
+2021-10-21 06:01:30.842  INFO 12188 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 06:01:31.256  INFO 12188 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 06:01:31.729  INFO 12188 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 06:01:31.753  INFO 12188 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 06:01:31.784  INFO 12188 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 06:01:31.804  INFO 12188 --- [main] com.example.demo.data.dart.DartTest      : Started DartTest in 6.462 seconds (JVM running for 7.32)
+2021-10-21 06:02:44.421  INFO 9948 --- [main] com.example.demo.data.dart.DartTest      : Starting DartTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 9948 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-21 06:02:44.423  INFO 9948 --- [main] com.example.demo.data.dart.DartTest      : No active profile set, falling back to default profiles: default
+2021-10-21 06:02:49.613  INFO 9948 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-21 06:02:49.978  INFO 9948 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-21 06:02:50.508  INFO 9948 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-21 06:02:50.536  INFO 9948 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-21 06:02:50.568  INFO 9948 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-21 06:02:50.586  INFO 9948 --- [main] com.example.demo.data.dart.DartTest      : Started DartTest in 6.467 seconds (JVM running for 7.334)

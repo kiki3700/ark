@@ -32,7 +32,7 @@ public class DartTest {
 	
 	@Test
 	public void getBs() throws ParseException {
-		System.out.print(inParam);
+//		System.out.print(inParam);
 		BalanceSheetDto dto = dartService.getBalaceSheet(inParam);
 		System.out.print(dto);
 	}
