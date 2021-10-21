@@ -1,22 +1,26 @@
 package com.example.demo.trade.service.serviceImpl;
 
-import com.example.demo.trade.service.OrderService;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.trade.service.TradeService;
 import com.example.demo.vo.StockWrapper;
 
 import dashin.cptrade.ClassFactory;
 import dashin.cptrade.ICpTdDib;
 import dashin.cptrade.ICpTdUtil;
-
-public class OrderServiceImpl implements OrderService {
+@Service
+public class TradeServiceImpl implements TradeService {
 	static ICpTdUtil tdUtil = ClassFactory.createCpTdUtil();
 	static String account;
 	
 	//인터셉터로 가야될꺼 같아여~~
+	@Override
 	public void init() {
 		tdUtil.tradeInit(0);
 		String[] accounts = (String[])  tdUtil.accountNumber();
 		account = accounts[0];
 	}
+	@Override
 	public void order(StockWrapper stock) {
 		ICpTdDib tdDib =ClassFactory.createCpTd0311();
 		String position = stock.isPosition()? "1":"2";
@@ -53,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		return available;
 	}
-	
+	@Override
 	public void checkConlusion() {
 		
 	}
