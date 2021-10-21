@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.trade.TradeDaor">
+	<insert id = 'insertTrading' parameterType ='StockWrapper'>
+		INSERT INTO trading(
+			ID,
+			PRICE,
+			POSITION
+			AMOUNT,
+			OFFER_DATE,
+			PORTFOLIO_TARGET_LIST_ID,
+		)
+		VALUES(
+			TO_CHAR(SYSDATE, 'YYYYMMDD')||#{ticker},
+			#{targetPrice},
+			#{position}, //0 ,1 로 나옴 
+			#{amount},
+			SYSDATE,
+			SELECT PORTFOLIO_TARGET_LIST_ID FROM PORTFOLIO_TARGET_LIST WHERE portfolioId = #{portfolioId} AND ticker = #{ticker} 
+		)
+	</insert>
+</mapper>

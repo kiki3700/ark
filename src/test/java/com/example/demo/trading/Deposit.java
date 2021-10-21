@@ -1,9 +1,14 @@
 package com.example.demo.trading;
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.example.demo.util.CybosConnection;
 
 import dashin.cptrade.*;
 @RunWith(SpringRunner.class)
@@ -11,9 +16,14 @@ import dashin.cptrade.*;
 public class Deposit {
 	static ICpTdUtil tdUtil = ClassFactory.createCpTdUtil();
 	
+	@Autowired
+	CybosConnection connection;
+	
 	String account;
 	@Before
-	public void init() {
+	public void init() throws IOException {
+		connection.connectionCheck();
+		
 		tdUtil.tradeInit(0);
 		String[] accounts = (String[])  tdUtil.accountNumber();
 		int len = accounts.length;

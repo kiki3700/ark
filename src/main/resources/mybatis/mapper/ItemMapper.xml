@@ -50,4 +50,31 @@
 	<select id = 'selectItemList' resultType = 'ItemDto'>
 		SELECT * FROM ITEM;
 	</select>
+	
+	<insert id = 'insertHistoryDataDtoList' parameterType = 'List'>
+	INSERT INTO HISTORY_DATA(
+	id,
+	trading_date,
+	item_id,
+	open,
+	close,
+	low,
+	high,
+	volume
+	)
+	values
+	<foreach item ='item' index='index' collection = 'list'>
+	(
+	TO_CHAR(SYSDATE, 'YYYYMMDD')||#{item.itemId},
+	#{item.tradingDate},
+	#{item.itemId},
+	#{item.open},
+	#{item.close},
+	#{item.high},
+	#{item.volume}
+	)
+	</foreach>
+	
+	
+	</insert>
 </mapper>

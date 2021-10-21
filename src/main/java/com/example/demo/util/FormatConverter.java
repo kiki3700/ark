@@ -33,7 +33,10 @@ public class FormatConverter {
 		SimpleDateFormat format = new SimpleDateFormat("yyyMMdd");
 		return format.format(date);
 	}
-	
+	static public long dateToLong(Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyMMdd");
+		return Long.parseLong(format.format(date));
+	}
 	
 	static List<HistoryDataDto> getKoreanStockItemDto(ItemDto item) throws ParseException {
 		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();

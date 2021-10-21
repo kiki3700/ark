@@ -52,7 +52,7 @@ public class DartServiceImpl implements DartService{
 	
 	@Override
 	public BalanceSheetDto getBalaceSheet(Map inParam) throws ParseException {
-		String targetUrl = dartUrl+"/api/fnlttSinglAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}";
+//		String targetUrl = dartUrl+"/api/fnlttSinglAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}";
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("crtfcKey", crtfcKey);
 //		System.out.print(crtfcKey);
@@ -131,16 +131,31 @@ public class DartServiceImpl implements DartService{
 	
 	@Override
 	public HashMap<String,String> getCorpCodeMap() throws IOException{
-		String targetUrl = dartUrl+"/api/corpCode.xml?crtfc_key={crtfcKey}";
-	    byte[] arr = restTemplate.getForObject(targetUrl, byte[].class);
+		String targetUrl = dartUrl+"/api/corpCode.xml?crtfc_key="+crtfcKey;
+	    		
+		byte[] arr =webClient.mutate()
+	    		.baseUrl(dartUrl)
+	    		.build()
+	    		.get()
+	    		.uri("/api/corpCode.xml?crtfc_key={crtfcKey}",crtfcKey)
+	    		.retrieve()
+	    		.bodyToMono(byte[].class)
+	    		.block();
+	      		
+//	    		restTemplate.getForObject(targetUrl, byte[].class);
+	    		
 	    InputStream inputStream = new ByteArrayInputStream(arr);
 	    ZipInputStream zip = new ZipInputStream(inputStream);
+	    System.out.println(zip.getNextEntry());
 	    Scanner sc = new Scanner(zip);
 	    HashMap<String, String> map = new HashMap<>();
 	    String a = new String();
+	    
 	    String b = new String();
+	    System.out.println(sc.hasNext());
 	    while(sc.hasNext()){
 	    	String str = sc.next();
+//	    	System.out.println(str);
 	    	if(str.equals("<list>")) {
 	    		a= new String();
 	    		b= new String();
