@@ -32,7 +32,7 @@ public class TradeServiceImpl implements TradeService {
 		tdDib.setInputValue(8, "01");		//주문 호가 구분코드 "01" 지정가
 		tdDib.blockRequest();
 		
-		//주문에 대한 체결 내역은 CpDib에 있는 CpConclusion object 를 통하여 얻을 수 있습니다
+
 	}
 	
 	//필요 없을 꺼 같기도 하다.
@@ -59,6 +59,7 @@ public class TradeServiceImpl implements TradeService {
 	}
 	@Override
 	public void checkConlusion() {
-		
+		//주문에 대한 체결 내역은 CpDib에 있는 CpConclusion object 를 통하여 얻을 수 있습니다
+		dashin.cpdib.IDib  dib = dashin.cpdib.ClassFactory.createCpConclusion();
 	}
 }
