@@ -70,23 +70,6 @@ public class BokServiceImpl implements BokService {
 		
 		String surl =  serviceName + "/" + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1;
 		System.out.println(surl);
-		
-		/* HttpURLConnection con = null;
-		URL url = new URL(surl);
-        con = (HttpURLConnection)url.openConnection();
-        con.setConnectTimeout(5000);
-        con.setReadTimeout(5000);
-        con.setRequestMethod("GET");
-		
-        int responseCode = con.getResponseCode();
-        
-        BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        StringBuilder sb = new StringBuilder();
-        String line = "";
-        while ((line = br.readLine()) != null) {
-            sb.append(line);
-        }
-        System.out.println(sb.toString());*/
         
         Mono<HashMap>  monoMap = webClient.mutate()
                 .baseUrl(base_url)
@@ -97,10 +80,10 @@ public class BokServiceImpl implements BokService {
                 .retrieve()
                 .bodyToMono(HashMap.class)
        ;
-        monoMap.subscribe(response -> {
-        	System.out.println(response);} , e->{
-        		System.out.println("error message : " + e.getMessage());
-        });
+        resultMap = monoMap.block(); 
+        
+        
+        System.out.println(resultMap.get("StatisticSearch"));
         //resultMap = gson.fromJson(sb.toString(), resultMap.getClass() );
 		return resultMap;
 	}

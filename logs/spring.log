@@ -230,3 +230,11 @@
 2021-10-21 10:04:23.020  INFO 12484 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
 2021-10-21 10:04:23.055  INFO 12484 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 2021-10-21 10:04:23.076  INFO 12484 --- [main] com.example.demo.trading.Deposit         : Started Deposit in 6.668 seconds (JVM running for 7.585)
+2021-10-22 23:07:06.968  INFO 9136 --- [main] com.example.demo.data.dart.BokTest       : Starting BokTest using Java 1.8.0_301 on DESKTOP-1A33EF8 with PID 9136 (started by 파주의왕자 in C:\Users\파주의왕자\Documents\GitHub\stock)
+2021-10-22 23:07:06.971  INFO 9136 --- [main] com.example.demo.data.dart.BokTest       : No active profile set, falling back to default profiles: default
+2021-10-22 23:07:12.582  INFO 9136 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-22 23:07:13.048  INFO 9136 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-22 23:07:13.677  INFO 9136 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-22 23:07:13.719  INFO 9136 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-22 23:07:13.755  INFO 9136 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-22 23:07:13.777  INFO 9136 --- [main] com.example.demo.data.dart.BokTest       : Started BokTest in 7.211 seconds (JVM running for 8.566)
