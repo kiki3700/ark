@@ -64,7 +64,7 @@ public class BithumbServiceImpl implements BithumbService{
 				IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
 				ArrayList data = datas.get(i);
 				historyDataDto.setINDEX_NAME((String) inParams.get("name"));
-				historyDataDto.setTradingDate(new Date((long) data.get(0)));
+				historyDataDto.setIndexDate(new Date((long) data.get(0)));
 				historyDataDto.setOpen(Integer.parseInt((String) data.get(1)));
 				historyDataDto.setClose(Integer.parseInt((String) data.get(2)));
 				historyDataDto.setHigh(Integer.parseInt((String) data.get(3)));

@@ -42,8 +42,7 @@ public class CybosConnection {
 		BufferedReader br = new BufferedReader(isr);
 		String line;
 		while ((line = br.readLine()) != null) {
-		System.out.println(line);
-		//Prints all the outputs.Which is coming from the executed Process
+		System.out.println(line);//Prints all the outputs.Which is coming from the executed Process
 		}
 	}
 }
