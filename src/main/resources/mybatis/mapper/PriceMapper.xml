@@ -72,4 +72,26 @@
 			SYSDATE
 		)
 	</insert>
+	
+	<insert id ='insertUsCoded' parameterType = "HashMap">
+		INSERT INTO COMMON_CODE_DET(
+			ID,
+			code_value,
+			code_name,
+			code_order_num,
+			create_date,
+			update_date,
+			api
+			)
+		VALUES(
+			#{id},
+			#{code_value},
+			#{code_name},
+			#{code_order_num},
+			SYSDATE,
+			SYSDATE,
+			#{api}
+			
+		)
+	</insert>
 </mapper>

@@ -1,6 +1,7 @@
 package com.example.demo.data.dart;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.demo.constants.CommonCodeConst;
 import com.example.demo.data.dao.PriceDao;
 import com.example.demo.data.service.impl.PriceServiceImpl;
 import com.example.demo.vo.IndexHistoryDataDto;
@@ -39,20 +41,61 @@ public class IndexTest {
 	
 	@Test
 	public void getIndex() throws Exception {
-		//UsCode 나라별지수 가져오기 추후 테이블 대체
+		//UsCode 나라별지수 인서트
 		ICpUsCode usCode =  ClassFactory.createCpUsCode();
-		String[] tickers =  (String[]) usCode.getUsCodeList(dashin.cputil.USTYPE.USTYPE_COUNTRY);
-		List<String> usCodeList = new ArrayList<String>();
-		for(int i = 0; i < tickers.length; i++) {
-			//if(tickers[i].equals("SPX") || tickers[i].equals("SHANG")) {
-			if(i==0 || i == 1) {
-				usCodeList.add(tickers[i]);
-				
+		Map<String, Object> paramMap =new HashMap<String,Object>();
+		paramMap.put("id", CommonCodeConst.ICPUSCODE_COUNTRY);
+		paramMap.put("api", "DAISHIN");
+		try {			
+			String[] tickers =  (String[]) usCode.getUsCodeList(dashin.cputil.USTYPE.USTYPE_COUNTRY);
+			for(int i = 0; i < tickers.length; i++) {
+				paramMap.put("code_value", tickers[i]);
+				paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
+				int order_num = i+1;
+				paramMap.put("code_order_num", order_num);
+				priceDao.insertUsCoded(paramMap);
 			}
-			//} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//UsCode 업종별지수 인서트
+		paramMap =new HashMap<String,Object>();
+		paramMap.put("id", CommonCodeConst.ICPUSCODE_UPJONG);
+		paramMap.put("api", "DAISHIN");
+		try {			
+			String[] tickers =  (String[]) usCode.getUsCodeList(dashin.cputil.USTYPE.USTYPE_UPJONG);
+			for(int i = 0; i < tickers.length; i++) {
+				paramMap.put("code_value", tickers[i]);
+				paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
+				int order_num = i+1;
+				paramMap.put("code_order_num", order_num);
+				priceDao.insertUsCoded(paramMap);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		for(int i=0;i < usCodeList.size();i++ ) {
+		//UsCode 업종별지수 인서트
+				paramMap =new HashMap<String,Object>();
+				paramMap.put("id", CommonCodeConst.ICPUSCODE_RAW);
+				paramMap.put("api", "DAISHIN");
+				try {			
+					String[] tickers =  (String[]) usCode.getUsCodeList(dashin.cputil.USTYPE.USTYPE_RAW);
+					for(int i = 0; i < tickers.length; i++) {
+						paramMap.put("code_value", tickers[i]);
+						paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
+						int order_num = i+1;
+						paramMap.put("code_order_num", order_num);
+						priceDao.insertUsCoded(paramMap);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+		
+
+		
+		/*for(int i=0;i < usCodeList.size();i++ ) {
 			short quant = 5;
 			inParam = new HashMap<>();
 			inParam.put("indexCode",usCodeList.get(i));
@@ -63,7 +106,8 @@ public class IndexTest {
 			System.out.println(usCodeList.get(i) + "===============");
 			System.out.println(dto);
 			System.out.println("================");
-		}
+		}*/
+		
 	}
 	
 	/*// 원하는 지수과거 일자별 데이터 가져오기 (1년간) 테이블 완성 후 적용
