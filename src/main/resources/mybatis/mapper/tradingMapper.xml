@@ -19,4 +19,15 @@
 			SELECT PORTFOLIO_TARGET_LIST_ID FROM PORTFOLIO_TARGET_LIST WHERE portfolioId = #{portfolioId} AND ticker = #{ticker} 
 		)
 	</insert>
+	<update id = 'udateTradingStatus' parameterType='com.example.demo.vo.StockWrapper'>
+		UPDATE trading
+		SET(
+			COMPLETE = #{tradingComplete}
+		)
+		WHERE(
+			PORTFOLIO = #{portfolioId}
+			
+		)
+		
+	</update>
 </mapper>

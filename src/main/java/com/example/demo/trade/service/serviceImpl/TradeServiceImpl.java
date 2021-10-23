@@ -2,9 +2,11 @@ package com.example.demo.trade.service.serviceImpl;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.trade.eventHandler.TradeEventHandler;
 import com.example.demo.trade.service.TradeService;
 import com.example.demo.vo.StockWrapper;
 
+import com4j.EventCookie;
 import dashin.cptrade.ClassFactory;
 import dashin.cptrade.ICpTdDib;
 import dashin.cptrade.ICpTdUtil;
@@ -12,6 +14,9 @@ import dashin.cptrade.ICpTdUtil;
 public class TradeServiceImpl implements TradeService {
 	static ICpTdUtil tdUtil = ClassFactory.createCpTdUtil();
 	static String account;
+	
+	
+	
 	
 	//인터셉터로 가야될꺼 같아여~~
 	@Override
@@ -32,7 +37,7 @@ public class TradeServiceImpl implements TradeService {
 		tdDib.setInputValue(8, "01");		//주문 호가 구분코드 "01" 지정가
 		tdDib.blockRequest();
 		
-
+		
 	}
 	
 	//필요 없을 꺼 같기도 하다.
@@ -61,5 +66,8 @@ public class TradeServiceImpl implements TradeService {
 	public void checkConlusion() {
 		//주문에 대한 체결 내역은 CpDib에 있는 CpConclusion object 를 통하여 얻을 수 있습니다
 		dashin.cpdib.IDib  dib = dashin.cpdib.ClassFactory.createCpConclusion();
+		EventCookie cookie = dib.advise(dashin.cpdib.events._IDibEvents.class, new TradeEventHandler(dib, "conclude"));
+		cookie.close();
+		
 	}
 }

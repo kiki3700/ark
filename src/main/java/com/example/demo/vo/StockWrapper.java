@@ -23,6 +23,9 @@ public class StockWrapper {
 	private double targetPrice;
 	private int amount;
 	
+	private String tradingComplete;
+	
+
 	private Float oneYearMean;
 	private Float sixMonthsMean;
 	private Float oneMonthMean;
@@ -78,6 +81,13 @@ public class StockWrapper {
 		this.amount = amount;
 	}
 
+	public String getTradingComplete() {
+		return tradingComplete;
+	}
+	public void setTradingComplete(String tradingComplete) {
+		this.tradingComplete = tradingComplete;
+	}
+	
 	public Float getOneYearMean() {
 		if(this.returnSeries==null) return null;
 		if(this.oneYearMean!=null) return this.oneYearMean;

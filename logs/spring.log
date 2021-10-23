@@ -1,232 +1,112 @@
-2021-10-21 05:34:30.536  INFO 8676 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8676 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 05:34:30.545  INFO 8676 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-21 05:34:36.345  INFO 8676 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 05:34:36.733  INFO 8676 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 05:34:37.280  INFO 8676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 05:34:37.309  INFO 8676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 05:34:37.339  INFO 8676 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 05:34:37.361  INFO 8676 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 7.157 seconds (JVM running for 8.183)
-2021-10-21 05:35:15.523  INFO 17288 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17288 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 05:35:15.525  INFO 17288 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-21 05:35:20.634  INFO 17288 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 05:35:21.039  INFO 17288 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 05:35:21.510  INFO 17288 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 05:35:21.534  INFO 17288 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 05:35:21.563  INFO 17288 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 05:35:21.586  INFO 17288 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.355 seconds (JVM running for 7.247)
-2021-10-21 05:41:31.939  INFO 12780 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12780 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 05:41:31.941  INFO 12780 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-21 05:41:37.047  INFO 12780 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 05:41:37.451  INFO 12780 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 05:41:37.912  INFO 12780 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 05:41:37.934  INFO 12780 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 05:41:37.962  INFO 12780 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 05:41:37.981  INFO 12780 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.329 seconds (JVM running for 7.159)
-2021-10-21 05:42:31.523  INFO 18276 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18276 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 05:42:31.525  INFO 18276 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-21 05:42:36.633  INFO 18276 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 05:42:37.041  INFO 18276 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 05:42:37.491  INFO 18276 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 05:42:37.519  INFO 18276 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 05:42:37.547  INFO 18276 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 05:42:37.567  INFO 18276 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.339 seconds (JVM running for 7.15)
-2021-10-21 05:45:07.060  INFO 8072 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8072 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 05:45:07.062  INFO 8072 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-21 05:45:12.111  INFO 8072 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 05:45:12.465  INFO 8072 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 05:45:12.992  INFO 8072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 05:45:13.015  INFO 8072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 05:45:13.043  INFO 8072 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 05:45:13.065  INFO 8072 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.294 seconds (JVM running for 7.151)
-2021-10-21 05:46:26.287  INFO 15984 --- [main] com.example.demo.data.dart.Bitthumb      : Starting Bitthumb using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15984 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 05:46:26.290  INFO 15984 --- [main] com.example.demo.data.dart.Bitthumb      : No active profile set, falling back to default profiles: default
-2021-10-21 05:46:31.485  INFO 15984 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 05:46:31.850  INFO 15984 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 05:46:32.381  INFO 15984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 05:46:32.409  INFO 15984 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 05:46:32.439  INFO 15984 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 05:46:32.459  INFO 15984 --- [main] com.example.demo.data.dart.Bitthumb      : Started Bitthumb in 6.474 seconds (JVM running for 7.381)
-2021-10-21 06:01:25.642  INFO 12188 --- [main] com.example.demo.data.dart.DartTest      : Starting DartTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12188 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 06:01:25.645  INFO 12188 --- [main] com.example.demo.data.dart.DartTest      : No active profile set, falling back to default profiles: default
-2021-10-21 06:01:30.842  INFO 12188 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 06:01:31.256  INFO 12188 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 06:01:31.729  INFO 12188 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 06:01:31.753  INFO 12188 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 06:01:31.784  INFO 12188 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 06:01:31.804  INFO 12188 --- [main] com.example.demo.data.dart.DartTest      : Started DartTest in 6.462 seconds (JVM running for 7.32)
-2021-10-21 06:02:44.421  INFO 9948 --- [main] com.example.demo.data.dart.DartTest      : Starting DartTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 9948 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 06:02:44.423  INFO 9948 --- [main] com.example.demo.data.dart.DartTest      : No active profile set, falling back to default profiles: default
-2021-10-21 06:02:49.613  INFO 9948 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 06:02:49.978  INFO 9948 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 06:02:50.508  INFO 9948 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 06:02:50.536  INFO 9948 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 06:02:50.568  INFO 9948 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 06:02:50.586  INFO 9948 --- [main] com.example.demo.data.dart.DartTest      : Started DartTest in 6.467 seconds (JVM running for 7.334)
-2021-10-21 07:29:15.721  INFO 9824 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 9824 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:29:15.723  INFO 9824 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:29:21.041  INFO 9824 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:29:21.414  INFO 9824 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:29:21.939  INFO 9824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:29:21.968  INFO 9824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:29:22.001  INFO 9824 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:29:22.022  INFO 9824 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.608 seconds (JVM running for 7.6)
-2021-10-21 07:29:49.744  INFO 17724 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17724 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:29:49.746  INFO 17724 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:29:54.905  INFO 17724 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:29:55.321  INFO 17724 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:29:55.797  INFO 17724 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:29:55.821  INFO 17724 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:29:55.855  INFO 17724 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:29:55.888  INFO 17724 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.444 seconds (JVM running for 7.354)
-2021-10-21 07:30:50.838  INFO 3700 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 3700 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:30:50.840  INFO 3700 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:30:55.855  INFO 3700 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:30:56.206  INFO 3700 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:30:56.729  INFO 3700 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:30:56.752  INFO 3700 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:30:56.785  INFO 3700 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:30:56.805  INFO 3700 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.26 seconds (JVM running for 7.108)
-2021-10-21 07:31:38.406  INFO 1536 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 1536 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:31:38.408  INFO 1536 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:31:43.466  INFO 1536 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:31:43.875  INFO 1536 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:31:44.331  INFO 1536 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:31:44.358  INFO 1536 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:31:44.386  INFO 1536 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:31:44.405  INFO 1536 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.291 seconds (JVM running for 7.109)
-2021-10-21 07:32:02.546  INFO 8204 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8204 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:32:02.548  INFO 8204 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:32:07.611  INFO 8204 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:32:07.972  INFO 8204 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:32:08.502  INFO 8204 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:32:08.524  INFO 8204 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:32:08.558  INFO 8204 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:32:08.578  INFO 8204 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.327 seconds (JVM running for 7.176)
-2021-10-21 07:32:56.546  INFO 3696 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 3696 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:32:56.549  INFO 3696 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:33:01.820  INFO 3696 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:33:02.238  INFO 3696 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:33:02.738  INFO 3696 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:33:02.766  INFO 3696 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:33:02.801  INFO 3696 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:33:02.827  INFO 3696 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.591 seconds (JVM running for 7.478)
-2021-10-21 07:33:03.819  INFO 17768 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17768 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:33:03.821  INFO 17768 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:33:08.973  INFO 17768 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:33:09.331  INFO 17768 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:33:09.853  INFO 17768 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:33:09.876  INFO 17768 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:33:09.904  INFO 17768 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:33:09.928  INFO 17768 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.412 seconds (JVM running for 7.29)
-2021-10-21 07:33:48.593  INFO 7368 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 7368 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:33:48.595  INFO 7368 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:33:53.664  INFO 7368 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:33:54.017  INFO 7368 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:33:54.535  INFO 7368 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:33:54.558  INFO 7368 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:33:54.587  INFO 7368 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:33:54.610  INFO 7368 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.311 seconds (JVM running for 7.164)
-2021-10-21 07:34:30.077  INFO 9700 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 9700 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:34:30.079  INFO 9700 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:34:35.123  INFO 9700 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:34:35.477  INFO 9700 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:34:36.004  INFO 9700 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:34:36.028  INFO 9700 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:34:36.057  INFO 9700 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:34:36.079  INFO 9700 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.295 seconds (JVM running for 7.15)
-2021-10-21 07:35:09.679  INFO 18008 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18008 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:35:09.682  INFO 18008 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:35:14.753  INFO 18008 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:35:15.108  INFO 18008 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:35:15.639  INFO 18008 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:35:15.662  INFO 18008 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:35:15.695  INFO 18008 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:35:15.716  INFO 18008 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.332 seconds (JVM running for 7.169)
-2021-10-21 07:35:51.554  INFO 12184 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12184 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:35:51.557  INFO 12184 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:35:56.598  INFO 12184 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:35:56.950  INFO 12184 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:35:57.465  INFO 12184 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:35:57.489  INFO 12184 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:35:57.517  INFO 12184 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:35:57.535  INFO 12184 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.27 seconds (JVM running for 7.117)
-2021-10-21 07:36:39.695  INFO 16044 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 16044 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:36:39.698  INFO 16044 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:36:44.792  INFO 16044 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:36:45.201  INFO 16044 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:36:45.667  INFO 16044 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:36:45.690  INFO 16044 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:36:45.720  INFO 16044 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:36:45.739  INFO 16044 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.336 seconds (JVM running for 7.147)
-2021-10-21 07:38:17.743  INFO 11536 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 11536 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:38:17.746  INFO 11536 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:38:22.783  INFO 11536 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:38:23.190  INFO 11536 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:38:23.653  INFO 11536 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:38:23.677  INFO 11536 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:38:23.706  INFO 11536 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:38:23.726  INFO 11536 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.273 seconds (JVM running for 7.104)
-2021-10-21 07:39:10.510  INFO 18348 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18348 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:39:10.513  INFO 18348 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:39:15.615  INFO 18348 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:39:16.022  INFO 18348 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:39:16.481  INFO 18348 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:39:16.505  INFO 18348 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:39:16.538  INFO 18348 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:39:16.557  INFO 18348 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.346 seconds (JVM running for 7.182)
-2021-10-21 07:41:58.766  INFO 8184 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8184 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:41:58.768  INFO 8184 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:42:03.920  INFO 8184 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:42:04.340  INFO 8184 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:42:04.801  INFO 8184 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:42:04.825  INFO 8184 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:42:04.859  INFO 8184 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:42:04.878  INFO 8184 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.405 seconds (JVM running for 7.224)
-2021-10-21 07:43:41.242  INFO 17312 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17312 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:43:41.244  INFO 17312 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:43:46.310  INFO 17312 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:43:46.668  INFO 17312 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:43:47.180  INFO 17312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:43:47.209  INFO 17312 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:43:47.247  INFO 17312 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:43:47.265  INFO 17312 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.317 seconds (JVM running for 7.208)
-2021-10-21 07:45:29.212  INFO 784 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 784 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:45:29.214  INFO 784 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:45:34.282  INFO 784 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:45:34.689  INFO 784 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:45:35.162  INFO 784 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:45:35.186  INFO 784 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:45:35.219  INFO 784 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:45:35.237  INFO 784 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.322 seconds (JVM running for 7.145)
-2021-10-21 07:46:07.156  INFO 6416 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 6416 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:46:07.159  INFO 6416 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:46:12.189  INFO 6416 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:46:12.598  INFO 6416 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:46:13.048  INFO 6416 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:46:13.072  INFO 6416 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:46:13.105  INFO 6416 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:46:13.123  INFO 6416 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.256 seconds (JVM running for 7.075)
-2021-10-21 07:46:53.879  INFO 10436 --- [main] com.example.demo.data.dart.CommonCode    : Starting CommonCode using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 10436 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 07:46:53.882  INFO 10436 --- [main] com.example.demo.data.dart.CommonCode    : No active profile set, falling back to default profiles: default
-2021-10-21 07:46:58.950  INFO 10436 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 07:46:59.306  INFO 10436 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 07:46:59.824  INFO 10436 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 07:46:59.848  INFO 10436 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 07:46:59.887  INFO 10436 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 07:46:59.909  INFO 10436 --- [main] com.example.demo.data.dart.CommonCode    : Started CommonCode in 6.319 seconds (JVM running for 7.174)
-2021-10-21 10:00:40.924  INFO 14616 --- [main] com.example.demo.trading.Deposit         : Starting Deposit using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 14616 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 10:00:40.926  INFO 14616 --- [main] com.example.demo.trading.Deposit         : No active profile set, falling back to default profiles: default
-2021-10-21 10:00:46.485  INFO 14616 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 10:00:46.908  INFO 14616 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 10:00:47.390  INFO 14616 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 10:00:47.416  INFO 14616 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 10:00:47.447  INFO 14616 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 10:00:47.470  INFO 14616 --- [main] com.example.demo.trading.Deposit         : Started Deposit in 6.866 seconds (JVM running for 7.928)
-2021-10-21 10:04:16.734  INFO 12484 --- [main] com.example.demo.trading.Deposit         : Starting Deposit using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 12484 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
-2021-10-21 10:04:16.737  INFO 12484 --- [main] com.example.demo.trading.Deposit         : No active profile set, falling back to default profiles: default
-2021-10-21 10:04:22.075  INFO 12484 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-10-21 10:04:22.500  INFO 12484 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
-2021-10-21 10:04:22.991  INFO 12484 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-10-21 10:04:23.020  INFO 12484 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-10-21 10:04:23.055  INFO 12484 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-10-21 10:04:23.076  INFO 12484 --- [main] com.example.demo.trading.Deposit         : Started Deposit in 6.668 seconds (JVM running for 7.585)
+2021-10-23 09:51:04.881  INFO 10092 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 10092 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 09:51:04.892  INFO 10092 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 09:51:10.790  INFO 10092 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 09:51:11.232  INFO 10092 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 09:51:11.701  INFO 10092 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 09:51:11.732  INFO 10092 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 09:51:11.766  INFO 10092 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 09:51:11.786  INFO 10092 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 7.22 seconds (JVM running for 8.14)
+2021-10-23 09:54:18.933  INFO 8384 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8384 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 09:54:18.936  INFO 8384 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 09:54:24.248  INFO 8384 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 09:54:24.633  INFO 8384 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 09:54:25.199  INFO 8384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 09:54:25.223  INFO 8384 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 09:54:25.254  INFO 8384 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 09:54:25.274  INFO 8384 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.652 seconds (JVM running for 7.556)
+2021-10-23 09:55:34.349  INFO 3364 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 3364 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 09:55:34.351  INFO 3364 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 09:55:39.835  INFO 3364 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 09:55:40.224  INFO 3364 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 09:55:40.779  INFO 3364 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 09:55:40.803  INFO 3364 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 09:55:40.838  INFO 3364 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 09:55:40.857  INFO 3364 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.827 seconds (JVM running for 7.782)
+2021-10-23 09:56:05.119  INFO 8636 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 8636 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 09:56:05.121  INFO 8636 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 09:56:10.392  INFO 8636 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 09:56:10.758  INFO 8636 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 09:56:11.298  INFO 8636 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 09:56:11.321  INFO 8636 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 09:56:11.356  INFO 8636 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 09:56:11.374  INFO 8636 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.559 seconds (JVM running for 7.424)
+2021-10-23 10:05:01.757  INFO 15936 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15936 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:05:01.759  INFO 15936 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:05:07.031  INFO 15936 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:05:07.460  INFO 15936 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:05:07.954  INFO 15936 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:05:07.978  INFO 15936 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:05:08.011  INFO 15936 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:05:08.030  INFO 15936 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.575 seconds (JVM running for 7.503)
+2021-10-23 10:05:46.821  INFO 18188 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 18188 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:05:46.823  INFO 18188 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:05:52.097  INFO 18188 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:05:52.489  INFO 18188 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:05:53.066  INFO 18188 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:05:53.093  INFO 18188 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:05:53.125  INFO 18188 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:05:53.143  INFO 18188 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.624 seconds (JVM running for 7.502)
+2021-10-23 10:07:40.789  INFO 11276 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 11276 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:07:40.791  INFO 11276 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:07:46.093  INFO 11276 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:07:46.532  INFO 11276 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:07:47.020  INFO 11276 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:07:47.045  INFO 11276 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:07:47.075  INFO 11276 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:07:47.094  INFO 11276 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.621 seconds (JVM running for 7.459)
+2021-10-23 10:08:08.621  INFO 17236 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17236 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:08:08.623  INFO 17236 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:08:13.861  INFO 17236 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:08:14.223  INFO 17236 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:08:14.763  INFO 17236 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:08:14.790  INFO 17236 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:08:14.819  INFO 17236 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:08:14.838  INFO 17236 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.52 seconds (JVM running for 7.406)
+2021-10-23 10:08:51.450  INFO 7076 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 7076 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:08:51.453  INFO 7076 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:08:56.740  INFO 7076 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:08:57.113  INFO 7076 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:08:57.678  INFO 7076 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:08:57.703  INFO 7076 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:08:57.734  INFO 7076 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:08:57.752  INFO 7076 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.612 seconds (JVM running for 7.494)
+2021-10-23 10:10:40.105  INFO 13232 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 13232 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:10:40.107  INFO 13232 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:10:45.370  INFO 13232 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:10:45.786  INFO 13232 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:10:46.265  INFO 13232 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:10:46.290  INFO 13232 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:10:46.324  INFO 13232 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:10:46.343  INFO 13232 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.545 seconds (JVM running for 7.393)
+2021-10-23 10:12:27.175  INFO 17884 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 17884 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:12:27.177  INFO 17884 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:12:32.537  INFO 17884 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:12:32.964  INFO 17884 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:12:33.450  INFO 17884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:12:33.474  INFO 17884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:12:33.508  INFO 17884 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:12:33.528  INFO 17884 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.662 seconds (JVM running for 7.514)
+2021-10-23 10:16:52.409  INFO 19720 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 19720 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:16:52.411  INFO 19720 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:16:57.678  INFO 19720 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:16:58.051  INFO 19720 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:16:58.600  INFO 19720 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:16:58.631  INFO 19720 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:16:58.668  INFO 19720 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:16:58.689  INFO 19720 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.588 seconds (JVM running for 7.458)
+2021-10-23 10:24:29.211  INFO 15048 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 15048 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:24:29.214  INFO 15048 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:24:34.595  INFO 15048 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:24:34.968  INFO 15048 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:24:35.530  INFO 15048 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:24:35.554  INFO 15048 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:24:35.591  INFO 15048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:24:35.612  INFO 15048 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.71 seconds (JVM running for 7.626)
+2021-10-23 10:29:21.031  INFO 10844 --- [main] c.example.demo.trading.EventHandlerTest  : Starting EventHandlerTest using Java 1.8.0_301 on DESKTOP-0KAS61L with PID 10844 (started by 55754 in C:\Users\55754\eclipse-32-workplace\stock)
+2021-10-23 10:29:21.034  INFO 10844 --- [main] c.example.demo.trading.EventHandlerTest  : No active profile set, falling back to default profiles: default
+2021-10-23 10:29:26.293  INFO 10844 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-23 10:29:26.713  INFO 10844 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-10-23 10:29:27.214  INFO 10844 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-23 10:29:27.238  INFO 10844 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-23 10:29:27.276  INFO 10844 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-23 10:29:27.297  INFO 10844 --- [main] c.example.demo.trading.EventHandlerTest  : Started EventHandlerTest in 6.575 seconds (JVM running for 7.452)
