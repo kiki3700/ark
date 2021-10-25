@@ -12,5 +12,6 @@ public interface PriceService {
 	
 	void insertPrice(PriceVo vo);
 	
-	IndexHistoryDataDto getIndexHistory(Map<Object,Object> inParam) throws Exception;
+	void getIndexHistory(Map<String, Object> paramMap) throws Exception;
+
 }

@@ -120,7 +120,6 @@ public class IndexTest {
 			paramMap.put("id", CommonCodeConst.ICPUSCODE_COUNTRY);
 			paramMap.put("code_name", "S&P500");
 			codeMap = priceDao.selectUsCodeCont(paramMap);
-			String indexCodet = (String) codeMap.get("code_value");
 			this.getIndex(indexCodet); 
 		
 		

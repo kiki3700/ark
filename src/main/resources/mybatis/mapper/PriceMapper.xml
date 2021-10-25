@@ -35,8 +35,8 @@
 	<!-- UsCode 원하는 지수 공통코드에서 가져오기 -->
 	<select id ='selectUsCodeCont' parameterType = "HashMap" resultType = "HashMap">
 		SELECT
-			code_value,
-			code_name,
+			CODE_VALUE,
+			CODE_NAME,
 			code_en_name
 		FROM COMMON_CODE_DET
 		<if test = "id !=NULL and id!=''">
@@ -47,6 +47,17 @@
 		</if>
 		
 	</select>
+	
+	<!-- UsCode 공통코드에서 가져오기 -->
+	<select id ='selectUsCodes' parameterType = "HashMap" resultType = "HashMap">
+		SELECT
+			CODE_VALUE,
+			CODE_NAME
+		FROM COMMON_CODE_DET
+			WHERE id IN('ICP00002','ICP00003' ,'ICP00004')
+			
+	</select>
+	
 	<insert id ='insertIndex' parameterType = "IndexHistoryDataDto">
 		INSERT INTO INDEX_HISTORY_DATA(
 			ID,
@@ -72,6 +83,34 @@
 			SYSDATE
 		)
 	</insert>
+	
+	<insert id ='insIndexDaishin' parameterType = "IndexHistoryDataDto">
+		INSERT INTO INDEX_HISTORY_DATA(
+			ID,
+			INDEX_NAME,
+			DATE,
+			OPEN,
+			CLOSE,
+			LOW,
+			HIGH,
+			VOLUME,
+			CREATE_DATE,
+			UPDATE_DATE
+			)
+		VALUES(
+			item_id.NEXTVAL,
+			#{INDEX_NAME}
+			#{DATE},
+			#{OPEN},
+			#{CLOSE},
+			#{LOW},
+			#{HIGH},
+			#{VOLUME},
+			SYSDATE,
+			SYSDATE
+		)
+	</insert>
+	
 	
 	<insert id ='insertUsCoded' parameterType = "HashMap">
 		INSERT INTO COMMON_CODE_DET(

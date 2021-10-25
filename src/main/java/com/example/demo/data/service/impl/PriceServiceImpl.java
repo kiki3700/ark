@@ -36,12 +36,12 @@ public class PriceServiceImpl implements PriceService {
 	}
 
 	@Override
-	public IndexHistoryDataDto getIndexHistory(Map<Object, Object> inParam) throws Exception {
+	public void getIndexHistory(Map<String, Object> inParam) throws Exception {
 		
 		IDib index = ClassFactory.createCpSvr8300();
-		index.setInputValue(0, inParam.get("indexCode"));
+		index.setInputValue(0, inParam.get("CODE_VALUE"));
 		index.setInputValue(1, (int) 'D'); 
-		index.setInputValue(3, inParam.get("quant"));
+		index.setInputValue(3, (short)3);
 		
 		index.blockRequest();
 		
@@ -61,23 +61,16 @@ public class PriceServiceImpl implements PriceService {
 			float close = (float) index.getDataValue(4, i);
 			Long volumeL = (Long) index.getDataValue(5, i);
 			BigDecimal volume =  BigDecimal.valueOf(volumeL);
-			System.out.println("date : " +  date + "==========");
-			System.out.println("open : " +  open);
-			System.out.println("high : " +  high);
-			System.out.println("low : " +  low);
-			System.out.println("close : " +  close);
-			System.out.println("volumeL : " +  volumeL);
+			historyDataDto.setINDEX_NAME((String)inParam.get("CODE_NAME"));
 			historyDataDto.setIndexDate(date);
 			historyDataDto.setClose(close);
 			historyDataDto.setHigh(high);
 			historyDataDto.setLow(low);
 			historyDataDto.setOpen(open);
 			historyDataDto.setVolume(volume);
+			priceDao.insIndexDaishin(historyDataDto);
 			
-			System.out.println("==========================");
-			System.out.println("DTO : " + historyDataDto);
-			System.out.println("==========================");
 		}
-		return historyDataDto;
 	}
+	
 }

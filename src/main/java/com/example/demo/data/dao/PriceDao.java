@@ -18,4 +18,8 @@ public interface PriceDao {
 	int insertIndex(IndexHistoryDataDto indexHistoryDataDto);
 	
 	int insertUsCoded(Map<String, Object> paramMap);
+	
+	List<HashMap<String, Object>> selectUsCodes(Map<String, Object> paramMap);
+
+	int insIndexDaishin(IndexHistoryDataDto historyDataDto);
 }
