@@ -44,14 +44,16 @@ public class ItemTest {
 			HashMap<String, Object> inParam = new HashMap<>();
 			inParam.put("ticker",(String) kospiTickers[i]);
 			ItemDto itemDto = itemService.getItemDto(inParam);
-			System.out.println(itemDto);
+			if(itemDto.getName().contains("삼성")) {
+				System.out.println(itemDto);
+			}
 		}
 		for(int i = 0; i < kosdaqTickers.length; i++) {
 			//dto 생성
 			HashMap<String, Object> inParam = new HashMap<>();
 			inParam.put("ticker",(String) kosdaqTickers[i]);
 			ItemDto itemDto = itemService.getItemDto(inParam);
-			System.out.println(itemDto);
+//			System.out.println(itemDto);
 		}
 	}
 	

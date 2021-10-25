@@ -15,17 +15,29 @@ import java.util.Set;
  * 
  */
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
+
+/*추가로 넣어줘야하는 기능 
+ * 가격가져오고 수익률을 구해준다. 가져왔으면 평균 분산을 구해준다.
+ * 
+ */
+
 public class StockWrapper {
+	private int itemId;
 	private String ticker; // 종목명
-	private boolean position; // 포지션 매수시 셕ㄷ, 매도시 false
+	private String name;
+	private String market;
+
+	private boolean position; // 판매
 	private String portfolioId;
 	private String industry;
 	private double targetPrice;
 	private int amount;
 	
-	private String tradingComplete;
-	
-
 	private Float oneYearMean;
 	private Float sixMonthsMean;
 	private Float oneMonthMean;
@@ -42,12 +54,45 @@ public class StockWrapper {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public StockWrapper(ItemDto item) {
+		this.itemId = item.getId();
+		this.ticker = item.getTicker();
+		this.name = item.getName();
+		this.industry =item.getIndustry();
+	}
+	
+	
+	public int getItemId() {
+		return itemId;
+	}
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+	
 	public String getTicker() {
 		return ticker;
 	}
 	public void setTicker(String ticker) {
 		this.ticker = ticker;
 	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMarket() {
+		return market;
+	}
+
+	public void setMarket(String market) {
+		this.market = market;
+	}
+	
+	
 	public boolean isPosition() {
 		return position;
 	}
@@ -81,13 +126,6 @@ public class StockWrapper {
 		this.amount = amount;
 	}
 
-	public String getTradingComplete() {
-		return tradingComplete;
-	}
-	public void setTradingComplete(String tradingComplete) {
-		this.tradingComplete = tradingComplete;
-	}
-	
 	public Float getOneYearMean() {
 		if(this.returnSeries==null) return null;
 		if(this.oneYearMean!=null) return this.oneYearMean;
