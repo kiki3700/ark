@@ -23,7 +23,7 @@ public class ItemUtil {
 		long date = codeMgr.getStockListedDate(ticker);
 		Date listingDate = FormatConverter.longToDate(date);
 		ItemDto item = new ItemDto();
-		item.setTicker(ticker);
+		item.setId(ticker);
 		item.setName(name);
 		item.setIsActive(isActive.name());
 		item.setMarket(market.name());

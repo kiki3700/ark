@@ -1,7 +1,7 @@
 package com.example.demo.data.service.impl;
 
+import java.math.BigInteger;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -18,10 +18,13 @@ import com.example.demo.util.ItemUtil;
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;
 
+import dashin.cpsysdib.ISysDib;
+import dashin.cputil.CPE_CAPITAL_SIZE;
+import dashin.cputil.CPE_KSE_SECTION_KIND;
+import dashin.cputil.CPE_MARKET_KIND;
+import dashin.cputil.CPE_STOCK_STATUS_KIND;
 import dashin.cputil.ClassFactory;
-import dashin.cputil.*;
-import dashin.cpsysdib.*;
-
+import dashin.cputil.ICpCodeMgr;
 @Service
 public class ItemServiceImpl implements ItemService {
 	@Autowired
@@ -43,6 +46,13 @@ public class ItemServiceImpl implements ItemService {
 		String ticker = (String) inParam.get("ticker");
 		
 		ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
+
+		ISysDib marketEye = dashin.cpsysdib.ClassFactory.createMarketEye();
+		int[] reqArr = new int[] {1,20};
+		marketEye.setInputValue(0, reqArr);
+		marketEye.setInputValue(1, ticker);
+		marketEye.blockRequest();
+		
 		String name = codeMgr.codeToName(ticker);
 		//거래 구분
 		CPE_STOCK_STATUS_KIND isActive = codeMgr.getStockStatusKind(ticker);
@@ -54,9 +64,18 @@ public class ItemServiceImpl implements ItemService {
 		long date = codeMgr.getStockListedDate(ticker);
 		Date listingDate = FormatConverter.longToDate(date);
 		
+		int close = (int) marketEye.getDataValue(0, 0);
+		BigInteger listedShare = (BigInteger) marketEye.getDataValue(1, 0);
+		if(codeMgr.isBigListingStock(ticker)==1) {
+			listedShare = listedShare.multiply(new BigInteger("1000"));
+		}
+		
 		ItemDto item = new ItemDto();
-
-		item.setTicker(ticker);
+		
+		
+		
+		
+		item.setId(ticker);
 		item.setName(name);
 		item.setIsActive(isActive.name());
 		item.setCurrencyId(0);
@@ -65,6 +84,8 @@ public class ItemServiceImpl implements ItemService {
 		item.setIndustry(industry);
 		item.setCorpSize(corpSize.name());
 		item.setListingDate(listingDate);
+		item.setListedShare(listedShare);
+		item.setMarketCap(listedShare.multiply(new BigInteger(Integer.toString(close))));
 		return item;
 	}
 	
@@ -90,7 +111,7 @@ public class ItemServiceImpl implements ItemService {
 	public int insertHistoryData(ItemDto itemDto) throws ParseException{
 		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
 		ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
-		sysDib.setInputValue(0, itemDto.getTicker());
+		sysDib.setInputValue(0, itemDto.getId());
 		sysDib.setInputValue(1, (int) '1');
 		sysDib.setInputValue(3, FormatConverter.dateToLong(itemDto.getListingDate()));
 		sysDib.setInputValue(5, new int[] {0,1,2,3,4,5,8});
