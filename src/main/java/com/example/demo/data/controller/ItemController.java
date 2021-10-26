@@ -70,7 +70,7 @@ public class ItemController {
 		List<ItemDto> itemList = itemService.getItemList();
 		for(int i = 0 ; i< itemList.size();i++) {
 			HashMap<String, String> tickerMap = new HashMap<>();
-			String ticker = itemList.get(i).getTicker();
+			String ticker = itemList.get(i).getId();
 			String corpCode = corpMap.get(ticker);
 			tickerMap.put("ticker", ticker);
 			tickerMap.put("corpCode", corpCode);

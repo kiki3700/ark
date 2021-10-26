@@ -47,7 +47,7 @@ public class TradeServiceImpl implements TradeService {
 			ICpTdDib buy = ClassFactory.createCpTdNew5331A();
 			buy.setInputValue(0, account); // 계좌번호
 			buy.setInputValue(1, "10");	//상품관리 코드
-			buy.setInputValue(2, stock.getTicker());	//상품관리 코드
+			buy.setInputValue(2, stock.getItemId());	//상품관리 코드
 			buy.setInputValue(3, "01");  //주문호가 구분코드
 			buy.setInputValue(6, (int) '1');		
 			buy.blockRequest();
@@ -55,7 +55,7 @@ public class TradeServiceImpl implements TradeService {
 			ICpTdDib sell = ClassFactory.createCpTdNew5331B();
 			sell.setInputValue(0, account); // 계좌번호
 			sell.setInputValue(1, "10"); 	//상품관리 코드
-			sell.setInputValue(2, stock.getTicker());	//상품관리 코드
+			sell.setInputValue(2, stock.getItemId());	//상품관리 코드
 			sell.setInputValue(3, (int) '1');  //주식 채권구분코드		
 			sell.blockRequest();
 		}

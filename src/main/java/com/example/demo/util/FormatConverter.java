@@ -38,11 +38,12 @@ public class FormatConverter {
 		return Long.parseLong(format.format(date));
 	}
 	
+	//삭제각
 	static List<HistoryDataDto> getKoreanStockItemDto(ItemDto item) throws ParseException {
 		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
 		dashin.cpsysdib.ISysDib chart =dashin.cpsysdib.ClassFactory.createStockChart();
 		String listingDate = FormatConverter.dateToString(item.getListingDate());
-		chart.setInputValue(0, item.getTicker());
+		chart.setInputValue(0, item.getId());
 		chart.setInputValue(1, (int) '1');
 		chart.setInputValue(3,listingDate);
 		chart.setInputValue(5, new int[] {0,2,3,4, 5, 8});

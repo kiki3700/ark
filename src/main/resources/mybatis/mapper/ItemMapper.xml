@@ -4,7 +4,7 @@
 	<update id = 'insertItem' parameterType = 'ItemDto'>
 		MERGE INTO ITEM
 		USING DUAL
-			ON(TICKER = #{ticker})
+			ON(id = #{ticker})
 		WHEN MATCHED THEN
 			UPDATE SET
 				NAME = #{NAME}
@@ -12,10 +12,11 @@
 				,MARKET = #{market}
 				,INDUSTRY = #{industry}
 				,CORP_SIZE = #{corpSize}
+				,LISTED_SHARE = #{listedShare}
+				,MARKET_CAP = #{marketCap}
 		WHEN NOT MATCHED THEN
 			INSERT(
 				ID,
-				TICKER,
 				NAME,
 				IS_ACTIVE,
 				CURRENCY_ID,
@@ -23,11 +24,12 @@
 				CATEGORY,
 				INDUSTRY,
 				CORP_SIZE,
-				LISTING_DATE
+				LISTING_DATE,
+				LISTED_SHARE,
+				MARKET_CAP
 			)
 			VALUES(
-				ITEM_ID.NEXTVAL,
-				#{ticker},
+				#{id},
 				#{name},
 				#{isActive},
 				#{currencyId},
@@ -35,7 +37,9 @@
 				#{category},
 				#{industry},
 				#{corpSize},
-				#{listingDate}
+				#{listingDate},
+				#{listedShare},
+				#{marketCap}
 				)
 	</update>
 	
@@ -44,7 +48,7 @@
 		SET
 		CORP_CODE = #{corpCode}
 		WHERE
-		TICKER = #{ticker}
+		ID = #{id}
 	</update>
 	
 	<select id = 'selectItemList' resultType = 'ItemDto'>

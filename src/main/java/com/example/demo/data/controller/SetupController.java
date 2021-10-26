@@ -47,7 +47,7 @@ public class SetupController {
 		HashMap<String, String> corpMap = dartService.getCorpCodeMap();
 		int len = itemDtoList.size();
 		for(int i = 0 ; i< len; i++) {
-			String ticker = itemDtoList.get(i).getTicker();
+			String ticker = itemDtoList.get(i).getId();
 			String corpCode = corpMap.get(ticker);
 			HashMap<String, String> inParams= new HashMap<>();
 			inParams.put("ticker", ticker);
