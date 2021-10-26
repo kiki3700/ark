@@ -31,7 +31,6 @@ public class IndexSchedueler {
 	     		List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
 	     		codeMap = priceDao.selectUsCodes(inParam);
 	     		for(Map<String, Object> paramMap : codeMap) {
-	     								
 	     			priceService.getIndexHistory(paramMap);
 	     		}
 			} catch (Exception e) {
