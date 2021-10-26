@@ -26,11 +26,14 @@ public class IndexSchedueler {
 	//대신증권 인덱스 가져오기
 	@Scheduled(cron = "0 0 06 * * ?")
 	   public void dsIndexScheduler() {
-			Map<String,Object> paramMap = new HashMap<String,Object>();
+			Map<String,Object> inParam = new HashMap<String,Object>();
 	     	try {
 	     		List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
-	     		codeMap = priceDao.selectUsCodes(paramMap);
-	     		priceService.getIndexHistory(null);
+	     		codeMap = priceDao.selectUsCodes(inParam);
+	     		for(Map<String, Object> paramMap : codeMap) {
+	     								
+	     			priceService.getIndexHistory(paramMap);
+	     		}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
