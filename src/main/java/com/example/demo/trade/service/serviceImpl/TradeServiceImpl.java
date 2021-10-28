@@ -82,5 +82,6 @@ public class TradeServiceImpl implements TradeService {
 		//주문에 대한 체결 내역은 CpDib에 있는 CpConclusion object 를 통하여 얻을 수 있습니다
 		dashin.cpdib.IDib  dib = dashin.cpdib.ClassFactory.createCpConclusion();
 		EventCookie cookie = dib.advise(dashin.cpdib.events._IDibEvents.class, new TradeEventHandler(dib, "conclude"));
+		
 	}
 }
