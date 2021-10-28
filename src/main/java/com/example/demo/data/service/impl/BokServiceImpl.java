@@ -18,6 +18,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.constants.BokConst;
 import com.example.demo.data.service.BokService;
+import com.example.demo.util.MonoWebclient;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -35,8 +36,7 @@ public class BokServiceImpl implements BokService {
 	String base_url;
 	
 	@Autowired
-	WebClient webClient;
-	
+	MonoWebclient monoWebclient;
 	
 	@Override
 	public HashMap<Object, Object> getBokIndex(Map<String, String> inParam) throws Exception {
@@ -69,22 +69,12 @@ public class BokServiceImpl implements BokService {
 		atcl_Code1 =  inParam.get("ATCL_CODE2");
 		
 		String surl =  serviceName + "/" + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1;
-		System.out.println(surl);
-        
-        Mono<HashMap>  monoMap = webClient.mutate()
-                .baseUrl(base_url)
-                .build()
-                .get()
-                .uri(surl)
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(HashMap.class)
-       ;
-        resultMap = monoMap.block(); 
+
+        resultMap = monoWebclient.getWebMonotoMap(base_url,surl); 
         
         
         System.out.println(resultMap.get("StatisticSearch"));
-        //resultMap = gson.fromJson(sb.toString(), resultMap.getClass() );
+        
 		return resultMap;
 	}
 

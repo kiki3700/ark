@@ -85,30 +85,34 @@
 	</insert>
 	
 	<insert id ='insIndexDaishin' parameterType = "IndexHistoryDataDto">
-		INSERT INTO INDEX_HISTORY_DATA(
-			ID,
-			INDEX_NAME,
-			DATE,
-			OPEN,
-			CLOSE,
-			LOW,
-			HIGH,
-			VOLUME,
-			CREATE_DATE,
-			UPDATE_DATE
+		MERGE INTO INDEX_HISTORY_DATA A
+    		USING DUAL
+			ON (A.INDEX_NAME = #{INDEX_NAME} AND TO_CHAR(DATE,'YYYYMMDD') = TO_CHAR(#{DATE},'YYYYMMDD'));
+		  WHEN NOT MATCHED THEN
+			INSERT INDEX_HISTORY_DATA(
+				ID,
+				INDEX_NAME,
+				DATE,
+				OPEN,
+				CLOSE,
+				LOW,
+				HIGH,
+				VOLUME,
+				CREATE_DATE,
+				UPDATE_DATE
+				)
+			VALUES(
+				INDEX_HISTORY_DATA_ID.NEXTVAL,
+				#{INDEX_NAME},
+				#{DATE},
+				#{OPEN},
+				#{CLOSE},
+				#{LOW},
+				#{HIGH},
+				#{VOLUME},
+				SYSDATE,
+				SYSDATE
 			)
-		VALUES(
-			item_id.NEXTVAL,
-			#{INDEX_NAME}
-			#{DATE},
-			#{OPEN},
-			#{CLOSE},
-			#{LOW},
-			#{HIGH},
-			#{VOLUME},
-			SYSDATE,
-			SYSDATE
-		)
 	</insert>
 	
 	
