@@ -6,7 +6,7 @@ import com.example.demo.vo.StockWrapper;
 import com.example.demo.vo.TradingDto;
 @Mapper
 public interface TradeDao {
-	public int insertTrading(StockWrapper stockWrapper);
+	//public int insertTrading(StockWrapper stockWrapper);
 	public int insertTrading(TradingDto tradingDto);
 	public int updateTradingStatus(TradingDto tradingDto);
 }

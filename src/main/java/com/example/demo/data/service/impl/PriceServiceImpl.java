@@ -51,7 +51,6 @@ public class PriceServiceImpl implements PriceService {
 		short indexQuant = (short) index.getHeaderValue(3);
 		System.out.println("indexCode" + indexCode );
 		System.out.println("indexQuant" + indexQuant );
-		historyDataDto.setINDEX_NAME(indexCode);
 		for(int i=0;i<indexQuant;i++) {
 			
 			int date = (int) index.getDataValue(0, i);
