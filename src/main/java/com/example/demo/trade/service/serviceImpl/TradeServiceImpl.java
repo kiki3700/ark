@@ -1,10 +1,15 @@
 package com.example.demo.trade.service.serviceImpl;
 
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.trade.dao.TradeDao;
 import com.example.demo.trade.eventHandler.TradeEventHandler;
 import com.example.demo.trade.service.TradeService;
 import com.example.demo.vo.StockWrapper;
+import com.example.demo.vo.TradingDto;
 
 import com4j.EventCookie;
 import dashin.cptrade.ClassFactory;
@@ -15,8 +20,8 @@ public class TradeServiceImpl implements TradeService {
 	static ICpTdUtil tdUtil = ClassFactory.createCpTdUtil();
 	static String account;
 	
-	
-	
+	@Autowired
+	TradeDao tradeDao;
 	
 	//인터셉터로 가야될꺼 같아여~~
 	@Override
@@ -32,12 +37,22 @@ public class TradeServiceImpl implements TradeService {
 		tdDib.setInputValue(0, position); //주문 종류코드( 매수 "1" 매도 "2")
 		tdDib.setInputValue(1, account); //계좌번호
 		tdDib.setInputValue(2, "10");		//종목 코드 
-		tdDib.setInputValue(3, stock.getAmount());		//주문수량
-		tdDib.setInputValue(4, stock.getTargetPrice());		//목표가격
+		tdDib.setInputValue(3, stock.getItemId());		//종목 코드 
+		tdDib.setInputValue(4, stock.getAmount());		//주문수량
+		tdDib.setInputValue(5, stock.getTargetPrice());		//목표가격
 		tdDib.setInputValue(8, "01");		//주문 호가 구분코드 "01" 지정가
 		tdDib.blockRequest();
 		
 		
+		TradingDto tradingDto = new TradingDto();
+		tradingDto.setItemId(stock.getItemId());
+		tradingDto.setPortfolioTargetId(stock.getPortfolioTargetId());
+		tradingDto.setPrice(stock.getTargetPrice());
+		tradingDto.setAmount(stock.getAmount());
+		tradingDto.setPosition(position);
+		tradingDto.setOfferDate(new Date());
+		tradingDto.setComplete(null);
+		tradeDao.insertTrading(tradingDto);
 	}
 	
 	//필요 없을 꺼 같기도 하다.
@@ -67,7 +82,5 @@ public class TradeServiceImpl implements TradeService {
 		//주문에 대한 체결 내역은 CpDib에 있는 CpConclusion object 를 통하여 얻을 수 있습니다
 		dashin.cpdib.IDib  dib = dashin.cpdib.ClassFactory.createCpConclusion();
 		EventCookie cookie = dib.advise(dashin.cpdib.events._IDibEvents.class, new TradeEventHandler(dib, "conclude"));
-		cookie.close();
-		
 	}
 }

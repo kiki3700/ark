@@ -13,12 +13,11 @@ import com4j.EventCookie;
 @SpringBootTest
 public class EventHandlerTest {
 	@Test
-	public void ttest() {
+	public void test() {
 		dashin.cpdib.IDib  dib = dashin.cpdib.ClassFactory.createStockCur();
 		EventCookie cookie = dib.advise(dashin.cpdib.events._IDibEvents.class, new TradeEventHandler(dib, "conclude"));
 		dib.setInputValue(0, "A005930");
 		dib.subscribe();
-		cookie.close();
 		System.out.println("end");
 	}
 }

@@ -19,15 +19,34 @@
 			SELECT PORTFOLIO_TARGET_LIST_ID FROM PORTFOLIO_TARGET_LIST WHERE portfolioId = #{portfolioId} AND ticker = #{ticker} 
 		)
 	</insert>
-	<update id = 'udateTradingStatus' parameterType='com.example.demo.vo.StockWrapper'>
+	<insert id = 'insertTrading' parameterType ='com.example.demo.vo.TradingDto'>
+		INSERT INTO trading(
+			ID,
+			PRICE,
+			POSITION
+			AMOUNT,
+			OFFER_DATE,
+			PORTFOLIO_TARGET_LIST_ID,
+		)
+		VALUES(
+			TO_CHAR(SYSDATE, 'YYYYMMDD')||#{ticker},
+			#{price},
+			#{position}, //0 ,1 로 나옴 
+			#{amount},
+			#{date}
+			#{tradingTargetId} 
+		)
+	</insert>
+	<update id = 'updateTradingStatus' parameterType='com.example.demo.vo.TradingDto'>
 		UPDATE trading
 		SET(
-			COMPLETE = #{tradingComplete}
+			COMPLETE = #{complete}
 		)
 		WHERE(
-			PORTFOLIO = #{portfolioId}
-			
+			POSITION = #{position} AND
+			TICKER = #{itemId} AND
+			AMOUNT = #{amount} AND
+			PRICE = #{price}
 		)
-		
 	</update>
 </mapper>

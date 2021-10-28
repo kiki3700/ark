@@ -20,11 +20,12 @@ public class StockWrapper {
 	private String name;
 	private String market;
 
-	private boolean position; // 판매
 	private String portfolioId;
+	private String portfolioTargetId;
+	private boolean position; // 판매
 	private String industry;
-	private double targetPrice;
-	private int amount;
+	private long targetPrice;
+	private long amount;
 	
 	private Float oneYearMean;
 	private Float sixMonthsMean;
@@ -73,18 +74,25 @@ public class StockWrapper {
 		this.market = market;
 	}
 	
+	public String getPortfolioId() {
+		return portfolioId;
+	}
+	public void setPortfolioId(String portfolioId) {
+		this.portfolioId = portfolioId;
+	}
+	public String getPortfolioTargetId() {
+		return portfolioTargetId;
+	}
+
+	public void setPortfolioTargetId(String portfolioTargetId) {
+		this.portfolioTargetId = portfolioTargetId;
+	}
 	
 	public boolean isPosition() {
 		return position;
 	}
 	public void setPosition(boolean position) {
 		this.position = position;
-	}
-	public String getPortfolioId() {
-		return portfolioId;
-	}
-	public void setPortfolioId(String portfolioId) {
-		this.portfolioId = portfolioId;
 	}
 
 	public String getIndustry() {
@@ -94,16 +102,16 @@ public class StockWrapper {
 		this.industry = industry;
 	}	
 
-	public double getTargetPrice() {
+	public long getTargetPrice() {
 		return targetPrice;
 	}
-	public void setTargetPrice(double targetPrice) {
+	public void setTargetPrice(long targetPrice) {
 		this.targetPrice = targetPrice;
 	}
-	public int getAmount() {
+	public long getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(long amount) {
 		this.amount = amount;
 	}
 
@@ -210,6 +218,16 @@ public class StockWrapper {
 		this.historydataDtoList = historydataDtoList;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "StockWrapper [itemId=" + itemId + ", name=" + name + ", market=" + market + ", portfolioId="
+				+ portfolioId + ", portfolioTargetId=" + portfolioTargetId + ", position=" + position + ", industry="
+				+ industry + ", targetPrice=" + targetPrice + ", amount=" + amount + ", oneYearMean=" + oneYearMean
+				+ ", sixMonthsMean=" + sixMonthsMean + ", oneMonthMean=" + oneMonthMean + ", oneYearVariance="
+				+ oneYearVariance + ", sixMonthsVariance=" + sixMonthsVariance + ", oneMonthVariance="
+				+ oneMonthVariance + ", historydataDtoList=" + historydataDtoList + ", returnSeries=" + returnSeries
+				+ "]";
+	}
+
 	
 }
