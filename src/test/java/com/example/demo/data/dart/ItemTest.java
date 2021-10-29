@@ -1,17 +1,15 @@
 package com.example.demo.data.dart;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
-import org.assertj.core.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.example.demo.data.service.impl.ItemServiceImpl;
 import com.example.demo.vo.ItemDto;
@@ -20,6 +18,7 @@ import dashin.cputil.CPE_MARKET_KIND;
 import dashin.cputil.ClassFactory;
 import dashin.cputil.ICpCodeMgr;
 
+@WebAppConfiguration
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ItemTest {

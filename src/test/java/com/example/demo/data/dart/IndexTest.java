@@ -1,22 +1,19 @@
 package com.example.demo.data.dart;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.constants.CommonCodeConst;
-import com.example.demo.data.dao.PriceDao;
-import com.example.demo.data.service.impl.PriceServiceImpl;
-import com.example.demo.vo.IndexHistoryDataDto;
+import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.service.IndexService;
 
 import dashin.cputil.ClassFactory;
 import dashin.cputil.ICpUsCode;
@@ -25,11 +22,12 @@ import dashin.cputil.ICpUsCode;
 @SpringBootTest
 public class IndexTest {
 
-	@Autowired
-	PriceServiceImpl priceService;
+	@Autowired	
+	@Qualifier("indexServiceImpl")
+	IndexService priceService;
 	
 	@Autowired
-	PriceDao priceDao;
+	IndexDao priceDao;
 	
 	Map<Object, Object> inParam;
 	

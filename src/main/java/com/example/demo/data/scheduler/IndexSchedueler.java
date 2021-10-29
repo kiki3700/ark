@@ -12,15 +12,15 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.constants.CommonCodeConst;
-import com.example.demo.data.dao.PriceDao;
-import com.example.demo.data.service.PriceService;
+import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.service.IndexService;
 
 @Component
 public class IndexSchedueler {
 	@Autowired
-	PriceService priceService;
+	IndexService priceService;
 	@Autowired
-	PriceDao priceDao;
+	IndexDao priceDao;
 	
 	
 	//대신증권 인덱스 가져오기

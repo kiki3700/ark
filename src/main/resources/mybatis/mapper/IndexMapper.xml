@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.data.dao.PriceDao">
+<mapper namespace="com.example.demo.data.dao.IndexDao">
 	<select id ='getPrice' parameterType = "HashMap" resultType = "com.example.demo.vo.PriceVo">
 		SELECT
 			name,
@@ -8,12 +8,12 @@
 			close,
 			high,
 			low,
-			TO_CHAR(time, 'YYYYMMDD') as time
+			index_date
 		FROM example
 		<if test = "name!=NULL and name!=''">
 			WHERE name = #{name}
 		</if>
-		ORDER BY time
+		ORDER BY index_date
 	</select>
 	<insert id ='insertPrice' parameterType='com.example.demo.vo.PriceVo'>
 		INSERT INTO example(
@@ -22,14 +22,14 @@
 			close,
 			high,
 			low,
-			time)
+			index_date)
 		VALUES(
 			#{name},
 			#{open},
 			#{close},
 			#{high},
 			#{low},
-			TO_DATE(#{time},'YYYYMMDD')
+			#{indexDate}
 		)
 	</insert>
 	<!-- UsCode 원하는 지수 공통코드에서 가져오기 -->
@@ -57,7 +57,14 @@
 			WHERE id IN('ICP00002','ICP00003' ,'ICP00004')
 			
 	</select>
-	
+	<select id ='selectKorCodes' parameterType = "HashMap" resultType = "HashMap">
+		SELECT
+			CODE_VALUE,
+			CODE_NAME
+		FROM COMMON_CODE_DET
+			WHERE id = 'ICP00005'
+			
+	</select>
 	<insert id ='insertIndex' parameterType = "IndexHistoryDataDto">
 		INSERT INTO INDEX_HISTORY_DATA(
 			ID,

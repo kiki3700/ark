@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.example.demo.data.dao.PriceDao;
+import com.example.demo.data.dao.IndexDao;
 import com.example.demo.data.service.BithumbService;
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.IndexHistoryDataDto;
@@ -35,7 +35,7 @@ public class BithumbServiceImpl implements BithumbService{
 	private WebClient webClient;
 	
 	@Autowired
-	private PriceDao priceDao;
+	private IndexDao priceDao;
 
 	@Override
 	public List<IndexHistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams) {

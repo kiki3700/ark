@@ -7,7 +7,7 @@ import java.util.Date;
 public class IndexHistoryDataDto {
 	private int id;
 	private String INDEX_NAME;
-	private int indexDate;
+	private Date indexDate;
 	private float open;
 	private float close;
 	private float low;
@@ -26,17 +26,13 @@ public class IndexHistoryDataDto {
 	public void setINDEX_NAME(String iNDEX_NAME) {
 		INDEX_NAME = iNDEX_NAME;
 	}
-	public int getIndexDate() {
+	public Date getIndexDate() {
 		return indexDate;
 	}
-	public void setIndexDate(int indexDate) {
+	public void setIndexDate(Date indexDate) {
 		this.indexDate = indexDate;
 	}
-	public void setIndexDate(Date indexDate) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		String formattedDate = format.format(indexDate);
-		this.indexDate =  Integer.parseInt(formattedDate);
-	}
+
 	public float getOpen() {
 		return open;
 	}
