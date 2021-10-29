@@ -16,8 +16,9 @@ import com.example.demo.vo.ItemDto;
 @Component
 public class FormatConverter {
 	static public Date stringToDate(String dateString) throws ParseException {
-	SimpleDateFormat format = new SimpleDateFormat("yyyMMdd");
+	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	Date date = format.parse(dateString);
+	
 	return date;
 	}
 	static public Date longToDate(long date) {
