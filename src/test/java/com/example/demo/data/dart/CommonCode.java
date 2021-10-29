@@ -69,12 +69,12 @@ public class CommonCode {
 	   
 	}
 
-	@Test
-	public void testMethod() throws IOException {
-		HashMap<String, String> map = ser.getCorpCodeMap();
-		
-		for(String key : map.keySet()) {
-			System.out.println("key : "+key+" , value : "+map.get(key));
-		}
-	}
+//	@Test
+//	public void testMethod() throws IOException {
+//		HashMap<String, String> map = ser.getCorpCodeMap();
+//		
+//		for(String key : map.keySet()) {
+//			System.out.println("key : "+key+" , value : "+map.get(key));
+//		}
+//	}
 }

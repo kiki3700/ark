@@ -4,16 +4,14 @@
 	<update id = 'insertItem' parameterType = 'ItemDto'>
 		MERGE INTO ITEM
 		USING DUAL
-			ON(id = #{ticker})
+			ON(id = #{id})
 		WHEN MATCHED THEN
 			UPDATE SET
-				NAME = #{NAME}
+				NAME = #{name}
 				,IS_ACTIVE = #{isActive}
 				,MARKET = #{market}
 				,INDUSTRY = #{industry}
 				,CORP_SIZE = #{corpSize}
-				,LISTED_SHARE = #{listedShare}
-				,MARKET_CAP = #{marketCap}
 		WHEN NOT MATCHED THEN
 			INSERT(
 				ID,
@@ -24,9 +22,7 @@
 				CATEGORY,
 				INDUSTRY,
 				CORP_SIZE,
-				LISTING_DATE,
-				LISTED_SHARE,
-				MARKET_CAP
+				LISTING_DATE
 			)
 			VALUES(
 				#{id},
@@ -37,10 +33,16 @@
 				#{category},
 				#{industry},
 				#{corpSize},
-				#{listingDate},
-				#{listedShare},
-				#{marketCap}
+				#{listingDate}
 				)
+	</update>
+	
+	<update id ='updateMarketCap' parameterType = 'ItemDto'>
+		UPDATE ITEM 
+		SET
+			LISTED_SHARE = #{listedShare},
+			MARKET_CAP = #{marketCap}
+		WHEN ID = #{id}
 	</update>
 	
 	<update id= 'updateCorpCode' parameterType = 'HashMap'>

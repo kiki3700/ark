@@ -33,32 +33,30 @@ public class SetupController {
 	@Autowired
 	DartServiceImpl dartService;
 	
-	@RequestMapping("fillDb")
-	public void fillDB() throws IOException, ParseException {
-		logger.debug("=================================");
-		logger.debug("setUp start");
-		logger.debug("=================================");
-		//item table 채우기
-		logger.debug("start to insert itemTable");
-		itemService.insertKoreaItem();
-		
-		//item table corpNumber 컬럼 채우기
-		List<ItemDto> itemDtoList = itemService.getItemList();
-		HashMap<String, String> corpMap = dartService.getCorpCodeMap();
-		int len = itemDtoList.size();
-		for(int i = 0 ; i< len; i++) {
-			String ticker = itemDtoList.get(i).getId();
-			String corpCode = corpMap.get(ticker);
-			HashMap<String, String> inParams= new HashMap<>();
-			inParams.put("ticker", ticker);
-			inParams.put("corpCode", corpCode);
-			itemService.updateCorpCode(inParams);
-		}
-		//history data 삽입
-		for(ItemDto item : itemDtoList) {
-			itemService.insertHistoryData(item);
-		}
-		
-		
-	}
+//	@RequestMapping("fillDb")
+//	public void fillDB() throws IOException, ParseException {
+//		logger.debug("=================================");
+//		logger.debug("setUp start");
+//		logger.debug("=================================");
+//		//item table 채우기
+//		logger.debug("start to insert itemTable");
+////		itemService.insertKoreaItem();
+//		
+//		//item table corpNumber 컬럼 채우기
+//		List<ItemDto> itemDtoList = itemService.getItemList();
+//		HashMap<String, String> corpMap = dartService.getCorpCodeMap();
+//		int len = itemDtoList.size();
+//		for(int i = 0 ; i< len; i++) {
+//			String ticker = itemDtoList.get(i).getId();
+//			String corpCode = corpMap.get(ticker);
+//			HashMap<String, String> inParams= new HashMap<>();
+//			inParams.put("ticker", ticker);
+//			inParams.put("corpCode", corpCode);
+//			itemService.updateCorpCode(inParams);
+//		}
+//		//history data 삽입
+//		for(ItemDto item : itemDtoList) {
+//			itemService.insertHistoryData(item);
+//		}
+//	}
 }

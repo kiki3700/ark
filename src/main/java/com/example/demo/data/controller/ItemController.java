@@ -23,6 +23,8 @@ import dashin.cputil.CPE_MARKET_KIND;
 import dashin.cputil.ClassFactory;
 import dashin.cputil.ICpCodeMgr;
 
+//거의 폐기
+
 @CrossOrigin
 @RestController
 public class ItemController {
@@ -47,26 +49,26 @@ public class ItemController {
 			//dto 생성
 			HashMap<String, Object> inParam = new HashMap<>();
 			inParam.put("ticker",(String) kospiTickers[i]);
-			ItemDto itemDto = itemService.getItemDto(inParam);
-			itemService.insertKoreaItem(itemDto);
+//			ItemDto itemDto = itemService.getItemDto(inParam);
+//			itemService.insertKoreaItem(itemDto);
 		}
 		for(int i = 0; i < kosdaqTickers.length; i++) {
 			//dto 생성
 			HashMap<String, Object> inParam = new HashMap<>();
 			inParam.put("ticker",(String) kosdaqTickers[i]);
-			ItemDto itemDto = itemService.getItemDto(inParam);
-			itemService.insertKoreaItem(itemDto);
+//			ItemDto itemDto = itemService.getItemDto(inParam);
+//			itemService.insertKoreaItem(itemDto);
 		}		
 	}
 	@RequestMapping(value ="/updateCorpCode")
 	public void updateCorpCode() {		
 		HashMap<String, String> corpMap = new HashMap<>();
-		try {
-			corpMap = dartService.getCorpCodeMap();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+////			corpMap = dartService.getCorpCodeMap();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		List<ItemDto> itemList = itemService.getItemList();
 		for(int i = 0 ; i< itemList.size();i++) {
 			HashMap<String, String> tickerMap = new HashMap<>();
@@ -74,7 +76,7 @@ public class ItemController {
 			String corpCode = corpMap.get(ticker);
 			tickerMap.put("ticker", ticker);
 			tickerMap.put("corpCode", corpCode);
-			itemService.updateCorpCode(tickerMap);
+//			itemService.updateCorpCode(tickerMap);
 		}
 	}
 }
