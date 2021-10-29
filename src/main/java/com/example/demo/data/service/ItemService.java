@@ -9,10 +9,8 @@ import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;
 
 public interface ItemService {
-	int insertKoreaItem(ItemDto item);
-	ItemDto getItemDto(Map<String, Object> inParam);
-	List<ItemDto> getItemList();
-	int updateCorpCode(HashMap<String, Object> map);
-	int insertKoreaItem();
+	int insertItem();
+	void updateMarketCap();
 	int insertHistoryData(ItemDto itemDto) throws ParseException;
+	List<ItemDto> getItemList();
 }

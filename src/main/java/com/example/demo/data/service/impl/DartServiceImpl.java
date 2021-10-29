@@ -5,16 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +19,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.w3c.dom.Document;
 
+import com.example.demo.data.dao.ItemDao;
 import com.example.demo.data.service.DartService;
 import com.example.demo.util.DartUtil;
 import com.example.demo.util.FormatConverter;
@@ -49,7 +45,8 @@ public class DartServiceImpl implements DartService{
 	@Autowired
 	private DartUtil dartUtil;
 	
-	
+	@Autowired
+	private ItemDao itemDao;
 	
 	@Autowired
 	private FormatConverter formatConverter;
@@ -133,8 +130,7 @@ public class DartServiceImpl implements DartService{
 		
 	}
 	
-	@Override
-	public HashMap<String,String> getCorpCodeMap() throws IOException{
+	public void updaeCopCode() throws IOException{
 		String targetUrl = dartUrl+"/api/corpCode.xml?crtfc_key="+crtfcKey;
 	    		
 		byte[] arr =webClient.mutate()
@@ -145,8 +141,6 @@ public class DartServiceImpl implements DartService{
 	    		.retrieve()
 	    		.bodyToMono(byte[].class)
 	    		.block();
-	      		
-//	    		restTemplate.getForObject(targetUrl, byte[].class);
 	    		
 	    InputStream inputStream = new ByteArrayInputStream(arr);
 	    ZipInputStream zip = new ZipInputStream(inputStream);
@@ -159,7 +153,6 @@ public class DartServiceImpl implements DartService{
 	    System.out.println(sc.hasNext());
 	    while(sc.hasNext()){
 	    	String str = sc.next();
-//	    	System.out.println(str);
 	    	if(str.equals("<list>")) {
 	    		a= new String();
 	    		b= new String();
@@ -173,6 +166,6 @@ public class DartServiceImpl implements DartService{
 	    		map.put(b, a);
 	    	}
 	    }
-		return map;
+		itemDao.updateCopCode(map);
 	}
 }

@@ -31,29 +31,41 @@ public class ItemTest {
 	public void Initialize() {
 		ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
 	}
+//	@Test
+//	public void makeDTo() {
+//		ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
+//		
+//		Object[] kospiTickers= (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSPI);
+//		Object[] kosdaqTickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
+//		
+//		for(int i = 0; i < kospiTickers.length; i++) {
+//			//dto 생성
+//			HashMap<String, Object> inParam = new HashMap<>();
+//			inParam.put("ticker",(String) kospiTickers[i]);
+//			ItemDto itemDto = itemService.getItemDto(inParam);
+//			if(itemDto.getName().contains("삼성")) {
+//				System.out.println(itemDto);
+//			}
+//		}
+//		for(int i = 0; i < kosdaqTickers.length; i++) {
+//			//dto 생성
+//			HashMap<String, Object> inParam = new HashMap<>();
+//			inParam.put("ticker",(String) kosdaqTickers[i]);
+//			ItemDto itemDto = itemService.getItemDto(inParam);
+////			System.out.println(itemDto);
+//		}
+//	}
 	@Test
-	public void makeDTo() {
-		ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
-		
-		Object[] kospiTickers= (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSPI);
-		Object[] kosdaqTickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
-		
-		for(int i = 0; i < kospiTickers.length; i++) {
-			//dto 생성
-			HashMap<String, Object> inParam = new HashMap<>();
-			inParam.put("ticker",(String) kospiTickers[i]);
-			ItemDto itemDto = itemService.getItemDto(inParam);
-			if(itemDto.getName().contains("삼성")) {
-				System.out.println(itemDto);
-			}
-		}
-		for(int i = 0; i < kosdaqTickers.length; i++) {
-			//dto 생성
-			HashMap<String, Object> inParam = new HashMap<>();
-			inParam.put("ticker",(String) kosdaqTickers[i]);
-			ItemDto itemDto = itemService.getItemDto(inParam);
-//			System.out.println(itemDto);
-		}
+	public void insTest() {
+		itemService.insertItem();
 	}
+	@Test
+	public void updateCapTest() {
+		itemService.updateMarketCap();
+	}
+//	@Test
+//	public void updateCorpNum() {
+//		itemService.updateCorpCode();
+//	}
 	
 }

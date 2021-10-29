@@ -29,22 +29,18 @@ public class BithumbServiceImpl implements BithumbService{
 	String url;
 	
 	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Autowired
 	private WebClient webClient;
 	
 	@Autowired
 	private IndexDao priceDao;
 
 	@Override
-	public List<IndexHistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams) {
-//		String targetUrl = url+"/public/candlestick/BTC_KRW/24h";
-//		System.out.println(targetUrl);
-//		Map<String, String> queryMap = new HashMap<>();
-//		queryMap.put("nm",(String) inParams.get("name"));
-		String name = (String) inParams.get("name");
-		//HashMap<String, Object> result = restTemplate.getForObject(targetUrl, HashMap.class, queryMap);
+	public void insCrytoCurrencyHistory(Map<String, Object>inParams) {
+		//비트코인 : BTC 이더리움  : ETH
+		
+
+		String name = (String) inParams.get("CDOE_VALUE");
+		System.out.print(name);
 		HashMap<String, Object> result = webClient.mutate()
 				.baseUrl(url)
 				.build()
@@ -57,27 +53,22 @@ public class BithumbServiceImpl implements BithumbService{
 		List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
 		if(msg.equals("0000")) {
 			List<ArrayList> datas = (List<ArrayList>) result.get("data");
-			
 			int len = datas.size();
-			int quant = (int) inParams.getOrDefault("quant", len);
+			int quant = 3;
 			for(int i = len-quant; i < len; i++) {
-				IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
+				IndexHistoryDataDto indexHistoryDataDto = new IndexHistoryDataDto();
 				ArrayList data = datas.get(i);
-				historyDataDto.setINDEX_NAME((String) inParams.get("name"));
-				historyDataDto.setIndexDate(new Date((long) data.get(0)));
-				historyDataDto.setOpen(Integer.parseInt((String) data.get(1)));
-				historyDataDto.setClose(Integer.parseInt((String) data.get(2)));
-				historyDataDto.setHigh(Integer.parseInt((String) data.get(3)));
-				historyDataDto.setLow(Integer.parseInt((String) data.get(4)));
-				historyDataDto.setVolume(new BigDecimal((String) data.get(5)));
-				resultList.add(historyDataDto);
+				indexHistoryDataDto.setINDEX_NAME(name);
+				indexHistoryDataDto.setIndexDate(new Date((long) data.get(0)));
+				indexHistoryDataDto.setOpen(Integer.parseInt((String) data.get(1)));
+				indexHistoryDataDto.setClose(Integer.parseInt((String) data.get(2)));
+				indexHistoryDataDto.setHigh(Integer.parseInt((String) data.get(3)));
+				indexHistoryDataDto.setLow(Integer.parseInt((String) data.get(4)));
+				indexHistoryDataDto.setVolume(new BigDecimal((String) data.get(5)));
+//				System.out.println(indexHistoryDataDto);
+				priceDao.insertIndex(indexHistoryDataDto);	
 			}
 		}
-		return resultList;
-	}
-	public void insertCryptoCurrencyHistory(List<IndexHistoryDataDto> DtoList) {
-		 for(IndexHistoryDataDto dto : DtoList) {
-			 priceDao.insertIndex(dto);
-		 }
+		
 	}
 }

@@ -13,5 +13,5 @@ public interface DartService {
 
 	public int insertBalanceSheeat(BalanceSheetDto balaceSheetDto);
 
-	HashMap<String, String> getCorpCodeMap() throws IOException;
+	void updaeCopCode() throws IOException;
 }

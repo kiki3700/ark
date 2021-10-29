@@ -29,7 +29,7 @@ public class Bitthumb {
 	@Before
 	public void init() {
 		
-		map.put("name", "BTC");
+		map.put("CDOE_VALUE", "ETH");
 	}
 	
 	
@@ -43,9 +43,6 @@ public class Bitthumb {
 //				.baseUrl("https://api.bithumb.com/public/candlestick/BTC_KRW/24h")
 //				.build().get().retrieve().bodyToFlux(HashMap.class).blockLast();
 //		System.out.println(last);
-		List<IndexHistoryDataDto> list = ser.getCrytoCurrencyHistory(map);
-		for(IndexHistoryDataDto bit : list) {
-			System.out.println(bit);
-		}
+		ser.insCrytoCurrencyHistory(map);	
 	}
 }
