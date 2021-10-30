@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,7 @@ import com.google.gson.JsonObject;
 
 import reactor.core.publisher.Mono;
 
+@Primary
 @Service
 public class BokServiceImpl implements BokService {
 	
@@ -91,14 +93,49 @@ public class BokServiceImpl implements BokService {
 		JSONObject bokJson = (JSONObject) parser.parse(resJson) ;
 		JSONObject statisticSearch = (JSONObject) bokJson.get("StatisticSearch");
 		JSONArray row = (JSONArray) statisticSearch.get("row");
-		System.out.println();
+		//historydatadto 변수
+		String INDEX_NAME = "";
+		String dateL = "";
+		Date date = new Date();
+		float close;
+		System.out.println(row);
+		
 		// row안의 결과값들 개별 인서트 1년단위
 		for(int i=0;i<row.size();i++) {
 			JSONObject rowData = (JSONObject) row.get(i);
-			String INDEX_NAME = (String) rowData.get("ITEM_NAME1");
-			String dateL = (String) rowData.get("TIME") + "01";
-			Date date = FormatConverter.stringToDate(dateL);
-			float close = Float.parseFloat((String)rowData.get("DATA_VALUE"));
+			
+			switch (reqCode) {
+			case "/098Y001" :
+				INDEX_NAME = "BOK BASE RATE";
+				break;
+			case "/013Y202":
+				INDEX_NAME = "PPI";
+				break;
+			case "/021Y125":
+				INDEX_NAME = "CPI";
+				break;
+			case "/111Y002":
+				INDEX_NAME = "GDP";
+				break;
+			default :
+				INDEX_NAME = (String) rowData.get("ITEM_NAME1");
+				break;
+			}
+			//  date타입을 위한 포맷팅
+			switch (ymd) {
+			case "/YY" :
+				dateL = (String) rowData.get("TIME") + "1231";
+				break;
+			case "/MM" :
+				dateL = (String) rowData.get("TIME") + "01";
+				break;
+			default :
+				dateL = (String) rowData.get("TIME");
+				break;
+			}
+			
+			date = FormatConverter.stringToDate(dateL);
+			close = Float.parseFloat((String)rowData.get("DATA_VALUE"));
 			historyDataDto.setINDEX_NAME(INDEX_NAME);
 			historyDataDto.setIndexDate(date);
 			historyDataDto.setClose(close);

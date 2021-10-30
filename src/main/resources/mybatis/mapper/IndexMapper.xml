@@ -108,7 +108,7 @@
 				UPDATE_DATE
 				)
 			VALUES(
-				INDEX_HISTORY_DATA_ID.NEXTVAL,
+				TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || LPAD(INDEX_HISTORY_DATA_ID.NEXTVAL,6,'0'),
 				#{INDEX_NAME,jdbcType=VARCHAR},
 				#{indexDate,jdbcType=DATE},
 				#{open,jdbcType=FLOAT},

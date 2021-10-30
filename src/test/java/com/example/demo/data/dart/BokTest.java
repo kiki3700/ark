@@ -29,12 +29,12 @@ public class BokTest {
 		paramMap.put("REQUEST_TYPE", "/" + "json");
 		paramMap.put("REQUEST_LANG", "/" + "kr");
 		paramMap.put("START_NUM", "/" + "1");
-		paramMap.put("END_NUM", "/" + "12");
-		paramMap.put("REQUEST_CODE", "/" + BokConst.TB_BOK_BASE_RATE);
-		paramMap.put("YMD", "/" + "MM");
-		paramMap.put("START_DATE", "/" + "202001");
-		paramMap.put("END_DATE", "/" + "202012");
-		paramMap.put("ATCL_CODE1", "/" +BokConst.BOK_BASE_RATE);
+		paramMap.put("END_NUM", "/" + "20");
+		paramMap.put("REQUEST_CODE", "/" + BokConst.TB_GDP_INDEX);
+		paramMap.put("YMD", "/" + "YY");
+		paramMap.put("START_DATE", "/" + "2001");
+		paramMap.put("END_DATE", "/" + "2020");
+		paramMap.put("ATCL_CODE1", "/" +BokConst.GDP);
 		paramMap.put("ATCL_CODE2", "");
 		paramMap.put("ATCL_CODE3", "");
 		

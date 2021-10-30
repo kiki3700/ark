@@ -43,7 +43,7 @@ public class IndexServiceImpl implements IndexService {
 		IDib index = ClassFactory.createCpSvr8300();
 		index.setInputValue(0, inParam.get("CODE_VALUE"));
 		index.setInputValue(1, (int) 'D'); 
-		index.setInputValue(3, (short)3);
+		index.setInputValue(3, inParam.get("QUANT"));
 		
 		index.blockRequest();
 		
@@ -54,8 +54,8 @@ public class IndexServiceImpl implements IndexService {
 		System.out.println("indexCode" + indexCode );
 		System.out.println("indexQuant" + indexQuant );
 		for(int i=0;i<indexQuant;i++) {
-			
-			long dateL = (long) index.getDataValue(0, i);
+			Number n = (Number) index.getDataValue(0, i);
+			long dateL = n.longValue();
 			Date date = FormatConverter.longToDate(dateL);
 			float open = (float) index.getDataValue(1, i);
 			float high = (float) index.getDataValue(2, i);
