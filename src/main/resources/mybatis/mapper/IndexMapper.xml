@@ -65,6 +65,8 @@
 			WHERE id = 'ICP00005'
 			
 	</select>
+	
+	
 	<insert id ='insertIndex' parameterType = "IndexHistoryDataDto">
 		INSERT INTO INDEX_HISTORY_DATA(
 			ID,

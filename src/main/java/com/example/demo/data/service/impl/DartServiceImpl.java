@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.example.demo.data.dao.DartDao;
 import com.example.demo.data.dao.ItemDao;
 import com.example.demo.data.service.DartService;
 import com.example.demo.util.DartUtil;
@@ -49,10 +50,13 @@ public class DartServiceImpl implements DartService{
 	private ItemDao itemDao;
 	
 	@Autowired
+	private DartDao dartDao;
+	
+	@Autowired
 	private FormatConverter formatConverter;
 	
 	@Override
-	public BalanceSheetDto getBalaceSheet(Map inParam) throws ParseException {
+	public void insBalaceSheet(Map<String, Object> inParam) throws ParseException {
 //		String targetUrl = dartUrl+"/api/fnlttSinglAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}";
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("crtfcKey", crtfcKey);
@@ -99,10 +103,8 @@ public class DartServiceImpl implements DartService{
 			double totalNonCurrentAsset=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("비유동자산", bs));	//장기자산(설비, 부동산 등)
 			double shortTermDebt=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("유동부채", bs));			//단기 부채
 			double longTermDebt=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("비유동부채", bs));			//장기 부채
-//			double OCF=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("영업현금흐름", bs));					//영업현금흐름
-//			double ICF=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("투자현금흐름", bs));					//투자현금흐름
-//			double FCF=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("재무현금흐름", bs));					//재무현금흐름
 			
+			balanceSheetDto.setItemId((String) inParam.get("itemId")); 
 			balanceSheetDto.setAsset(asset);
 			balanceSheetDto.setCurrentAsset(currentAsset);
 			balanceSheetDto.setDebt(debt);
@@ -110,25 +112,17 @@ public class DartServiceImpl implements DartService{
 			balanceSheetDto.setFsNm(fsNm);
 			balanceSheetDto.setLongTermDebt(longTermDebt);
 			balanceSheetDto.setNetIncome(netIncome);
-			balanceSheetDto.setOperatinIncome(operatingIncome);
+			balanceSheetDto.setOperatingIncome(operatingIncome);
 			balanceSheetDto.setReportCode(reportCode);
 			balanceSheetDto.setReportingYear(reportingYear);
 			balanceSheetDto.setRevenue(revenue);
 			balanceSheetDto.setShortTermDebt(shortTermDebt);
 			balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
 			balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
-//			balanceSheetDto.setOCF(OCF);
-//			balanceSheetDto.setICF(ICF);
-//			balanceSheetDto.setItemId((int) inParam.get("itemId"));
-//			balanceSheetDto.setFCF(FCF);
 		}
-		return balanceSheetDto;
+		dartDao.insertBalanceSheet(balanceSheetDto);
 	}
-	@Override
-	public int insertBalanceSheeat(BalanceSheetDto balaceSheetDto) {
-		return 1;
-		
-	}
+	
 	
 	public void updaeCopCode() throws IOException{
 		String targetUrl = dartUrl+"/api/corpCode.xml?crtfc_key="+crtfcKey;
