@@ -4,10 +4,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -17,8 +21,11 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.constants.BokConst;
+import com.example.demo.data.dao.IndexDao;
 import com.example.demo.data.service.BokService;
+import com.example.demo.util.FormatConverter;
 import com.example.demo.util.MonoWebclient;
+import com.example.demo.vo.IndexHistoryDataDto;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -29,6 +36,9 @@ public class BokServiceImpl implements BokService {
 	
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	IndexDao indexDao;
 	
 	@Value("${bokkey}")
 	String bok_key;
@@ -41,7 +51,10 @@ public class BokServiceImpl implements BokService {
 	@Override
 	public HashMap<Object, Object> getBokIndex(Map<String, String> inParam) throws Exception {
 		
-		HashMap<Object, Object> resultMap = new HashMap<Object,Object>();
+		IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
+		
+		String resJson = "";
+		
 		// 		PARAMETER																												MANDATORY
 		String serviceName = ""; //서비스명																	   							 Y
 		String reqType = "";	// 요청타입 (xml, json) 																					 Y
@@ -66,16 +79,32 @@ public class BokServiceImpl implements BokService {
 		ymd =  inParam.get("YMD"); 
 		startDate=  inParam.get("START_DATE");
 		endDate =  inParam.get("END_DATE");
-		atcl_Code1 =  inParam.get("ATCL_CODE2");
+		atcl_Code1 =  inParam.get("ATCL_CODE1");
+		atcl_Code2 =  inParam.get("ATCL_CODE2");
+		atcl_Code3 =  inParam.get("ATCL_CODE3");
 		
-		String surl =  serviceName + "/" + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1;
+		// 요청 url
+		String surl =  serviceName + "/" + bok_key + reqType + reqlang + startNum + endNum + reqCode + ymd + startDate + endDate + atcl_Code1 + atcl_Code2 + atcl_Code3;
 
-        resultMap = monoWebclient.getWebMonotoMap(base_url,surl); 
-        
-        
-        System.out.println(resultMap.get("StatisticSearch"));
-        
-		return resultMap;
+		resJson = monoWebclient.getWebMonotoJson(base_url,surl); 
+		JSONParser parser = new JSONParser();
+		JSONObject bokJson = (JSONObject) parser.parse(resJson) ;
+		JSONObject statisticSearch = (JSONObject) bokJson.get("StatisticSearch");
+		JSONArray row = (JSONArray) statisticSearch.get("row");
+		System.out.println();
+		// row안의 결과값들 개별 인서트 1년단위
+		for(int i=0;i<row.size();i++) {
+			JSONObject rowData = (JSONObject) row.get(i);
+			String INDEX_NAME = (String) rowData.get("ITEM_NAME1");
+			String dateL = (String) rowData.get("TIME") + "01";
+			Date date = FormatConverter.stringToDate(dateL);
+			float close = Float.parseFloat((String)rowData.get("DATA_VALUE"));
+			historyDataDto.setINDEX_NAME(INDEX_NAME);
+			historyDataDto.setIndexDate(date);
+			historyDataDto.setClose(close);
+			indexDao.insIndexDaishin(historyDataDto);
+		}
+		return null;
 	}
 
 
