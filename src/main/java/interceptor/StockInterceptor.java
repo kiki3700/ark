@@ -3,16 +3,26 @@ package interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.util.CybosConnection;
+
 public class StockInterceptor implements HandlerInterceptor {
 
+	@Autowired
+	CybosConnection cybosConnection;
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return HandlerInterceptor.super.preHandle(request, response, handler);
+		int connectionStatus =  cybosConnection.connectionCheck();
+			if(connectionStatus > 0) {
+				return true;
+			} else {
+				return false;
+			}
 	}
 
 	@Override
