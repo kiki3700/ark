@@ -45,6 +45,7 @@ public class ItemServiceImpl implements ItemService {
 		}
 	}
 	
+	
 	@Override
 	public int insertItem() {
 		// TODO Auto-generated method stub
@@ -162,10 +163,48 @@ public class ItemServiceImpl implements ItemService {
 			return itemDao.insertHistoryDataDtoList(dataList);
 	}
 	
+	@Override
+	public int insertHistoryData(ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException{
+		int quant = (int) inParam.get("quant");
+		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
+		ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
+		sysDib.setInputValue(0, itemDto.getId());
+		sysDib.setInputValue(1, (int) '2');
+		sysDib.setInputValue(4, quant);
+		sysDib.setInputValue(5, new int[] {0,1,2,3,4,5,8});
+		sysDib.setInputValue(6, (int) 'D');
+		sysDib.setInputValue(9,(int) '1');		
+		do {
+			checkRqLimit();
+			sysDib.blockRequest();
+			Object data = sysDib.getHeaderValue(3);
+			System.out.println(sysDib.getHeaderValue(5));
+			for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
+				String time = Long.toString((long) sysDib.getDataValue(0, i));
+				Date tradingDate = FormatConverter.stringToDate(time);
+				Number open = (Number) sysDib.getDataValue(1, i);
+				Number high = (Number) sysDib.getDataValue(2, i);
+				Number low = (Number) sysDib.getDataValue(3, i);
+				Number close = (Number) sysDib.getDataValue(4, i);
+				Number volume = (Number) sysDib.getDataValue(5, i);
+				HistoryDataDto historyDataDto = new HistoryDataDto();
+				historyDataDto.setTradingDate(tradingDate);
+				historyDataDto.setOpen(open);
+				historyDataDto.setHigh(high);
+				historyDataDto.setLow(low);
+				historyDataDto.setClose(close);
+				historyDataDto.setVolume(volume);
+				dataList.add(historyDataDto);
+				}
+			}while(1==((int) sysDib._continue()));
+			return itemDao.insertHistoryDataDtoList(dataList);
+	}
+	
 
 	@Override
-	public List<ItemDto> getItemList(){
-		return itemDao.selectItemList();
+	public List<ItemDto> getItemList(Map<String, Object> inParams){
+		return itemDao.selectItemList(inParams);
 	}
+
 
 }

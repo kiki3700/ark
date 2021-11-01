@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.data.dao.ItemDao">
+
 	<update id = 'insertItem' parameterType = 'ItemDto'>
 		MERGE INTO ITEM
 		USING DUAL
@@ -53,8 +54,13 @@
 		ID = #{id}
 	</update>
 	
-	<select id = 'selectItemList' resultType = 'ItemDto'>
-		SELECT * FROM ITEM;
+	<select id = 'selectItemList' parameterType = 'HashMap' resultType = 'ItemDto'>
+		SELECT * FROM ITEM
+		<where>
+			<if test = 'isActive != null'>
+				AND isActive = {isAtive}
+			</if>
+		</where>
 	</select>
 	
 	<insert id = 'insertHistoryDataDtoList' parameterType = 'List'>
