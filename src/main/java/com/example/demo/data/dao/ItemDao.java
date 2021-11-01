@@ -3,6 +3,7 @@ package com.example.demo.data.dao;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,7 +17,7 @@ public interface ItemDao {
 	
 	int updateMarketCap(ItemDto itemDto);
 	
-	List<ItemDto> selectItemList();
+	List<ItemDto> selectItemList(Map<String, Object> inParams);
 	
 	int insertHistoryDataDtoList(List<HistoryDataDto> historyDataDtoList);
 }

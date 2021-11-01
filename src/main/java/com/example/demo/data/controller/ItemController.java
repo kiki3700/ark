@@ -69,7 +69,8 @@ public class ItemController {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		List<ItemDto> itemList = itemService.getItemList();
+		HashMap<String, Object> inParam = new HashMap<>();
+		List<ItemDto> itemList = itemService.getItemList(inParam);
 		for(int i = 0 ; i< itemList.size();i++) {
 			HashMap<String, String> tickerMap = new HashMap<>();
 			String ticker = itemList.get(i).getId();

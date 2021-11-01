@@ -12,5 +12,6 @@ public interface ItemService {
 	int insertItem();
 	void updateMarketCap();
 	int insertHistoryData(ItemDto itemDto) throws ParseException;
-	List<ItemDto> getItemList();
+	List<ItemDto> getItemList(Map<String, Object> inParams);
+	int insertHistoryData(ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException;
 }

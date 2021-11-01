@@ -1,8 +1,6 @@
 package com.example.demo.data.scheduler;
 
-import java.sql.Date;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +22,8 @@ public class KorIndexScheduler {
 	
 	@Scheduled(cron ="0 0 0 * * 7 *")
 	public void balanceSheet() throws ParseException {
-		List<ItemDto> itemDtoList = itemDao.selectItemList();
+		HashMap<String, Object> inParams = new HashMap<>();
+		List<ItemDto> itemDtoList = itemDao.selectItemList(inParams);
 		for(int i = 0 ; i < itemDtoList.size(); i++) {
 			HashMap<String, Object> inParam = new HashMap<>();
 			ItemDto item = itemDtoList.get(i);
