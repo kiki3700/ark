@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.constants.BokConst;
 import com.example.demo.constants.CommonCodeConst;
 import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.service.BithumbService;
 import com.example.demo.data.service.BokService;
 import com.example.demo.data.service.IndexService;
 import com.example.demo.data.service.impl.BokServiceImpl;
@@ -30,6 +31,8 @@ public class IndexScheduler {
 	IndexDao priceDao;
 	@Autowired
 	BokService bokService;
+	@Autowired
+	BithumbService bithumbService;
 	
 	
 	//대신증권 인덱스 가져오기
@@ -49,8 +52,8 @@ public class IndexScheduler {
 			}
 	     	
 	   }
-	//한국은행 
-	@Scheduled(cron = "0 0/1 * * * *")
+	//한국은행 주요지표 
+	@Scheduled(cron = "0 0 06 * * ?")
 	   public void bokIndexScheduler() {
 			
 			// 월간
@@ -65,9 +68,9 @@ public class IndexScheduler {
 		String YEAR_END_DATE = format2.format(cal.getTime());
 		cal.add(Calendar.YEAR, -19);
 		String YEAR_START_DATE = format2.format(cal.getTime());
-		
+			//한국은행 기준금리
 	     	try {
-	     		
+	     		logger.debug("BOK GET BASE RATE START =====================");
 	     		Map<String,String> inParam = new HashMap<String,String>();
 	     		inParam.put("REQUEST_TYPE", "/" + "json");
 	     		inParam.put("REQUEST_LANG", "/" + "kr");
@@ -82,13 +85,13 @@ public class IndexScheduler {
 	     		inParam.put("ATCL_CODE2", "");
 	     		inParam.put("ATCL_CODE3", "");
 	     		bokService.getBokIndex(inParam);
-	     		
+	     		logger.debug("BOK GET BASE RATE END =====================");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-	     	
+	     	//생산자 물가총지수
 	     	try {
-	     		
+	     		logger.debug("BOK GET PPI START =====================");
 	     		Map<String,String> inParam = new HashMap<String,String>();
 	     		inParam.put("REQUEST_TYPE", "/" + "json");
 	     		inParam.put("REQUEST_LANG", "/" + "kr");
@@ -103,13 +106,14 @@ public class IndexScheduler {
 	     		inParam.put("ATCL_CODE2", "");
 	     		inParam.put("ATCL_CODE3", "");
 	     		bokService.getBokIndex(inParam);
-	     		
+	     		logger.debug("BOK GET PPI END =====================");
 	     	} catch(Exception e) {
 	     		e.printStackTrace();
 	     	}
 	     	
+	     	//소비자 물가 총지수
 	     	try {
-	     		
+	     		logger.debug("BOK GET CPI START =====================");
 	     		Map<String,String> inParam = new HashMap<String,String>();
 	     		inParam.put("REQUEST_TYPE", "/" + "json");
 	     		inParam.put("REQUEST_LANG", "/" + "kr");
@@ -124,31 +128,56 @@ public class IndexScheduler {
 	     		inParam.put("ATCL_CODE2", "");
 	     		inParam.put("ATCL_CODE3", "");
 	     		bokService.getBokIndex(inParam);
-	     		
+	     		logger.debug("BOK GET CPI END =====================");
 	     	} catch(Exception e) {
 	     		e.printStackTrace();
 	     	}
 	     	
+	     	//GDP
 	     	try {
-	     		
+	     		logger.debug("BOK GET GDP START =====================");
 	     		Map<String,String> inParam = new HashMap<String,String>();
 	     		inParam.put("REQUEST_TYPE", "/" + "json");
 	     		inParam.put("REQUEST_LANG", "/" + "kr");
 	     		inParam.put("START_NUM", "/" + "1");
 	     		inParam.put("END_NUM", "/" + "20");
-	     		inParam.put("REQUEST_CODE", "/" + BokConst.TB_CONSUM_PRICE_INDEX);
+	     		inParam.put("REQUEST_CODE", "/" + BokConst.TB_GDP_INDEX);
 	     		inParam.put("YMD", "/" + "YY");
 	     		inParam.put("START_DATE", "/" + YEAR_START_DATE);
 	     		
 	     		inParam.put("END_DATE", "/" + YEAR_END_DATE); 
-	     		inParam.put("ATCL_CODE1", "/" +BokConst.CONSUM_PRICE_TOTAL);
+	     		inParam.put("ATCL_CODE1", "/" +BokConst.GDP);
 	     		inParam.put("ATCL_CODE2", "");
 	     		inParam.put("ATCL_CODE3", "");
 	     		bokService.getBokIndex(inParam);
-	     		
+	     		logger.debug("BOK GET GDP END =====================");
 	     	} catch(Exception e) {
 	     		e.printStackTrace();
 	     	}
 	     	
 	   }
+	//빗썸API 주요 암호화폐 정보
+	@Scheduled(cron = "0 0 06 * * ?")
+		   public void bitScheduler() {
+				Map<String,Object> inParam = new HashMap<String,Object>();
+		     	//비트코인
+				try {
+					logger.debug("BITHUMB GET BTC START =====================");
+		     		inParam.put("CDOE_VALUE", "BTC");
+		     		bithumbService.insCrytoCurrencyHistory(inParam);
+		     		logger.debug("BITHUMB GET BTC END =====================");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		     	//이더리움
+		     	try {
+		     		logger.debug("BITHUMB GET ETH START =====================");
+		     		inParam.put("CDOE_VALUE", "ETH");
+		     		bithumbService.insCrytoCurrencyHistory(inParam);
+		     		logger.debug("BITHUMB GET ETH END =====================");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		   }
+	
 }

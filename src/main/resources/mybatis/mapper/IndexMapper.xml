@@ -39,12 +39,14 @@
 			CODE_NAME,
 			code_en_name
 		FROM COMMON_CODE_DET
-		<if test = "id !=NULL and id!=''">
-			WHERE id = #{id}
-		</if>
-		<if test = "code_name != NULL and code_name !=''">
-			AND code_name = #{code_name}
-		</if>
+		<where>
+			<if test = "id !=NULL and id !='' ">
+				AND id = #{id}
+			</if>
+			<if test = "code_name != NULL and code_name !='' ">
+				AND code_name = #{code_name}
+			</if>
+		</where>
 		
 	</select>
 	
