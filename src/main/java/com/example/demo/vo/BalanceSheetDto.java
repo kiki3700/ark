@@ -3,9 +3,9 @@ package com.example.demo.vo;
 import java.util.Date;
 
 public class BalanceSheetDto {
-	private int id;
+	private String id;
 	private String itemId;					//아이템아이디
-	private Date reportingYear;		 	//회계연도
+	private int reportingYear;		 	//회계연도
 	private String reportCode;			//리포트 코드 (1q, 2q, 3,q 4q)
 	private String fsNm;				//연결재무제표 or 재무제표
 	private double revenue;				//매출
@@ -24,10 +24,10 @@ public class BalanceSheetDto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getItemId() {
@@ -36,7 +36,7 @@ public class BalanceSheetDto {
 	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
-	public Date getReportingYear() {
+	public int getReportingYear() {
 		return reportingYear;
 	}
 	public String getFsNm() {
@@ -47,7 +47,7 @@ public class BalanceSheetDto {
 		this.fsNm = fsNm;
 	}
 
-	public void setReportingYear(Date reportingYear) {
+	public void setReportingYear(int reportingYear) {
 		this.reportingYear = reportingYear;
 	}
 	public String getReportCode() {

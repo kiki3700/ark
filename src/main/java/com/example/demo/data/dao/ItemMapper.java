@@ -1,6 +1,5 @@
 package com.example.demo.data.dao;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,13 +10,15 @@ import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;
 
 @Mapper
-public interface ItemDao {
+public interface ItemMapper {
 	
-	void updateCopCode(HashMap<String, String>map);
+	void insertItem(ItemDto itemDto);
+	
+	void updateCorpCode(HashMap<String, String>map);
 	
 	int updateMarketCap(ItemDto itemDto);
 	
 	List<ItemDto> selectItemList(Map<String, Object> inParams);
 	
-	int insertHistoryDataDtoList(List<HistoryDataDto> historyDataDtoList);
+	int insertHistoryDataDtoList(HistoryDataDto historyData);
 }

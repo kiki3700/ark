@@ -66,6 +66,7 @@ public class ItemScheduler {
 	public void BalanceSheetScheduler() throws ParseException {
 		HashMap<String, Object> inParam = new HashMap<>();
 		inParam.put("isActive", "CPC_STOCK_STATUS_NORMAL");
+		inParam.put("isCoprCode", "true");
 		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
 		inParam = new HashMap<>();
 		Calendar cal = Calendar.getInstance();

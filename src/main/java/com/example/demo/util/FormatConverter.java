@@ -75,7 +75,13 @@ public class FormatConverter {
 		return dataList;
 	}
 	public static double separatorStringToDouble(String str) throws ParseException {
-		return Double.parseDouble(str.replaceAll(",", ""));
+		try {
+			return	Double.parseDouble(str.replaceAll(",", ""));
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 	
 }

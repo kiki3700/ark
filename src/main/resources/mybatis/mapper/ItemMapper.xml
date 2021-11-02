@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.data.dao.ItemDao">
+<mapper namespace="com.example.demo.data.dao.ItemMapper">
 
 	<update id = 'insertItem' parameterType = 'ItemDto'>
 		MERGE INTO ITEM
@@ -43,7 +43,7 @@
 		SET
 			LISTED_SHARE = #{listedShare},
 			MARKET_CAP = #{marketCap}
-		WHEN ID = #{id}
+		WHERE ID = #{id}
 	</update>
 	
 	<update id= 'updateCorpCode' parameterType = 'HashMap'>
@@ -57,36 +57,41 @@
 	<select id = 'selectItemList' parameterType = 'HashMap' resultType = 'ItemDto'>
 		SELECT * FROM ITEM
 		<where>
-			<if test = 'isActive != null'>
-				AND isActive = {isAtive}
+			<if test = 'isActive != null and isActive !=""'>
+				AND IS_ACTIVE = #{isActive}
+			</if>
+			<if test = 'isCorpCode != null and isCorpCode != ""'>
+				AND CORP_CODE IS NOT NULL
 			</if>
 		</where>
 	</select>
 	
-	<insert id = 'insertHistoryDataDtoList' parameterType = 'List'>
-	INSERT INTO HISTORY_DATA(
-	id,
-	trading_date,
-	item_id,
-	open,
-	close,
-	low,
-	high,
-	volume
-	)
-	values
-	<foreach item ='item' index='index' collection = 'list'>
-	(
-	TO_CHAR(SYSDATE, 'YYYYMMDD')||#{item.itemId},
-	#{item.tradingDate},
-	#{item.itemId},
-	#{item.open},
-	#{item.close},
-	#{item.high},
-	#{item.volume}
-	)
-	</foreach>
-	
-	
+	<insert id = 'insertHistoryDataDtoList' parameterType = 'HistoryDataDto'>
+	MERGE INTO HISTORY_DATA
+		USING DUAL
+			ON(ITEM_ID = #{itemId} and trading_date = #{tradingDate})
+		WHEN NOT MATCHED THEN
+		INSERT(
+			id,
+			trading_date,
+			item_id,
+			open,
+			close,
+			low,
+			high,
+			volume
+			)
+		VALUES
+			(
+			TO_CHAR(#{tradingDate}, 'YYYYMMDD')||#{itemId},
+			#{tradingDate},
+			#{itemId},
+			#{open},
+			#{close},
+			#{low},
+			#{high},
+			#{volume}
+		)
+		
 	</insert>
 </mapper>

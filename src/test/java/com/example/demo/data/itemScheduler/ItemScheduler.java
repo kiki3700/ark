@@ -1,6 +1,5 @@
 package com.example.demo.data.itemScheduler;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -13,32 +12,33 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.constants.ReprtCode;
-import com.example.demo.data.service.DartService;
-import com.example.demo.data.service.ItemService;
+import com.example.demo.data.service.impl.DartServiceImpl;
+import com.example.demo.data.service.impl.ItemServiceImpl;
 import com.example.demo.vo.ItemDto;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ItemScheduler {
 	@Autowired
-	ItemService itemService;
+	ItemServiceImpl itemService;
 	
 	@Autowired
-	DartService dartService;
-	@Test
-	public void ins() {
-		itemService.insertItem();
-	}
+	DartServiceImpl dartService;
 	
-	@Test
-	public void mar() {
-		itemService.updateMarketCap();
-	}
+//	@Test
+//	public void ins() {
+//		itemService.insertItem();
+//	}
 	
-	@Test
-	public void corpNum() throws IOException {
-		dartService.updaeCopCode();
-	}
+//	@Test
+//	public void mar() {
+//		itemService.updateMarketCap();
+//	}
+//	
+//	@Test
+//	public void corpNum() throws IOException {
+//		dartService.updaeCopCode();
+//	}
 	
 	@Test
 	public void historyData() {
@@ -54,24 +54,24 @@ public class ItemScheduler {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		
+		}		
 	}
-	@Test
-	public void balance() throws ParseException {
-		HashMap<String, Object> inParam = new HashMap<>();
-		inParam.put("isActive", "CPC_STOCK_STATUS_NORMAL");
-		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
-		inParam = new HashMap<>();
-		Calendar cal = Calendar.getInstance();
-		inParam.put("year", cal.get(Calendar.YEAR));
-		ReprtCode reportCode = new ReprtCode();
-		int quart= cal.get(Calendar.MONDAY)/3+1;
-		inParam.put("reprtCode", reportCode.getReprtCode(quart));
-		for(int i = 0; i<itemDtoList.size();i++) {
-			inParam.put("corpCode", itemDtoList.get(i).getCorpCode());
-			dartService.insBalaceSheet(inParam);
-		}
-		
-	}
+	
+//	@Test
+//	public void balance() throws ParseException {
+//		HashMap<String, Object> inParam = new HashMap<>();
+//		inParam.put("isActive", "CPC_STOCK_STATUS_NORMAL");
+//		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
+//		inParam = new HashMap<>();
+//		Calendar cal = Calendar.getInstance();
+//		inParam.put("year",cal.get(Calendar.YEAR));
+//		ReprtCode reportCode = new ReprtCode();
+//		int quart= cal.get(Calendar.MONDAY)/3+1;
+//		inParam.put("reprtCode", reportCode.getReprtCode(quart));
+//		for(int i = 0; i<itemDtoList.size();i++) {
+//			inParam.put("corpCode", itemDtoList.get(i).getCorpCode());
+//			dartService.insBalaceSheet(inParam);
+//		}
+//	}
+	
 }

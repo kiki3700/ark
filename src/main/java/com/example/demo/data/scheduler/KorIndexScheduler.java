@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.example.demo.data.dao.ItemDao;
+import com.example.demo.data.dao.ItemMapper;
 import com.example.demo.data.service.DartService;
 import com.example.demo.vo.ItemDto;
 
@@ -18,7 +18,7 @@ public class KorIndexScheduler {
 	private DartService dartService;
 	
 	@Autowired
-	private ItemDao itemDao;
+	private ItemMapper itemDao;
 	
 	@Scheduled(cron ="0 0 0 * * 7 *")
 	public void balanceSheet() throws ParseException {

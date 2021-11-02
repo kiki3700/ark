@@ -11,7 +11,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.data.dao.ItemDao;
+import com.example.demo.data.dao.ItemMapper;
 import com.example.demo.data.service.ItemService;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.vo.HistoryDataDto;
@@ -29,7 +29,7 @@ import dashin.cputil.LIMIT_TYPE;
 @Service
 public class ItemServiceImpl implements ItemService {
 	@Autowired
-	ItemDao itemDao;
+	ItemMapper itemDao;
 	
 	public void checkRqLimit() {	
 		ICpCybos cybos = ClassFactory.createCpCybos();
@@ -91,7 +91,7 @@ public class ItemServiceImpl implements ItemService {
 //				item.setMarketCap(listedShare.multiply(new BigInteger(Long.toString(close))));
 				
 				System.out.println(item);
-//				itemDao.insertItem(item);
+				itemDao.insertItem(item);
 				}
 			tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
 		}
@@ -120,7 +120,8 @@ public class ItemServiceImpl implements ItemService {
 						item.setId(ticker);
 						item.setListedShare(listedShare);
 						item.setMarketCap(listedShare.multiply(new BigInteger(Long.toString(close))));
-						System.out.println(item);
+						System.out.println(i+"/"+tickers.length+" "+item);
+						itemDao.updateMarketCap(item);
 					}
 					tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
 		}
@@ -128,7 +129,7 @@ public class ItemServiceImpl implements ItemService {
 	
 	
 	@Override
-	public int insertHistoryData(ItemDto itemDto) throws ParseException{
+	public void insertHistoryData(ItemDto itemDto) throws ParseException{
 		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
 		ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
 		sysDib.setInputValue(0, itemDto.getId());
@@ -157,21 +158,20 @@ public class ItemServiceImpl implements ItemService {
 				historyDataDto.setLow(low);
 				historyDataDto.setClose(close);
 				historyDataDto.setVolume(volume);
-				dataList.add(historyDataDto);
+				itemDao.insertHistoryDataDtoList(historyDataDto);
 				}
 			}while(1==((int) sysDib._continue()));
-			return itemDao.insertHistoryDataDtoList(dataList);
+			
 	}
 	
 	@Override
-	public int insertHistoryData(ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException{
+	public void insertHistoryData(ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException{
 		int quant = (int) inParam.get("quant");
-		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
 		ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
 		sysDib.setInputValue(0, itemDto.getId());
 		sysDib.setInputValue(1, (int) '2');
 		sysDib.setInputValue(4, quant);
-		sysDib.setInputValue(5, new int[] {0,1,2,3,4,5,8});
+		sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
 		sysDib.setInputValue(6, (int) 'D');
 		sysDib.setInputValue(9,(int) '1');		
 		do {
@@ -188,16 +188,18 @@ public class ItemServiceImpl implements ItemService {
 				Number close = (Number) sysDib.getDataValue(4, i);
 				Number volume = (Number) sysDib.getDataValue(5, i);
 				HistoryDataDto historyDataDto = new HistoryDataDto();
+				historyDataDto.setItemId(itemDto.getId());
 				historyDataDto.setTradingDate(tradingDate);
 				historyDataDto.setOpen(open);
 				historyDataDto.setHigh(high);
 				historyDataDto.setLow(low);
 				historyDataDto.setClose(close);
 				historyDataDto.setVolume(volume);
-				dataList.add(historyDataDto);
+				System.out.println(historyDataDto);
+				itemDao.insertHistoryDataDtoList(historyDataDto);
 				}
 			}while(1==((int) sysDib._continue()));
-			return itemDao.insertHistoryDataDtoList(dataList);
+			
 	}
 	
 

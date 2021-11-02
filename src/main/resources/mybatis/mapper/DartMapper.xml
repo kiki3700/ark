@@ -4,9 +4,9 @@
 	<insert id = 'insertBalanceSheet' parameterType = 'com.example.demo.vo.BalanceSheetDto'>
 		MERGE INTO BALANCE_SHEET
 		USING DUAL
-			ON(ITEM_ID = #{item_id} AND REPORTING_YEAR = #{reportingYear} AND REPORT_CODE = #{reportCode})
-		WHEN NOT MATCHED TEH
-			INSERT INTO
+			ON(ITEM_ID = #{itemId} AND REPORTING_YEAR = #{reportingYear} AND REPORT_CODE = #{reportCode})
+		WHEN NOT MATCHED THEN
+			INSERT
 				(
 					ID,
 					ITEM_ID,
@@ -25,6 +25,7 @@
 					LONG_TERM_DEBT
 				)
 				VALUES(
+					#{reportingYear}||#{reportCode}||#{itemId},
 					#{itemId},
 					#{reportingYear},
 					#{reportCode},

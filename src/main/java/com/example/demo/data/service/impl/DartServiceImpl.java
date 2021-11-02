@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.data.dao.DartDao;
-import com.example.demo.data.dao.ItemDao;
+import com.example.demo.data.dao.ItemMapper;
 import com.example.demo.data.service.DartService;
 import com.example.demo.util.DartUtil;
 import com.example.demo.util.FormatConverter;
@@ -47,7 +48,7 @@ public class DartServiceImpl implements DartService{
 	private DartUtil dartUtil;
 	
 	@Autowired
-	private ItemDao itemDao;
+	private ItemMapper itemDao;
 	
 	@Autowired
 	private DartDao dartDao;
@@ -58,11 +59,11 @@ public class DartServiceImpl implements DartService{
 	@Override
 	public void insBalaceSheet(Map<String, Object> inParam) throws ParseException {
 //		String targetUrl = dartUrl+"/api/fnlttSinglAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}";
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("crtfcKey", crtfcKey);
 //		System.out.print(crtfcKey);
 		String corpCode = (String) inParam.getOrDefault("corpCode", null);
-		String year = (String) inParam.getOrDefault("year", null);
+		int year = (int) inParam.getOrDefault("year", 0);
 		String reprtCode = (String) inParam.getOrDefault("reprtCode", null);
 		map.put("corpCode", corpCode);
 		map.put("year", year);
@@ -83,14 +84,11 @@ public class DartServiceImpl implements DartService{
 		BalanceSheetDto balanceSheetDto = new BalanceSheetDto();
 		if(((String) resultMap.get("status")).equals("000")) {
 			List<Map<String, Object>> bs =(List<Map<String, Object>>) resultMap.get("list");
-			int itemId = 0;
-			Date reportingYear = new Date();
-			try {
-				reportingYear = new SimpleDateFormat("yyyy").parse((String) bs.get(0).get("bsns_year"));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 					
+			String itemId ="A"+bs.get(0).get("stock_code");
+			
+			System.out.println(bs.get(0).get("bsns_year"));
+			int	reportingYear = Integer.parseInt((String) bs.get(0).get("bsns_year"));
+							
 			String reportCode =(String) map.get("reprtCode");
 			String fsNm = "연결재무제표";
 			double revenue= formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("매출액", bs)) ;					//매출
@@ -104,7 +102,7 @@ public class DartServiceImpl implements DartService{
 			double shortTermDebt=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("유동부채", bs));			//단기 부채
 			double longTermDebt=formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("비유동부채", bs));			//장기 부채
 			
-			balanceSheetDto.setItemId((String) inParam.get("itemId")); 
+			balanceSheetDto.setItemId(itemId); 
 			balanceSheetDto.setAsset(asset);
 			balanceSheetDto.setCurrentAsset(currentAsset);
 			balanceSheetDto.setDebt(debt);
@@ -119,8 +117,11 @@ public class DartServiceImpl implements DartService{
 			balanceSheetDto.setShortTermDebt(shortTermDebt);
 			balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
 			balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
+			System.out.println(balanceSheetDto);
+			dartDao.insertBalanceSheet(balanceSheetDto);
+			
 		}
-		dartDao.insertBalanceSheet(balanceSheetDto);
+		
 	}
 	
 	
@@ -140,13 +141,15 @@ public class DartServiceImpl implements DartService{
 	    ZipInputStream zip = new ZipInputStream(inputStream);
 	    System.out.println(zip.getNextEntry());
 	    Scanner sc = new Scanner(zip);
-	    HashMap<String, String> map = new HashMap<>();
+	    
 	    String a = new String();
 	    
 	    String b = new String();
 	    System.out.println(sc.hasNext());
+	    ArrayList<HashMap<String,String>> inParam = new ArrayList<>();
 	    while(sc.hasNext()){
 	    	String str = sc.next();
+	    	HashMap<String, String> map = new HashMap<>();
 	    	if(str.equals("<list>")) {
 	    		a= new String();
 	    		b= new String();
@@ -157,9 +160,14 @@ public class DartServiceImpl implements DartService{
 	    	}else if(str.contains("<stock_code>")&str.contains("</stock_code>")) {
 	    		b = "A" + str.replace("<stock_code>", "").replace("</stock_code>", "");
 	    	}else if(str.equals("</list>")&!b.isEmpty()) {
-	    		map.put(b, a);
+	    		map.put("id", b);
+	    		map.put("corpCode", a);
+	    		inParam.add(map);
 	    	}
 	    }
-		itemDao.updateCopCode(map);
+	    for(HashMap<String,String> map : inParam) {
+	    	itemDao.updateCorpCode(map);
+	    }
+
 	}
 }

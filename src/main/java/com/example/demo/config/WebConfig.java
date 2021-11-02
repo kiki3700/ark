@@ -10,9 +10,7 @@ import interceptor.StockInterceptor;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    @Autowired
-    StockInterceptor stockInterceptor;
-	
+    
 	@Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -24,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
     
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(stockInterceptor)
+        registry.addInterceptor(new StockInterceptor())
                 .addPathPatterns("/*");
     }
 }

@@ -7,7 +7,7 @@ import java.util.Date;
 public class HistoryDataDto {
 	private int id;
 	private Date tradingDate;
-	private int itemId;
+	private String itemId;
 	private float open;
 	private float close;
 	private float low;
@@ -30,10 +30,10 @@ public class HistoryDataDto {
 	public void setTradingDate(Date tradingDate) {
 		this.tradingDate = tradingDate;
 	}
-	public int getItemId() {
+	public String getItemId() {
 		return itemId;
 	}
-	public void setItemId(int itemId) {
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 	public float getOpen() {
