@@ -63,6 +63,9 @@
 			<if test = 'isCorpCode != null and isCorpCode != ""'>
 				AND CORP_CODE IS NOT NULL
 			</if>
+			<if test = 'industry != null and industry != ""'>
+				AND INDUSTRY = #{industry}
+			</if>
 		</where>
 	</select>
 	

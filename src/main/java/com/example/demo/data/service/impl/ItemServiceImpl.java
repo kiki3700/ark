@@ -69,9 +69,13 @@ public class ItemServiceImpl implements ItemService {
 				CPE_CAPITAL_SIZE corpSize = codeMgr.getStockCapital(ticker);
 				CPE_MARKET_KIND market = codeMgr.getStockMarketKind(ticker);
 				String industry = codeMgr.getStockIndustryCode(ticker);
+				//디버깅
+				String industryName = codeMgr.getIndustryName(industry);
+				
 				CPE_KSE_SECTION_KIND category = codeMgr.getStockSectionKind(ticker);
 				long date = codeMgr.getStockListedDate(ticker);
 				Date listingDate = FormatConverter.longToDate(date);
+				
 //				long close = (long) marketEye.getDataValue(0, 0);
 //				BigInteger listedShare = (BigInteger) marketEye.getDataValue(1, 0);
 //				if(codeMgr.isBigListingStock(ticker)==1) {
@@ -84,7 +88,7 @@ public class ItemServiceImpl implements ItemService {
 				item.setCurrencyId(0);
 				item.setMarket(market.name());
 				item.setCategory(category.name());
-				item.setIndustry(industry);
+				item.setIndustry(industryName);
 				item.setCorpSize(corpSize.name());
 				item.setListingDate(listingDate);
 //				item.setListedShare(listedShare);

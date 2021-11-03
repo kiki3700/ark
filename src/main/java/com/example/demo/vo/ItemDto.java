@@ -17,7 +17,7 @@ public class ItemDto {
 	private String corpSize;
 	private BigInteger listedShare; //상장 주식수 
 	private BigInteger marketCap; //시가총액
-
+	
 	
 	public ItemDto() {
 		super();
