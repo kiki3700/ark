@@ -25,10 +25,10 @@ public class ItemScheduler {
 	@Autowired
 	DartServiceImpl dartService;
 	
-//	@Test
-//	public void ins() {
-//		itemService.insertItem();
-//	}
+	@Test
+	public void ins() {
+		itemService.insertItem();
+	}
 	
 //	@Test
 //	public void mar() {
@@ -47,7 +47,7 @@ public class ItemScheduler {
 		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
 		for(int i = 0 ; i < itemDtoList.size(); i++) {
 			inParam = new HashMap<>();
-			inParam.put("quant", 3);
+			inParam.put("quant", 700);
 			try {
 				itemService.insertHistoryData(itemDtoList.get(i), inParam);
 			} catch (ParseException e) {
@@ -56,7 +56,7 @@ public class ItemScheduler {
 			}
 		}		
 	}
-	
+//	
 //	@Test
 //	public void balance() throws ParseException {
 //		HashMap<String, Object> inParam = new HashMap<>();
@@ -66,7 +66,7 @@ public class ItemScheduler {
 //		Calendar cal = Calendar.getInstance();
 //		inParam.put("year",cal.get(Calendar.YEAR));
 //		ReprtCode reportCode = new ReprtCode();
-//		int quart= cal.get(Calendar.MONDAY)/3+1;
+//		int quart = cal.get(Calendar.MONDAY)/3+1;
 //		inParam.put("reprtCode", reportCode.getReprtCode(quart));
 //		for(int i = 0; i<itemDtoList.size();i++) {
 //			inParam.put("corpCode", itemDtoList.get(i).getCorpCode());

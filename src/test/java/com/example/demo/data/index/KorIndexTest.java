@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.example.demo.data.dao.IndexDao;
 import com.example.demo.data.service.IndexService;
 
 
@@ -22,24 +23,29 @@ public class KorIndexTest {
 
 	@Autowired
 	IndexService ser;
+	
+	@Autowired
+	IndexDao indexDao;
 	 
 	List<HashMap<String, Object>> list = new LinkedList<HashMap<String, Object>>();
-	HashMap<String, Object> map1 = new HashMap<>();
-	HashMap<String, Object> map2 = new HashMap<>();
+	
 	@Before
 	public void init() {
+		HashMap<String, Object> paramMap = new HashMap<>();
+		list = indexDao.selectKorCodes(paramMap);
+		System.out.println("di");
+		System.out.println(list.size());
+		for(HashMap<String, Object> map : list) {
+			System.out.println(map.get("CODE_VALUE"));
+		}
 		
-		map1.put("CODE_VALUE", "U001");
-		list.add(map1);
-		map2.put("CODE_VALUE", "U201");
-		list.add(map2);
 	}
 	@Test
 	public void test() {
 		
-		for(int i = 0; i<list.size();i++) {
-			ser.insKorIndexDaishin(list.get(i));
-		}
+//		for(int i = 0; i<list.size();i++) {
+//			ser.insKorIndexDaishin(list.get(i));
+//		}
 	}
 	
 }

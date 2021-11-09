@@ -57,15 +57,13 @@
 			CODE_NAME
 		FROM COMMON_CODE_DET
 			WHERE id IN('ICP00002','ICP00003' ,'ICP00004')
-			
 	</select>
 	<select id ='selectKorCodes' parameterType = "HashMap" resultType = "HashMap">
 		SELECT
 			CODE_VALUE,
 			CODE_NAME
 		FROM COMMON_CODE_DET
-			WHERE id = 'ICP00005'
-			
+			WHERE API = 'DAISHIN_KOR'
 	</select>
 	
 	
