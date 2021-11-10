@@ -21,8 +21,8 @@ public class Deposit {
 	
 	String account;
 	@Before
-	public void init() throws IOException {
-		connection.connectionCheck();
+	public void init() throws Exception {
+		int con = connection.connectionCheck();
 		
 		tdUtil.tradeInit(0);
 		String[] accounts = (String[])  tdUtil.accountNumber();

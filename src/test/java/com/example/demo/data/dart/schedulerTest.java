@@ -91,43 +91,7 @@ public class schedulerTest {
 				}
 		
 		
-
-		
-		/*for(int i=0;i < usCodeList.size();i++ ) {
-			short quant = 5;
-			inParam = new HashMap<>();
-			inParam.put("indexCode",usCodeList.get(i));
-			inParam.put("ydm",'D');
-			inParam.put("quant",quant);
-			IndexHistoryDataDto dto = priceService.getIndexHistory(inParam);
-			System.out.println("123====================================================");
-			System.out.println(usCodeList.get(i) + "===============");
-			System.out.println(dto);
-			System.out.println("================");
-		}*/
-		
 	}
 	
-	/*// 원하는 지수과거 일자별 데이터 가져오기 (1년간) 테이블 완성 후 적용
-	public void getIndex(String indexCode) throws Exception {
-		
-		//controller에 getIndex 호출하는 부분에서 indexCode 공통코드에서 꺼내오기
-		 
-			Map<String,Object> codeMap = new HashMap<String,Object>();
-			Map<String,Object> paramMap = new HashMap<String,Object>();
-			paramMap.put("id", CommonCodeConst.ICPUSCODE_COUNTRY);
-			paramMap.put("code_name", "S&P500");
-			codeMap = priceDao.selectUsCodeCont(paramMap);
-			this.getIndex(indexCodet); 
-		
-		
-		inParam = new HashMap<>();
-		inParam.put("indexCode",indexCode);
-		inParam.put("ydm","D");
-		inParam.put("quant","365");
-		IndexHistoryDataDto dto = priceService.getIndexHistory(inParam);
-		
-		priceDao.insertIndex(dto); // 추후 controller로 옮기면 getIndexHistroy 안으로 이동
-			
-	}*/
+	
 }
