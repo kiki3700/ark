@@ -32,20 +32,19 @@ public class KorIndexTest {
 	@Before
 	public void init() {
 		HashMap<String, Object> paramMap = new HashMap<>();
+		
 		list = indexDao.selectKorCodes(paramMap);
-		System.out.println("di");
-		System.out.println(list.size());
 		for(HashMap<String, Object> map : list) {
 			System.out.println(map.get("CODE_VALUE"));
 		}
-		
 	}
 	@Test
 	public void test() {
-		
-//		for(int i = 0; i<list.size();i++) {
-//			ser.insKorIndexDaishin(list.get(i));
-//		}
+		for(int i = 0; i<list.size();i++) {
+			HashMap<String, Object> inParam = list.get(i);
+			inParam.put("quant", 700);
+			ser.insKorIndexDaishin(inParam);
+		}
 	}
 	
 }

@@ -3,13 +3,16 @@ package com.example.demo.data.scheduler;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import com.example.demo.data.dao.IndexDao;
 import com.example.demo.data.dao.ItemMapper;
 import com.example.demo.data.service.DartService;
+import com.example.demo.data.service.IndexService;
 import com.example.demo.vo.ItemDto;
 
 public class KorIndexScheduler {
@@ -19,6 +22,12 @@ public class KorIndexScheduler {
 	
 	@Autowired
 	private ItemMapper itemDao;
+	
+	@Autowired
+	IndexService indexService;
+	
+	@Autowired
+	IndexDao indexMapper;
 	
 	@Scheduled(cron ="0 0 0 * * 7 *")
 	public void balanceSheet() throws ParseException {
@@ -35,6 +44,16 @@ public class KorIndexScheduler {
 			inParam.put("reprtCode",reprtCode[quarter-1]);
 			dartService.insBalaceSheet(inParam);
 		}
-		
+	}
+	@Scheduled(cron = "0 30 15 * * ?")
+	public void dsKorIndexScheduler() {
+		List<HashMap<String, Object>> list = new LinkedList<HashMap<String, Object>>();
+		HashMap<String, Object> paramMap = new HashMap<>();
+		list = indexMapper.selectKorCodes(paramMap);
+		for(int i = 0; i<list.size();i++) {
+			HashMap<String, Object> inParam = list.get(i);
+			inParam.put("quant", 700);
+			indexService.insKorIndexDaishin(inParam);
+		}
 	}
 }

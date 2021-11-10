@@ -80,10 +80,11 @@ public class IndexServiceImpl implements IndexService {
 		
 		//코스피는 U001, 코스닥은 U201
 		String ticker = (String) inParam.get("CODE_VALUE");
+		int quant = (int) inParam.getOrDefault("quant", 3);
 		dashin.cpsysdib.ISysDib indexClient = dashin.cpsysdib.ClassFactory.createStockChart();
 		indexClient.setInputValue(0, ticker);	//티커
 		indexClient.setInputValue(1, (int) '2'); // 요청 구분 데이터 개수
-		indexClient.setInputValue(4, 3); // 요청 개수		
+		indexClient.setInputValue(4, quant); // 요청 개수		
 		indexClient.setInputValue(5, new int[] {0,2,3,4,5,8}); //날짜 시가, 고가, 저가, 종가, 거래량
 		indexClient.setInputValue(6, (int) 'D');
 		
