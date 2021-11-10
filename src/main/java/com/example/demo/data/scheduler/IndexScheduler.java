@@ -160,24 +160,19 @@ public class IndexScheduler {
 	@Scheduled(cron = "0 0 06 * * ?")
 		   public void bitScheduler() {
 				Map<String,Object> inParam = new HashMap<String,Object>();
-		     	//비트코인
+		     	
 				try {
-					logger.debug("BITHUMB GET BTC START =====================");
-		     		inParam.put("CDOE_VALUE", "BTC");
-		     		bithumbService.insCrytoCurrencyHistory(inParam);
-		     		logger.debug("BITHUMB GET BTC END =====================");
+					inParam.put("id", CommonCodeConst.BITHUMB_INDEX);
+					List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
+		     		codeMap = priceDao.selectUsCodeCont(inParam);
+		     		for(Map<String, Object> paramMap : codeMap) {
+		     			bithumbService.insCrytoCurrencyHistory(inParam);
+		     		}
+		     		logger.debug("BITHUMB GET IDNEX END =====================");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-		     	//이더리움
-		     	try {
-		     		logger.debug("BITHUMB GET ETH START =====================");
-		     		inParam.put("CDOE_VALUE", "ETH");
-		     		bithumbService.insCrytoCurrencyHistory(inParam);
-		     		logger.debug("BITHUMB GET ETH END =====================");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		     
 		   }
 	
 }

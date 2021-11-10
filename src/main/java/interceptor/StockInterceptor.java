@@ -24,13 +24,12 @@ public class StockInterceptor implements HandlerInterceptor {
 			throws Exception {
 		System.out.println("InterCeptor Start ==============");
 		logger.debug("logger Interceptor Start -----------=----------");
-		return true;
-		/*int connectionStatus =  cybosConnection.connectionCheck();
+		int connectionStatus =  cybosConnection.connectionCheck();
 			if(connectionStatus > 0) {
 				return true;
 			} else {
 				return false;
-			}*/
+			}
 	}
 
 	@Override

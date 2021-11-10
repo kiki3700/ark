@@ -39,7 +39,7 @@ public class BithumbServiceImpl implements BithumbService{
 		//비트코인 : BTC 이더리움  : ETH
 		
 
-		String name = (String) inParams.get("CDOE_VALUE");
+		String name = (String) inParams.get("CODE_VALUE");
 		System.out.print(name);
 		HashMap<String, Object> result = webClient.mutate()
 				.baseUrl(url)

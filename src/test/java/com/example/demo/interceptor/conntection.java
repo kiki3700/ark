@@ -19,6 +19,7 @@ public class conntection {
 	
 	@Test
 	public void test() throws Exception {
-		con.runCybos();
+		boolean is = con.runCybos();
+		System.out.println(is);
 	}
 }

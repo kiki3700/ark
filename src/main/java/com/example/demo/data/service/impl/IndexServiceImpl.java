@@ -43,7 +43,7 @@ public class IndexServiceImpl implements IndexService {
 		IDib index = ClassFactory.createCpSvr8300();
 		index.setInputValue(0, inParam.get("CODE_VALUE"));
 		index.setInputValue(1, (int) 'D'); 
-		index.setInputValue(3, inParam.get("QUANT"));
+		index.setInputValue(3, (int) inParam.getOrDefault("QUANT", 3));
 		
 		index.blockRequest();
 		

@@ -13,7 +13,7 @@ public interface IndexDao {
 	List<PriceVo> getPrice(HashMap param);
 	void insertPrice(PriceVo vo);
 	
-	Map<String,Object> selectUsCodeCont (Map<String, Object> paramMap);
+	List<HashMap<String,Object>> selectUsCodeCont (Map<String, Object> paramMap);
 	//인덱스 인서트
 	int insertIndex(IndexHistoryDataDto indexHistoryDataDto);
 	

@@ -24,6 +24,7 @@ public class CybosConnection {
 	
 	public int connectionCheck() throws Exception {
 		int connectionStatus = cybos.isConnect();
+		System.out.println(connectionStatus);
 		if(connectionStatus==0) {
 			//연결 안됨 => 로그인 구현 후 로그인으로
 			logger.debug(Integer.toString(connectionStatus));
@@ -39,6 +40,7 @@ public class CybosConnection {
 		}
 		// return값 0 연결 끊김, 1: cybosplus 써버 2: hts서버
 		//=> 1이 나와여 조회나 트레이딩 가능
+		System.out.println(connectionStatus);
 		return connectionStatus;
 	}
 	
@@ -46,7 +48,7 @@ public class CybosConnection {
 	public boolean runCybos() throws Exception {
 		try {
 			
-			String[] command = new String[] {"C:\\DAISHIN\\STARTER\\ncStarter.exe","/prj:cp","/id:kiki3700","/pwd:Lo50!@","/pwdcert:Lolo5050!@", "/autostart"};
+			String[] command = new String[] {"C:\\DAISHIN\\STARTER\\ncStarter.exe","/prj:cp","/id:25GUSWLS","/pwd:Aktwlq2@","/pwdcert:aktwlq2525@", "/autostart"};
 			Process process = new ProcessBuilder(command).start();
 			InputStream is = process.getInputStream();//Get an inputstream from the process which is being executed
 			InputStreamReader isr = new InputStreamReader(is);
