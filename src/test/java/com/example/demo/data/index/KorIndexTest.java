@@ -36,6 +36,7 @@ public class KorIndexTest {
 		list = indexDao.selectKorCodes(paramMap);
 		for(HashMap<String, Object> map : list) {
 			System.out.println(map.get("CODE_VALUE"));
+			System.out.println(map.get("CODE_NAME"));
 		}
 	}
 	@Test

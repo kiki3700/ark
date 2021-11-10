@@ -94,7 +94,7 @@ public class IndexServiceImpl implements IndexService {
 		String indexCode= (String) indexClient.getHeaderValue(0);
 		System.out.println(len);
 		
-		for(int i = 0 ; i< 3 ; i++) {
+		for(int i = 0 ; i<len  ; i++) {
 			long dateL = (long) indexClient.getDataValue(0, i);
 			Date date = FormatConverter.longToDate(dateL);
 			float open= (float) indexClient.getDataValue(1, i);
@@ -104,7 +104,7 @@ public class IndexServiceImpl implements IndexService {
 			Number volumeL = (Number) indexClient.getDataValue(5, i);
 			BigDecimal volume = new BigDecimal(volumeL.doubleValue()); 
 			System.out.println(volumeL.getClass());
-			historyDataDto.setINDEX_NAME(ticker);
+			historyDataDto.setINDEX_NAME((String) inParam.get("CODE_NAME"));
 			historyDataDto.setIndexDate(date);
 			historyDataDto.setClose(close);
 			historyDataDto.setHigh(high);
