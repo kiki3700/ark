@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.IndexService;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.vo.IndexHistoryDataDto;
@@ -24,17 +24,17 @@ import dashin.cpdib.IDib;
 public class IndexServiceImpl implements IndexService {
 
 	@Autowired
-	IndexDao priceDao;
+	IndexMapper indexMapper;
 	
 	@Override
 	public List<PriceVo> getPrice(HashMap param) {
-		List<PriceVo> price = priceDao.getPrice(param);
+		List<PriceVo> price = indexMapper.getPrice(param);
 		return price;
 	}
 
 	@Override
 	public void insertPrice(PriceVo vo) {
-		priceDao.insertPrice(vo);
+		indexMapper.insertPrice(vo);
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class IndexServiceImpl implements IndexService {
 			historyDataDto.setLow(low);
 			historyDataDto.setOpen(open);
 			historyDataDto.setVolume(volume);
-			priceDao.insIndexDaishin(historyDataDto);
+			indexMapper.insIndexDaishin(historyDataDto);
 			
 		}
 	}
@@ -112,7 +112,7 @@ public class IndexServiceImpl implements IndexService {
 			historyDataDto.setOpen(open);
 			historyDataDto.setVolume(volume);
 //			System.out.println(historyDataDto);
-			priceDao.insIndexDaishin(historyDataDto);
+			indexMapper.insIndexDaishin(historyDataDto);
 		
 		}
 	}	

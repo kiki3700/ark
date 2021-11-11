@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.example.demo.constants.BokConst;
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.BithumbService;
 import com.example.demo.data.service.BokService;
 import com.example.demo.data.service.IndexService;
@@ -29,7 +29,7 @@ public class BokIndex {
 	@Autowired
 	IndexService priceService;
 	@Autowired
-	IndexDao priceDao;
+	IndexMapper indexMapper;
 	@Autowired
 	BokService bokService;
 	@Autowired

@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.example.demo.vo.BalanceSheetDto;
 
 @Mapper
-public interface DartDao {
+public interface DartMapper {
 	int insertBalanceSheet(BalanceSheetDto balanceSheetDto);
 }

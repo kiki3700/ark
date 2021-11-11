@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.IndexService;
 
 
@@ -25,7 +25,7 @@ public class KorIndexTest {
 	IndexService ser;
 	
 	@Autowired
-	IndexDao indexDao;
+	IndexMapper indexDao;
 	 
 	List<HashMap<String, Object>> list = new LinkedList<HashMap<String, Object>>();
 	

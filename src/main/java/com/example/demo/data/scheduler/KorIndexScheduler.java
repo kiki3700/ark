@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.dao.ItemMapper;
 import com.example.demo.data.service.DartService;
 import com.example.demo.data.service.IndexService;
@@ -27,7 +27,7 @@ public class KorIndexScheduler {
 	IndexService indexService;
 	
 	@Autowired
-	IndexDao indexMapper;
+	IndexMapper indexMapper;
 	
 	@Scheduled(cron ="0 0 0 * * 7 *")
 	public void balanceSheet() throws ParseException {
@@ -49,7 +49,8 @@ public class KorIndexScheduler {
 	public void dsKorIndexScheduler() {
 		List<HashMap<String, Object>> list = new LinkedList<HashMap<String, Object>>();
 		HashMap<String, Object> paramMap = new HashMap<>();
-		list = indexMapper.selectKorCodes(paramMap);
+		paramMap.put("api","DAISHIN_KOR");		
+		list = indexMapper.selectUsCodes(paramMap);
 		for(int i = 0; i<list.size();i++) {
 			HashMap<String, Object> inParam = list.get(i);
 			inParam.put("quant", 700);

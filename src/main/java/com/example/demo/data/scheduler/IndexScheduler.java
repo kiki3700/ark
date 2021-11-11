@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.constants.BokConst;
 import com.example.demo.constants.CommonCodeConst;
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.BithumbService;
 import com.example.demo.data.service.BokService;
 import com.example.demo.data.service.IndexService;
@@ -28,7 +28,7 @@ public class IndexScheduler {
 	@Autowired
 	IndexService priceService;
 	@Autowired
-	IndexDao priceDao;
+	IndexMapper indexMapper;
 	@Autowired
 	BokService bokService;
 	@Autowired
@@ -39,9 +39,10 @@ public class IndexScheduler {
 	@Scheduled(cron = "0 0 06 * * ?")
 	   public void dsIndexScheduler() {
 			Map<String,Object> inParam = new HashMap<String,Object>();
+			inParam.put("api", "DAISHIN");
 	     	try {
 	     		List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
-	     		codeMap = priceDao.selectUsCodes(inParam);
+	     		codeMap = indexMapper.selectUsCodes(inParam);
 	     		short quant = 3;
 	     		for(Map<String, Object> paramMap : codeMap) {
 	     			paramMap.put("QUANT",quant);
@@ -164,7 +165,7 @@ public class IndexScheduler {
 				try {
 					inParam.put("id", CommonCodeConst.BITHUMB_INDEX);
 					List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
-		     		codeMap = priceDao.selectUsCodeCont(inParam);
+		     		codeMap = indexMapper.selectUsCodeCont(inParam);
 		     		for(Map<String, Object> paramMap : codeMap) {
 		     			bithumbService.insCrytoCurrencyHistory(inParam);
 		     		}
