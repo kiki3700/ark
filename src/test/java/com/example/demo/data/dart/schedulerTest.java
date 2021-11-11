@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.constants.CommonCodeConst;
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.IndexService;
 
 import dashin.cputil.ClassFactory;
@@ -27,7 +27,7 @@ public class schedulerTest {
 	IndexService priceService;
 	
 	@Autowired
-	IndexDao priceDao;
+	IndexMapper indexMapper;
 	
 	Map<Object, Object> inParam;
 	
@@ -51,7 +51,7 @@ public class schedulerTest {
 				paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
 				int order_num = i+1;
 				paramMap.put("code_order_num", order_num);
-				priceDao.insertUsCoded(paramMap);
+				indexMapper.insertUsCoded(paramMap);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class schedulerTest {
 				paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
 				int order_num = i+1;
 				paramMap.put("code_order_num", order_num);
-				priceDao.insertUsCoded(paramMap);
+				indexMapper.insertUsCoded(paramMap);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class schedulerTest {
 						paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
 						int order_num = i+1;
 						paramMap.put("code_order_num", order_num);
-						priceDao.insertUsCoded(paramMap);
+						indexMapper.insertUsCoded(paramMap);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

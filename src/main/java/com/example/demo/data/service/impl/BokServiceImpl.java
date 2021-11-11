@@ -22,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.constants.BokConst;
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.BokService;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.util.MonoWebclient;
@@ -40,7 +40,7 @@ public class BokServiceImpl implements BokService {
 	RestTemplate restTemplate;
 	
 	@Autowired
-	IndexDao indexDao;
+	IndexMapper indexDao;
 	
 	@Value("${bokkey}")
 	String bok_key;

@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.constants.CommonCodeConst;
-import com.example.demo.data.dao.IndexDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.IndexService;
 
 import dashin.cputil.ClassFactory;
@@ -27,7 +27,7 @@ public class IndexTest {
 	IndexService priceService;
 	
 	@Autowired
-	IndexDao priceDao;
+	IndexMapper indexMapper;
 	
 	Map<Object, Object> inParam;
 	
@@ -51,7 +51,7 @@ public class IndexTest {
 				paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
 				int order_num = i+1;
 				paramMap.put("code_order_num", order_num);
-				priceDao.insertUsCoded(paramMap);
+				indexMapper.insertUsCoded(paramMap);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class IndexTest {
 				paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
 				int order_num = i+1;
 				paramMap.put("code_order_num", order_num);
-				priceDao.insertUsCoded(paramMap);
+				indexMapper.insertUsCoded(paramMap);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class IndexTest {
 						paramMap.put("code_name", usCode.getNameByUsCode((String) tickers[i]));
 						int order_num = i+1;
 						paramMap.put("code_order_num", order_num);
-						priceDao.insertUsCoded(paramMap);
+						indexMapper.insertUsCoded(paramMap);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -117,7 +117,7 @@ public class IndexTest {
 			Map<String,Object> paramMap = new HashMap<String,Object>();
 			paramMap.put("id", CommonCodeConst.ICPUSCODE_COUNTRY);
 			paramMap.put("code_name", "S&P500");
-			codeMap = priceDao.selectUsCodeCont(paramMap);
+			codeMap = indexMapper.selectUsCodeCont(paramMap);
 			this.getIndex(indexCodet); 
 		
 		
@@ -127,7 +127,7 @@ public class IndexTest {
 		inParam.put("quant","365");
 		IndexHistoryDataDto dto = priceService.getIndexHistory(inParam);
 		
-		priceDao.insertIndex(dto); // 추후 controller로 옮기면 getIndexHistroy 안으로 이동
+		indexMapper.insertIndex(dto); // 추후 controller로 옮기면 getIndexHistroy 안으로 이동
 			
 	}*/
 }

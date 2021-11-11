@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.example.demo.vo.IndexHistoryDataDto;
 import com.example.demo.vo.PriceVo;
 @Mapper
-public interface IndexDao {
+public interface IndexMapper {
 	List<PriceVo> getPrice(HashMap param);
 	void insertPrice(PriceVo vo);
 	

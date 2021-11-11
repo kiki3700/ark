@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.data.dao.IndexDao">
+<mapper namespace="com.example.demo.data.dao.IndexMapper">
 	<select id ='getPrice' parameterType = "HashMap" resultType = "com.example.demo.vo.PriceVo">
 		SELECT
 			name,
@@ -56,7 +56,7 @@
 			CODE_VALUE,
 			CODE_NAME
 		FROM COMMON_CODE_DET
-			WHERE id IN('ICP00002','ICP00003' ,'ICP00004')
+			WHERE API = #{api}
 	</select>
 	<select id ='selectKorCodes' parameterType = "HashMap" resultType = "HashMap">
 		SELECT

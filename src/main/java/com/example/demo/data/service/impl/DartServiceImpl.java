@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.example.demo.data.dao.DartDao;
+import com.example.demo.data.dao.DartMapper;
 import com.example.demo.data.dao.ItemMapper;
 import com.example.demo.data.service.DartService;
 import com.example.demo.util.DartUtil;
@@ -51,7 +51,7 @@ public class DartServiceImpl implements DartService{
 	private ItemMapper itemDao;
 	
 	@Autowired
-	private DartDao dartDao;
+	private DartMapper dartDao;
 	
 	@Autowired
 	private FormatConverter formatConverter;
