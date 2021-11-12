@@ -69,10 +69,24 @@
 		</where>
 	</select>
 	
-	<insert id = 'insertHistoryDataDtoList' parameterType = 'HistoryDataDto'>
-	MERGE INTO HISTORY_DATA
-		USING DUAL
-			ON(ITEM_ID = #{itemId} and trading_date = #{tradingDate})
+	<insert id = 'insertHistoryDataDtoList' parameterType = 'java.util.List'>
+MERGE INTO HISTORY_DATA A
+		USING (
+            SELECT * FROM (
+                <foreach  collection="list" item="item" open="" close="" separator="UNION">
+                    SELECT TO_CHAR(#{item.tradingDate}, 'YYYYMMDD')||#{item.itemId} AS id,
+                        #{item.tradingDate} as trading_date,
+                        #{item.itemId}as item_id ,
+                        #{item.open} as open,
+                        #{item.close} as close,
+                        #{item.low} as low,
+                        #{item.high} as high,
+                        #{item.volume} as volume
+                    FROM DUAL
+                </foreach>
+                ) 
+            )B
+			ON(A.ITEM_ID = B.ITEM_ID and A.trading_date = B.trading_date)
 		WHEN NOT MATCHED THEN
 		INSERT(
 			id,
@@ -85,16 +99,16 @@
 			volume
 			)
 		VALUES
-			(
-			TO_CHAR(#{tradingDate}, 'YYYYMMDD')||#{itemId},
-			#{tradingDate},
-			#{itemId},
-			#{open},
-			#{close},
-			#{low},
-			#{high},
-			#{volume}
-		)
 		
+			(
+			B.id,
+			B.trading_date,
+			B.item_id,
+			B.open,
+			B.close,
+			B.low,
+			B.high,
+			B.volume
+		)
 	</insert>
 </mapper>

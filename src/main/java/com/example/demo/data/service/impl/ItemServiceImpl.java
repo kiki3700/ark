@@ -2,6 +2,7 @@ package com.example.demo.data.service.impl;
 
 import java.math.BigInteger;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -147,6 +148,7 @@ public class ItemServiceImpl implements ItemService {
 			sysDib.blockRequest();
 			Object data = sysDib.getHeaderValue(3);
 			System.out.println(sysDib.getHeaderValue(5));
+			List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
 			for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
 				String time = Long.toString((long) sysDib.getDataValue(0, i));
 				Date tradingDate = FormatConverter.stringToDate(time);
@@ -162,8 +164,9 @@ public class ItemServiceImpl implements ItemService {
 				historyDataDto.setLow(low);
 				historyDataDto.setClose(close);
 				historyDataDto.setVolume(volume);
-				itemDao.insertHistoryDataDtoList(historyDataDto);
+				historyDataDtoList.add(historyDataDto);
 				}
+			itemDao.insertHistoryDataDtoList(historyDataDtoList);
 			}while(1==((int) sysDib._continue()));
 			
 	}
@@ -182,7 +185,8 @@ public class ItemServiceImpl implements ItemService {
 			checkRqLimit();
 			sysDib.blockRequest();
 			Object data = sysDib.getHeaderValue(3);
-			System.out.println(sysDib.getHeaderValue(5));
+//			System.out.println(sysDib.getHeaderValue(5));
+			List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
 			for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
 				String time = Long.toString((long) sysDib.getDataValue(0, i));
 				Date tradingDate = FormatConverter.stringToDate(time);
@@ -200,8 +204,9 @@ public class ItemServiceImpl implements ItemService {
 				historyDataDto.setClose(close);
 				historyDataDto.setVolume(volume);
 				System.out.println(historyDataDto);
-				itemDao.insertHistoryDataDtoList(historyDataDto);
+				historyDataDtoList.add(historyDataDto);
 				}
+				itemDao.insertHistoryDataDtoList(historyDataDtoList);
 			}while(1==((int) sysDib._continue()));
 			
 	}

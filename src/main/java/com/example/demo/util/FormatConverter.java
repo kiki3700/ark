@@ -75,6 +75,9 @@ public class FormatConverter {
 		return dataList;
 	}
 	public static double separatorStringToDouble(String str) throws ParseException {
+		if(str.isEmpty()||str.equals(null)) {
+			return 0;
+		}
 		try {
 			return	Double.parseDouble(str.replaceAll(",", ""));
 		}catch(NumberFormatException e){

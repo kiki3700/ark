@@ -120,6 +120,12 @@ public class DartServiceImpl implements DartService{
 			System.out.println(balanceSheetDto);
 			dartDao.insertBalanceSheet(balanceSheetDto);
 			
+			//에러 잡기
+			try{
+			    Thread.sleep(2000);
+			}catch(InterruptedException e){
+			    e.printStackTrace();
+			}
 		}
 		
 	}
