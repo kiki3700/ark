@@ -7,5 +7,5 @@ import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.IndexHistoryDataDto;
 
 public interface BithumbService {
-	List<IndexHistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams);
+	void insCrytoCurrencyHistory(Map<String, Object>inParams);
 }

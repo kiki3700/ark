@@ -9,9 +9,7 @@ import com.example.demo.vo.BalanceSheetDto;
 
 public interface DartService {
 
-	BalanceSheetDto getBalaceSheet(Map inParam) throws ParseException;
+	void insBalaceSheet(Map<String, Object> inParam) throws ParseException;
 
-	public int insertBalanceSheeat(BalanceSheetDto balaceSheetDto);
-
-	HashMap<String, String> getCorpCodeMap() throws IOException;
+	void updaeCopCode() throws IOException;
 }

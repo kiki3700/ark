@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.data.dao.IndexMapper">
+	<select id ='getPrice' parameterType = "HashMap" resultType = "com.example.demo.vo.PriceVo">
+		SELECT
+			name,
+			open,
+			close,
+			high,
+			low,
+			index_date
+		FROM example
+		<if test = "name!=NULL and name!=''">
+			WHERE name = #{name}
+		</if>
+		ORDER BY index_date
+	</select>
+	<insert id ='insertPrice' parameterType='com.example.demo.vo.PriceVo'>
+		INSERT INTO example(
+			name,
+			open,
+			close,
+			high,
+			low,
+			index_date)
+		VALUES(
+			#{name},
+			#{open},
+			#{close},
+			#{high},
+			#{low},
+			#{indexDate}
+		)
+	</insert>
+	<!-- UsCode 원하는 지수 공통코드에서 가져오기 -->
+	<select id ='selectUsCodeCont' parameterType = "HashMap" resultType = "HashMap">
+		SELECT
+			CODE_VALUE,
+			CODE_NAME,
+			code_en_name
+		FROM COMMON_CODE_DET
+		<where>
+			<if test = "id !=NULL and id !='' ">
+				AND id = #{id}
+			</if>
+			<if test = "code_name != NULL and code_name !='' ">
+				AND code_name = #{code_name}
+			</if>
+		</where>
+		
+	</select>
+	
+	<!-- UsCode 공통코드에서 가져오기 -->
+	<select id ='selectUsCodes' parameterType = "HashMap" resultType = "HashMap">
+		SELECT
+			CODE_VALUE,
+			CODE_NAME
+		FROM COMMON_CODE_DET
+			WHERE API = #{api}
+	</select>
+	<select id ='selectKorCodes' parameterType = "HashMap" resultType = "HashMap">
+		SELECT
+			CODE_VALUE,
+			CODE_NAME
+		FROM COMMON_CODE_DET
+			WHERE API = 'DAISHIN_KOR'
+	</select>
+	
+	
+	<insert id ='insertIndex' parameterType = "IndexHistoryDataDto">
+		INSERT INTO INDEX_HISTORY_DATA(
+			ID,
+			INDEX_NAME,
+			INDEX_DATE,
+			OPEN,
+			CLOSE,
+			LOW,
+			HIGH,
+			VOLUME,
+			UPDATE_DATE
+			)
+		VALUES(
+			INDEX_HISTORY_DATA_ID.NEXTVAL,
+			#{INDEX_NAME,jdbcType=VARCHAR},
+			#{indexDate,jdbcType=DATE},
+			#{open,jdbcType=FLOAT},
+			#{close,jdbcType=FLOAT},
+			#{low,jdbcType=FLOAT},
+			#{high,jdbcType=FLOAT},
+			#{volume,jdbcType=FLOAT},
+			SYSDATE
+		)
+	</insert>
+	
+	<insert id ='insIndexDaishin' parameterType = "IndexHistoryDataDto">
+		MERGE INTO INDEX_HISTORY_DATA A
+    		USING DUAL
+			ON (A.INDEX_NAME = #{INDEX_NAME} AND TO_CHAR(INDEX_DATE,'YYYYMMDD') = TO_CHAR(#{indexDate},'YYYYMMDD')
+			)
+		  WHEN NOT MATCHED THEN
+			INSERT (
+				ID,
+				INDEX_NAME,
+				INDEX_DATE,
+				OPEN,
+				CLOSE,
+				LOW,
+				HIGH,
+				VOLUME,
+				UPDATE_DATE
+				)
+			VALUES(
+				TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || LPAD(INDEX_HISTORY_DATA_ID.NEXTVAL,6,'0'),
+				#{INDEX_NAME,jdbcType=VARCHAR},
+				#{indexDate,jdbcType=DATE},
+				#{open,jdbcType=FLOAT},
+				#{close,jdbcType=FLOAT},
+				#{low,jdbcType=FLOAT},
+				#{high,jdbcType=FLOAT},
+				#{volume,jdbcType=FLOAT},
+				SYSDATE
+			)
+	</insert>
+	
+	
+	<insert id ='insertUsCoded' parameterType = "HashMap">
+		INSERT INTO COMMON_CODE_DET(
+			ID,
+			code_value,
+			code_name,
+			code_order_num,
+			create_date,
+			update_date,
+			api
+			)
+		VALUES(
+			#{id},
+			#{code_value},
+			#{code_name},
+			#{code_order_num},
+			SYSDATE,
+			SYSDATE,
+			#{api}
+			
+		)
+	</insert>
+</mapper>

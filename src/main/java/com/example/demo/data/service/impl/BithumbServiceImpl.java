@@ -1,66 +1,74 @@
 package com.example.demo.data.service.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
-import com.example.demo.data.dao.PriceDao;
+import com.example.demo.data.dao.IndexMapper;
 import com.example.demo.data.service.BithumbService;
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.IndexHistoryDataDto;
 
 @Service
 public class BithumbServiceImpl implements BithumbService{
-	@Value("${bithumb.url")
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Value("${bithumb.url}")
 	String url;
 	
 	@Autowired
-	private RestTemplate restTemplate;
+	private WebClient webClient;
 	
 	@Autowired
-	private PriceDao priceDao;
+	private IndexMapper indexMapper;
 
 	@Override
-	public List<IndexHistoryDataDto> getCrytoCurrencyHistory(Map<String, Object>inParams) {
-		String targetUrl = url+"/public/candlestick/{nm}_KRW/24h";
-		List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
-		Map<String, String> queryMap = new HashMap<>();
-		queryMap.put("nm",(String) inParams.get("name"));
+	public void insCrytoCurrencyHistory(Map<String, Object>inParams) {
+		//비트코인 : BTC 이더리움  : ETH
 		
-		HashMap<String, Object> result = restTemplate.getForObject(targetUrl, HashMap.class, queryMap);
-		
+
+		String name = (String) inParams.get("CODE_VALUE");
+		System.out.print(name);
+		HashMap<String, Object> result = webClient.mutate()
+				.baseUrl(url)
+				.build()
+				.get()
+				.uri("/public/candlestick/{name}_KRW/24h",name)
+				.retrieve()
+				.bodyToMono(HashMap.class)
+				.block();
 		String msg =(String) result.get("status");
+		List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
 		if(msg.equals("0000")) {
-			List<Object[]> datas = (List<Object[]>) result.get("data");
-			
+			List<ArrayList> datas = (List<ArrayList>) result.get("data");
 			int len = datas.size();
-			int quant = (int) inParams.getOrDefault("quant", len);
+			int quant = 3;
 			for(int i = len-quant; i < len; i++) {
-				IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
-				Object[] data = datas.get(i);
-				historyDataDto.setINDEX_NAME((String) inParams.get("name"));
-				historyDataDto.setTradingDate(new Date(Long.parseLong((String) data[0])));
-				historyDataDto.setOpen(Integer.parseInt((String) data[1]));
-				historyDataDto.setClose(Integer.parseInt((String) data[2]));
-				historyDataDto.setHigh(Integer.parseInt((String) data[3]));
-				historyDataDto.setLow(Integer.parseInt((String) data[4]));
-				historyDataDto.setVolume(new BigDecimal((String) data[5]));
-				resultList.add(historyDataDto);
+				IndexHistoryDataDto indexHistoryDataDto = new IndexHistoryDataDto();
+				ArrayList data = datas.get(i);
+				indexHistoryDataDto.setINDEX_NAME(name);
+				indexHistoryDataDto.setIndexDate(new Date((long) data.get(0)));
+				indexHistoryDataDto.setOpen(Integer.parseInt((String) data.get(1)));
+				indexHistoryDataDto.setClose(Integer.parseInt((String) data.get(2)));
+				indexHistoryDataDto.setHigh(Integer.parseInt((String) data.get(3)));
+				indexHistoryDataDto.setLow(Integer.parseInt((String) data.get(4)));
+				indexHistoryDataDto.setVolume(new BigDecimal((String) data.get(5)));
+//				System.out.println(indexHistoryDataDto);
+				indexMapper.insertIndex(indexHistoryDataDto);	
 			}
 		}
-		return resultList;
-	}
-	public void insertCryptoCurrencyHistory(List<IndexHistoryDataDto> DtoList) {
-		 for(IndexHistoryDataDto dto : DtoList) {
-			 priceDao.insertIndex(dto);
-		 }
+		
 	}
 }

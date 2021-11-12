@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(
-		basePackages = "com.example.demo.data"
+		basePackages = {"com.example.demo.data","com.example.demo.trade"}
 )
 public class BeanConfig {
 

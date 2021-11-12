@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.data.dao.ItemDao">
+<mapper namespace="com.example.demo.data.dao.ItemMapper">
+
 	<update id = 'insertItem' parameterType = 'ItemDto'>
 		MERGE INTO ITEM
 		USING DUAL
-			ON(TICKER = #{ticker})
+			ON(id = #{id})
 		WHEN MATCHED THEN
 			UPDATE SET
-				NAME = #{NAME}
+				NAME = #{name}
 				,IS_ACTIVE = #{isActive}
 				,MARKET = #{market}
 				,INDUSTRY = #{industry}
@@ -15,7 +16,6 @@
 		WHEN NOT MATCHED THEN
 			INSERT(
 				ID,
-				TICKER,
 				NAME,
 				IS_ACTIVE,
 				CURRENCY_ID,
@@ -26,8 +26,7 @@
 				LISTING_DATE
 			)
 			VALUES(
-				ITEM_ID.NEXTVAL,
-				#{ticker},
+				#{id},
 				#{name},
 				#{isActive},
 				#{currencyId},
@@ -39,15 +38,77 @@
 				)
 	</update>
 	
+	<update id ='updateMarketCap' parameterType = 'ItemDto'>
+		UPDATE ITEM 
+		SET
+			LISTED_SHARE = #{listedShare},
+			MARKET_CAP = #{marketCap}
+		WHERE ID = #{id}
+	</update>
+	
 	<update id= 'updateCorpCode' parameterType = 'HashMap'>
 		UPDATE ITEM
 		SET
 		CORP_CODE = #{corpCode}
 		WHERE
-		TICKER = #{ticker}
+		ID = #{id}
 	</update>
 	
-	<select id = 'selectItemList' resultType = 'ItemDto'>
-		SELECT * FROM ITEM;
+	<select id = 'selectItemList' parameterType = 'HashMap' resultType = 'ItemDto'>
+		SELECT * FROM ITEM
+		<where>
+			<if test = 'isActive != null and isActive !=""'>
+				AND IS_ACTIVE = #{isActive}
+			</if>
+			<if test = 'isCorpCode != null and isCorpCode != ""'>
+				AND CORP_CODE IS NOT NULL
+			</if>
+			<if test = 'industry != null and industry != ""'>
+				AND INDUSTRY = #{industry}
+			</if>
+		</where>
 	</select>
+	
+	<insert id = 'insertHistoryDataDtoList' parameterType = 'java.util.List'>
+MERGE INTO HISTORY_DATA A
+		USING (
+            SELECT * FROM (
+                <foreach  collection="list" item="item" open="" close="" separator="UNION">
+                    SELECT TO_CHAR(#{item.tradingDate}, 'YYYYMMDD')||#{item.itemId} AS id,
+                        #{item.tradingDate} as trading_date,
+                        #{item.itemId}as item_id ,
+                        #{item.open} as open,
+                        #{item.close} as close,
+                        #{item.low} as low,
+                        #{item.high} as high,
+                        #{item.volume} as volume
+                    FROM DUAL
+                </foreach>
+                ) 
+            )B
+			ON(A.ITEM_ID = B.ITEM_ID and A.trading_date = B.trading_date)
+		WHEN NOT MATCHED THEN
+		INSERT(
+			id,
+			trading_date,
+			item_id,
+			open,
+			close,
+			low,
+			high,
+			volume
+			)
+		VALUES
+		
+			(
+			B.id,
+			B.trading_date,
+			B.item_id,
+			B.open,
+			B.close,
+			B.low,
+			B.high,
+			B.volume
+		)
+	</insert>
 </mapper>

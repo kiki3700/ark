@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,9 +23,13 @@ import dashin.cputil.CPE_MARKET_KIND;
 import dashin.cputil.ClassFactory;
 import dashin.cputil.ICpCodeMgr;
 
+//거의 폐기
+
 @CrossOrigin
 @RestController
 public class ItemController {
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 
 	@Autowired
 	ItemServiceImpl itemService;
@@ -43,34 +49,35 @@ public class ItemController {
 			//dto 생성
 			HashMap<String, Object> inParam = new HashMap<>();
 			inParam.put("ticker",(String) kospiTickers[i]);
-			ItemDto itemDto = itemService.getItemDto(inParam);
-			itemService.insertKoreaItem(itemDto);
+//			ItemDto itemDto = itemService.getItemDto(inParam);
+//			itemService.insertKoreaItem(itemDto);
 		}
 		for(int i = 0; i < kosdaqTickers.length; i++) {
 			//dto 생성
 			HashMap<String, Object> inParam = new HashMap<>();
 			inParam.put("ticker",(String) kosdaqTickers[i]);
-			ItemDto itemDto = itemService.getItemDto(inParam);
-			itemService.insertKoreaItem(itemDto);
+//			ItemDto itemDto = itemService.getItemDto(inParam);
+//			itemService.insertKoreaItem(itemDto);
 		}		
 	}
 	@RequestMapping(value ="/updateCorpCode")
 	public void updateCorpCode() {		
 		HashMap<String, String> corpMap = new HashMap<>();
-		try {
-			corpMap = dartService.getCorpCodeMap();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		List<ItemDto> itemList = itemService.getItemList();
+//		try {
+////			corpMap = dartService.getCorpCodeMap();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		HashMap<String, Object> inParam = new HashMap<>();
+		List<ItemDto> itemList = itemService.getItemList(inParam);
 		for(int i = 0 ; i< itemList.size();i++) {
 			HashMap<String, String> tickerMap = new HashMap<>();
-			String ticker = itemList.get(i).getTicker();
+			String ticker = itemList.get(i).getId();
 			String corpCode = corpMap.get(ticker);
 			tickerMap.put("ticker", ticker);
 			tickerMap.put("corpCode", corpCode);
-			itemService.updateCorpCode(tickerMap);
+//			itemService.updateCorpCode(tickerMap);
 		}
 	}
 }

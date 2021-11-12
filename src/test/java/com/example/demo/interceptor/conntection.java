@@ -18,7 +18,8 @@ public class conntection {
 	CybosConnection con;
 	
 	@Test
-	public void test() throws IOException {
-		con.runCybos();
+	public void test() throws Exception {
+		boolean is = con.runCybos();
+		System.out.println(is);
 	}
 }

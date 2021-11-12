@@ -6,7 +6,7 @@ import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;
 
 @Mapper
-public interface SetupDao {
+public interface SetupMapper {
 	int insertItem(ItemDto item);
 	int insertHistoryData(HistoryDataDto historyData);
 }

@@ -16,8 +16,9 @@ import com.example.demo.vo.ItemDto;
 @Component
 public class FormatConverter {
 	static public Date stringToDate(String dateString) throws ParseException {
-	SimpleDateFormat format = new SimpleDateFormat("yyyMMdd");
+	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	Date date = format.parse(dateString);
+	
 	return date;
 	}
 	static public Date longToDate(long date) {
@@ -33,13 +34,17 @@ public class FormatConverter {
 		SimpleDateFormat format = new SimpleDateFormat("yyyMMdd");
 		return format.format(date);
 	}
+	static public long dateToLong(Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyMMdd");
+		return Long.parseLong(format.format(date));
+	}
 	
-	
+	//삭제각
 	static List<HistoryDataDto> getKoreanStockItemDto(ItemDto item) throws ParseException {
 		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
 		dashin.cpsysdib.ISysDib chart =dashin.cpsysdib.ClassFactory.createStockChart();
 		String listingDate = FormatConverter.dateToString(item.getListingDate());
-		chart.setInputValue(0, item.getTicker());
+		chart.setInputValue(0, item.getId());
 		chart.setInputValue(1, (int) '1');
 		chart.setInputValue(3,listingDate);
 		chart.setInputValue(5, new int[] {0,2,3,4, 5, 8});
@@ -70,7 +75,16 @@ public class FormatConverter {
 		return dataList;
 	}
 	public static double separatorStringToDouble(String str) throws ParseException {
-		return Double.parseDouble(str.replaceAll(",", ""));
+		if(str.isEmpty()||str.equals(null)) {
+			return 0;
+		}
+		try {
+			return	Double.parseDouble(str.replaceAll(",", ""));
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 	
 }
