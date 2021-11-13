@@ -19,6 +19,7 @@ import com.example.demo.vo.ItemDto;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BalanceSheetTest {
+	//782.231s
 	@Autowired
 	ItemServiceImpl itemService;
 	@Autowired
