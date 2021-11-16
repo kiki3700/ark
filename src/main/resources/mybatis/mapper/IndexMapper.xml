@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.data.dao.IndexMapper">
+<mapper namespace="com.example.demo.data.mapper.IndexMapper">
 	<select id ='getPrice' parameterType = "HashMap" resultType = "com.example.demo.vo.PriceVo">
 		SELECT
 			name,
@@ -15,6 +15,32 @@
 		</if>
 		ORDER BY index_date
 	</select>
+	<insert id ='insertAllIndex' parameterType = 'java.util.List'>
+		<foreach collection="list" item ='item' open='INSERT ALL' close = 'SELECT * FROM DUAL'>
+			INTO INDEX_HISTORY_DATA(
+				ID,
+				INDEX_NAME,
+				INDEX_DATE,
+				OPEN,
+				CLOSE,
+				LOW,
+				HIGH,
+				VOLUME,
+				UPDATE_DATE
+			)
+			VALUES(
+				TO_CHAR(#{item.indexDate},'YYYYMMDDHH24MISS') || #{item.indexName},
+				#{item.indexName,jdbcType=VARCHAR},
+				#{item.indexDate,jdbcType=DATE},
+				#{item.open,jdbcType=FLOAT},
+				#{item.close,jdbcType=FLOAT},
+				#{item.low,jdbcType=FLOAT},
+				#{item.high,jdbcType=FLOAT},
+				#{item.volume,jdbcType=FLOAT},
+				SYSDATE
+			)
+		</foreach>
+	</insert>
 	<insert id ='insertPrice' parameterType='com.example.demo.vo.PriceVo'>
 		INSERT INTO example(
 			name,
@@ -80,8 +106,8 @@
 			UPDATE_DATE
 			)
 		VALUES(
-			INDEX_HISTORY_DATA_ID.NEXTVAL,
-			#{INDEX_NAME,jdbcType=VARCHAR},
+			TO_CHAR(#{indexDate},'YYYYMMDDHH24MISS') || #{indexName},
+			#{indexName,jdbcType=VARCHAR},
 			#{indexDate,jdbcType=DATE},
 			#{open,jdbcType=FLOAT},
 			#{close,jdbcType=FLOAT},
@@ -95,7 +121,7 @@
 	<insert id ='insIndexDaishin' parameterType = "IndexHistoryDataDto">
 		MERGE INTO INDEX_HISTORY_DATA A
     		USING DUAL
-			ON (A.INDEX_NAME = #{INDEX_NAME} AND TO_CHAR(INDEX_DATE,'YYYYMMDD') = TO_CHAR(#{indexDate},'YYYYMMDD')
+			ON (A.INDEX_NAME = #{indexName} AND TO_CHAR(INDEX_DATE,'YYYYMMDD') = TO_CHAR(#{indexDate},'YYYYMMDD')
 			)
 		  WHEN NOT MATCHED THEN
 			INSERT (
@@ -110,8 +136,8 @@
 				UPDATE_DATE
 				)
 			VALUES(
-				TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || LPAD(INDEX_HISTORY_DATA_ID.NEXTVAL,6,'0'),
-				#{INDEX_NAME,jdbcType=VARCHAR},
+				TO_CHAR(#{indexDate},'YYYYMMDD') || #{indexName},
+				#{indexName,jdbcType=VARCHAR},
 				#{indexDate,jdbcType=DATE},
 				#{open,jdbcType=FLOAT},
 				#{close,jdbcType=FLOAT},

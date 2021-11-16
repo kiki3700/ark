@@ -38,7 +38,7 @@ public class ItemScheduler {
 	
 	@Scheduled(cron = "0 5 08 * * *")
 	public void corpNumScheduler() throws IOException {
-		dartService.updaeCopCode();
+		dartService.updateCorpCode();
 	}
 	
 	@Scheduled(cron = "0 35 15 * * *")

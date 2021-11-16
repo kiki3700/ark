@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.constants.CommonCodeConst;
-import com.example.demo.data.dao.IndexMapper;
+import com.example.demo.data.mapper.IndexMapper;
 import com.example.demo.data.service.IndexService;
 
 import dashin.cputil.ClassFactory;

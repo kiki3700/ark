@@ -8,4 +8,6 @@ import com.example.demo.vo.IndexHistoryDataDto;
 
 public interface BithumbService {
 	void insCrytoCurrencyHistory(Map<String, Object>inParams);
+
+	void insAllCrytoCurrencyHistory();
 }

@@ -22,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.constants.BokConst;
-import com.example.demo.data.dao.IndexMapper;
+import com.example.demo.data.mapper.IndexMapper;
 import com.example.demo.data.service.BokService;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.util.MonoWebclient;
@@ -136,7 +136,7 @@ public class BokServiceImpl implements BokService {
 			
 			date = FormatConverter.stringToDate(dateL);
 			close = Float.parseFloat((String)rowData.get("DATA_VALUE"));
-			historyDataDto.setINDEX_NAME(INDEX_NAME);
+			historyDataDto.setIndexName(INDEX_NAME);
 			historyDataDto.setIndexDate(date);
 			historyDataDto.setClose(close);
 			indexDao.insIndexDaishin(historyDataDto);

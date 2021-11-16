@@ -9,8 +9,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.example.demo.data.dao.IndexMapper;
-import com.example.demo.data.dao.ItemMapper;
+import com.example.demo.data.mapper.IndexMapper;
+import com.example.demo.data.mapper.ItemMapper;
 import com.example.demo.data.service.DartService;
 import com.example.demo.data.service.IndexService;
 import com.example.demo.vo.ItemDto;
@@ -53,7 +53,7 @@ public class KorIndexScheduler {
 		list = indexMapper.selectUsCodes(paramMap);
 		for(int i = 0; i<list.size();i++) {
 			HashMap<String, Object> inParam = list.get(i);
-			inParam.put("quant", 700);
+			inParam.put("quant", 4);
 			indexService.insKorIndexDaishin(inParam);
 		}
 	}

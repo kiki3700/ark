@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class IndexHistoryDataDto {
 	private int id;
-	private String INDEX_NAME;
+	private String indexName;
 	private Date indexDate;
 	private float open;
 	private float close;
@@ -20,11 +20,12 @@ public class IndexHistoryDataDto {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getINDEX_NAME() {
-		return INDEX_NAME;
+	
+	public String getIndexName() {
+		return indexName;
 	}
-	public void setINDEX_NAME(String iNDEX_NAME) {
-		INDEX_NAME = iNDEX_NAME;
+	public void setIndexName(String indexName) {
+		this.indexName = indexName;
 	}
 	public Date getIndexDate() {
 		return indexDate;
@@ -66,7 +67,7 @@ public class IndexHistoryDataDto {
 	
 	@Override
 	public String toString() {
-		return "HistoryDataDto [id=" + id + ", INDEX_NAME=" + INDEX_NAME + ", indexDate=" + indexDate + ", open=" + open
+		return "HistoryDataDto [id=" + id + ", indexName=" + indexName + ", indexDate=" + indexDate + ", open=" + open
 				+ ", close=" + close + ", low=" + low + ", high=" + high + ", volume=" + volume + "]";
 	}
 }
