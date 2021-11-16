@@ -47,7 +47,7 @@ public class ItemScheduler {
 		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
 		for(int i = 0 ; i < itemDtoList.size(); i++) {
 			inParam = new HashMap<>();
-			inParam.put("quant", 700);
+			inParam.put("quant", 10000);
 			try {
 				itemService.insertHistoryData(itemDtoList.get(i), inParam);
 			} catch (ParseException e) {

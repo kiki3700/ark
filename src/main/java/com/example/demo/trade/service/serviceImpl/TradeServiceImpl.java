@@ -5,8 +5,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.trade.dao.TradeDao;
 import com.example.demo.trade.eventHandler.TradeEventHandler;
+import com.example.demo.trade.mapper.TradeMapper;
 import com.example.demo.trade.service.TradeService;
 import com.example.demo.vo.StockWrapper;
 import com.example.demo.vo.TradingDto;
@@ -21,7 +21,7 @@ public class TradeServiceImpl implements TradeService {
 	static String account;
 	
 	@Autowired
-	TradeDao tradeDao;
+	TradeMapper tradeDao;
 	
 	//인터셉터로 가야될꺼 같아여~~
 	@Override

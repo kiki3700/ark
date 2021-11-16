@@ -16,4 +16,8 @@ public interface IndexService {
 
 	void insKorIndexDaishin(Map<String, Object> inParam);
 
+	void insAllIndexHistory(Map<String, Object> inParam) throws Exception;
+
+	void insAllKorIndexDaishin(Map<String, Object> inParam);
+
 }

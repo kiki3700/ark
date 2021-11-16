@@ -1,4 +1,4 @@
-package com.example.demo.data.dao;
+package com.example.demo.data.mapper;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,5 +20,8 @@ public interface ItemMapper {
 	
 	List<ItemDto> selectItemList(Map<String, Object> inParams);
 	
-	int insertHistoryDataDtoList(HistoryDataDto historyData);
+	int insertHistoryDataDtoList(List<HistoryDataDto> historyDataDto);
+	int insertHistoryDataDto(HistoryDataDto historyDataDto);
+	int InitHistoryDataDtoList(List<HistoryDataDto> historyDataDto);
+	int deleteHistoryData(HashMap<String, Object> inParams);
 }

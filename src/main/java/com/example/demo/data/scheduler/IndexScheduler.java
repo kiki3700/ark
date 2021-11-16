@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.constants.BokConst;
 import com.example.demo.constants.CommonCodeConst;
-import com.example.demo.data.dao.IndexMapper;
+import com.example.demo.data.mapper.IndexMapper;
 import com.example.demo.data.service.BithumbService;
 import com.example.demo.data.service.BokService;
 import com.example.demo.data.service.IndexService;

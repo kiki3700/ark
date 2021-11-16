@@ -11,7 +11,8 @@ import com.example.demo.vo.ItemDto;
 public interface ItemService {
 	int insertItem();
 	void updateMarketCap();
-	void insertHistoryData(ItemDto itemDto) throws ParseException;
+//	void insertHistoryData(ItemDto itemDto) throws ParseException;
 	List<ItemDto> getItemList(Map<String, Object> inParams);
 	void insertHistoryData(ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException;
+	void inittHistoryData(ItemDto itemDto) throws ParseException;
 }

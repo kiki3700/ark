@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.data.dao.DartMapper">
+<mapper namespace="com.example.demo.data.mapper.DartMapper">
 	<insert id = 'insertBalanceSheet' parameterType = 'com.example.demo.vo.BalanceSheetDto'>
 		MERGE INTO BALANCE_SHEET
 		USING DUAL
@@ -42,5 +42,42 @@
 					#{longTermDebt}
 				)
 	</insert>
-
+	<insert id ="insertAllBalanceSheet" parameterType = 'java.util.List'>
+		<foreach  collection="list" item="item" open="INSERT ALL" close="select * from dual">
+			INTO BALANCE_SHEET(
+					ID,
+					ITEM_ID,
+					REPORTING_YEAR,
+					REPORT_CODE,
+					FS_NM,
+					REVENUE,
+					OPERATING_INCOME,
+					NET_INCOME,
+					ASSET,
+					DEBT,
+					EQUITY,
+					CURRENT_ASSET,
+					TOTAL_NON_CURRENT_ASSET,
+					SHORT_TERM_DEBT,
+					LONG_TERM_DEBT
+			)
+			VALUES(
+					#{item.reportingYear}||#{item.reportCode}||#{item.itemId},
+					#{item.itemId},
+					#{item.reportingYear},
+					#{item.reportCode},
+					#{item.fsNm},
+					#{item.revenue},
+					#{item.operatingIncome},
+					#{item.netIncome},
+					#{item.asset},
+					#{item.debt},
+					#{item.equity},
+					#{item.currentAsset},
+					#{item.totalNonCurrentAsset},
+					#{item.shortTermDebt},
+					#{item.longTermDebt}
+			)
+		</foreach>
+	</insert>
 </mapper>

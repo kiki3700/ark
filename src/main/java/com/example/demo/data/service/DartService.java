@@ -10,6 +10,8 @@ import com.example.demo.vo.BalanceSheetDto;
 public interface DartService {
 
 	void insBalaceSheet(Map<String, Object> inParam) throws ParseException;
-
-	void updaeCopCode() throws IOException;
+	
+	void insAllBalaceSheet();
+	
+	void updateCorpCode() throws IOException;
 }

@@ -74,14 +74,8 @@ public class FormatConverter {
 		}while(1==((int) chart._continue()));
 		return dataList;
 	}
-	public static double separatorStringToDouble(String str) throws ParseException {
-		try {
+	public static double separatorStringToDouble(String str) throws  NumberFormatException {
 			return	Double.parseDouble(str.replaceAll(",", ""));
-		}catch(NumberFormatException e){
-			e.printStackTrace();
-			return 0;
-		}
-		
 	}
 	
 }

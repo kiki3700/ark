@@ -15,9 +15,9 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
+import reactor.netty.resources.ConnectionProvider;
 
 @Configuration
 public class WebClientConfig {
@@ -36,7 +36,7 @@ public class WebClientConfig {
                 .clientConnector(
                     new ReactorClientHttpConnector(
                         HttpClient
-                            .create()
+                            .create(ConnectionProvider.create("test", 800))
                             .secure(
                                 ThrowingConsumer.unchecked(
                                     sslContextSpec -> sslContextSpec.sslContext(

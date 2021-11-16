@@ -1,4 +1,6 @@
-package com.example.demo.data.dao;
+package com.example.demo.data.mapper;
+
+import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -9,4 +11,6 @@ import com.example.demo.vo.ItemDto;
 public interface SetupMapper {
 	int insertItem(ItemDto item);
 	int insertHistoryData(HistoryDataDto historyData);
+	HashMap<String, Object> checkSetting();
+	int insertSetting(HashMap<String, Object> inParam);
 }

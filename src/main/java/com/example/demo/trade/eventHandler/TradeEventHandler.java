@@ -2,14 +2,14 @@ package com.example.demo.trade.eventHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.demo.trade.dao.TradeDao;
+import com.example.demo.trade.mapper.TradeMapper;
 import com.example.demo.vo.TradingDto;
 
 public class TradeEventHandler extends dashin.cpdib.events._IDibEvents{
 	dashin.cpdib.IDib client;
 	
 	@Autowired
-	TradeDao tradeDao;
+	TradeMapper tradeDao;
 	
 	String name;
 	public TradeEventHandler(dashin.cpdib.IDib client, String name) {
