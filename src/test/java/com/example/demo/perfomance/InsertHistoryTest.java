@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.data.dao.ItemMapper;
+import com.example.demo.data.mapper.ItemMapper;
 import com.example.demo.util.FormatConverter;
 import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.ItemDto;

@@ -1,4 +1,4 @@
-package com.example.demo.data.dao;
+package com.example.demo.data.mapper;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,4 +24,6 @@ public interface IndexMapper {
 	List<HashMap<String, Object>> selectKorCodes(Map<String, Object> paramMap);
 
 	int insIndexDaishin(IndexHistoryDataDto historyDataDto);
+	
+	int insertAllIndex(List<IndexHistoryDataDto> indexHistoryDataDto);
 }

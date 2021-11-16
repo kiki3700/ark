@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.data.SetupMapper">
+<mapper namespace="com.example.demo.data.mapper.SetupMapper">
 	<insert id = "insertItem" parameterType = "ItemDto">
 		INSERT INTO item(
 			id,
@@ -46,5 +46,15 @@
 			#{volume}
 		)
 	</insert>
-
+	<select id ='checkSetting' resultType="HashMap">
+		SELECT * FROM SETTING
+	</select>
+	<insert id = 'insertSetting' parameterType='HashMap'> 
+		INSERT INTO SETTING(
+			PRESENCE
+		)
+		VALUES(
+			#{presence}
+		)
+	</insert>
 </mapper>
