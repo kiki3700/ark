@@ -36,7 +36,7 @@ public class IndexScheduler {
 	
 	
 	//대신증권 인덱스 가져오기
-	@Scheduled(cron = "0 0 06 * * ?")
+	@Scheduled(cron = "0 0/1 * * * ?")
 	   public void dsIndexScheduler() {
 			Map<String,Object> inParam = new HashMap<String,Object>();
 			inParam.put("api", "DAISHIN");
