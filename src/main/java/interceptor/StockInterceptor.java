@@ -16,20 +16,23 @@ public class StockInterceptor implements HandlerInterceptor {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@Autowired
-	CybosConnection cybosConnection;
-	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		System.out.println("InterCeptor Start ==============");
-		logger.debug("logger Interceptor Start -----------=----------");
-		int connectionStatus =  cybosConnection.connectionCheck();
+		CybosConnection cybosCon = new CybosConnection();
+		int connectionStatus = 0;
+		try {
+			connectionStatus =  cybosCon.connectionCheck();			
 			if(connectionStatus > 0) {
 				return true;
 			} else {
 				return false;
-			}
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override

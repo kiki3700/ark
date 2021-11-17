@@ -23,7 +23,10 @@ public class CybosConnection {
 	private ICpCybos cybos = ClassFactory.createCpCybos();
 	
 	public int connectionCheck() throws Exception {
-		int connectionStatus = cybos.isConnect();
+		int connectionStatus = 0;
+		try {
+			connectionStatus = cybos.isConnect();			
+		
 		System.out.println(connectionStatus);
 		if(connectionStatus==0) {
 			//연결 안됨 => 로그인 구현 후 로그인으로
@@ -41,6 +44,9 @@ public class CybosConnection {
 		// return값 0 연결 끊김, 1: cybosplus 써버 2: hts서버
 		//=> 1이 나와여 조회나 트레이딩 가능
 		System.out.println(connectionStatus);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return connectionStatus;
 	}
 	
@@ -57,6 +63,8 @@ public class CybosConnection {
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);//Prints all the outputs.Which is coming from the executed Process
 			}
+			process.waitFor();
+			
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
