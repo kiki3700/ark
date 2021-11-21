@@ -17,6 +17,8 @@ public interface IndexMapper {
 	//인덱스 인서트
 	int insertIndex(IndexHistoryDataDto indexHistoryDataDto);
 	
+	int insertIntHistoryDataDtoBatch(IndexHistoryDataDto indexHistroyDataDto);
+	
 	int insertUsCoded(Map<String, Object> paramMap);
 	
 	List<HashMap<String, Object>> selectUsCodes(Map<String, Object> paramMap);

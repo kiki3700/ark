@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.data.dao.BatchDao;
 import com.example.demo.data.mapper.IndexMapper;
 import com.example.demo.data.service.IndexService;
 import com.example.demo.util.FormatConverter;
@@ -26,6 +28,9 @@ public class IndexServiceImpl implements IndexService {
 
 	@Autowired
 	IndexMapper indexMapper;
+	
+	@Autowired
+	BatchDao batchDao;
 	
 	@Override
 	public List<PriceVo> getPrice(HashMap param) {
@@ -84,7 +89,7 @@ public class IndexServiceImpl implements IndexService {
 		
 		index.blockRequest();
 		
-		IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
+		
 		
 		String indexCode = (String) index.getHeaderValue(0);
 		short indexQuant = (short) index.getHeaderValue(3);
@@ -92,6 +97,7 @@ public class IndexServiceImpl implements IndexService {
 //		System.out.println("indexQuant" + indexQuant );
 		List<IndexHistoryDataDto> historyDataDtoList = new ArrayList<>();
 		for(int i=0;i<indexQuant;i++) {
+			IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
 			Number n = (Number) index.getDataValue(0, i);
 			long dateL = n.longValue();
 			Date date = FormatConverter.longToDate(dateL);
@@ -110,7 +116,7 @@ public class IndexServiceImpl implements IndexService {
 			historyDataDto.setVolume(volume);
 			historyDataDtoList.add(historyDataDto);
 		}
-		indexMapper.insertAllIndex(historyDataDtoList);
+		batchDao.initIndexHistoryDataDtoList(historyDataDtoList);
 	}
 	
 	@Override
@@ -167,12 +173,13 @@ public class IndexServiceImpl implements IndexService {
 		indexClient.setInputValue(6, (int) 'D');
 		
 		indexClient.blockRequest();
-		IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
+
 		int len = (int) indexClient.getHeaderValue(3);
 //		String indexCode= (String) indexClient.getHeaderValue(0);
 //		System.out.println(len);
-		List<IndexHistoryDataDto> historyDataDtoList = new ArrayList<>();
+		List<IndexHistoryDataDto> historyDataDtoList = new LinkedList<>();
 		for(int i = 0 ; i<len  ; i++) {
+			IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
 			long dateL = (long) indexClient.getDataValue(0, i);
 			Date date = FormatConverter.longToDate(dateL);
 			float open= (float) indexClient.getDataValue(1, i);
@@ -181,7 +188,7 @@ public class IndexServiceImpl implements IndexService {
 			float close= (float) indexClient.getDataValue(4, i);
 			Number volumeL = (Number) indexClient.getDataValue(5, i);
 			BigDecimal volume = new BigDecimal(volumeL.doubleValue()); 
-			System.out.println(volumeL.getClass());
+//			System.out.println(volumeL.getClass());
 			historyDataDto.setIndexName((String) inParam.get("CODE_NAME"));
 			historyDataDto.setIndexDate(date);
 			historyDataDto.setClose(close);
@@ -190,9 +197,20 @@ public class IndexServiceImpl implements IndexService {
 			historyDataDto.setOpen(open);
 			historyDataDto.setVolume(volume);
 			historyDataDtoList.add(historyDataDto);
-//			System.out.println(historyDataDto);
-			indexMapper.insIndexDaishin(historyDataDto);
+			System.out.println(historyDataDto);
+//			indexMapper.insIndexDaishin(historyDataDto);
+//			if(i%500==0) {
+//				batchDao.initIndexHistoryDataDtoList(historyDataDtoList);
+//				historyDataDtoList.clear();
+//			}
 		}
-	indexMapper.insertAllIndex(historyDataDtoList);
+		for(IndexHistoryDataDto hi : historyDataDtoList) {
+			System.out.println(hi);
+		}
+		if(historyDataDtoList.size()>0) {
+			batchDao.initIndexHistoryDataDtoList(historyDataDtoList);
+			historyDataDtoList.clear();
+		}
+//	indexMapper.insertAllIndex(historyDataDtoList);
 	}	
 }

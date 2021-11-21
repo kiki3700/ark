@@ -21,7 +21,7 @@ public class KorIndexScheduler {
 	private DartService dartService;
 	
 	@Autowired
-	private ItemMapper itemDao;
+	private ItemMapper itemMapper;
 	
 	@Autowired
 	IndexService indexService;
@@ -32,7 +32,7 @@ public class KorIndexScheduler {
 	@Scheduled(cron ="0 0 0 * * 7 *")
 	public void balanceSheet() throws ParseException {
 		HashMap<String, Object> inParams = new HashMap<>();
-		List<ItemDto> itemDtoList = itemDao.selectItemList(inParams);
+		List<ItemDto> itemDtoList = itemMapper.selectItemList(inParams);
 		for(int i = 0 ; i < itemDtoList.size(); i++) {
 			HashMap<String, Object> inParam = new HashMap<>();
 			ItemDto item = itemDtoList.get(i);

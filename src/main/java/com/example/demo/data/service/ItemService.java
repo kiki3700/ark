@@ -14,5 +14,7 @@ public interface ItemService {
 //	void insertHistoryData(ItemDto itemDto) throws ParseException;
 	List<ItemDto> getItemList(Map<String, Object> inParams);
 	void insertHistoryData(ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException;
-	void inittHistoryData(ItemDto itemDto) throws ParseException;
+//	void initHistoryData() throws ParseException;
+	void initHistoryData(Map<String, Object> inParam) throws ParseException;
+	void initHistoryDataBatch(Map<String, Object> inParam) throws ParseException;
 }

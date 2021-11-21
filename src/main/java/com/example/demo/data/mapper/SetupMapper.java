@@ -13,4 +13,7 @@ public interface SetupMapper {
 	int insertHistoryData(HistoryDataDto historyData);
 	HashMap<String, Object> checkSetting();
 	int insertSetting(HashMap<String, Object> inParam);
+	void deleteHistoryData(HashMap<String, Object> inParam);
+	void deleteIndexHistoryData(HashMap<String, Object> inParam);
+	void deleteBalanceSheet(HashMap<String, Object> inParam);
 }

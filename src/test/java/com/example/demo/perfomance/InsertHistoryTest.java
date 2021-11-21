@@ -73,7 +73,7 @@ public class InsertHistoryTest {
 
 		item.deleteHistoryData(inParam);
 		long st = System.currentTimeMillis();
-		item.InitHistoryDataDtoList(historyDataDtoList);
+		item.initHistoryDataDtoList(historyDataDtoList);
 		long et = System.currentTimeMillis();
 		result.put("all", et-st);
 	}

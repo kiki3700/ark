@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -13,12 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.example.demo.data.dao.BatchDao;
 import com.example.demo.data.mapper.IndexMapper;
 import com.example.demo.data.service.BithumbService;
-import com.example.demo.vo.HistoryDataDto;
 import com.example.demo.vo.IndexHistoryDataDto;
 
 @Service
@@ -30,6 +30,9 @@ public class BithumbServiceImpl implements BithumbService{
 	
 	@Autowired
 	private WebClient webClient;
+	
+	@Autowired
+	BatchDao batchDao;
 	
 	@Autowired
 	private IndexMapper indexMapper;
@@ -76,8 +79,8 @@ public class BithumbServiceImpl implements BithumbService{
 			//비트코인 : BTC 이더리움  : ETH
 			String[] arr = new String[] {"BTC", "ETH"};
 			
-			
 			for(int j = 0; j < arr.length;j++) {
+				List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
 				String name = arr[j];
 				HashMap<String, Object> result = webClient.mutate()
 						.baseUrl(url)
@@ -88,13 +91,26 @@ public class BithumbServiceImpl implements BithumbService{
 						.bodyToMono(HashMap.class)
 						.block();
 				String msg =(String) result.get("status");
-				List<IndexHistoryDataDto> resultList = new LinkedList<IndexHistoryDataDto>();
 				if(msg.equals("0000")) {
 					List<ArrayList> datas = (List<ArrayList>) result.get("data");
 					int len = datas.size();
+					HashSet<IndexHistoryDataDto> indexHistoryDataDtoSet = new HashSet<>();
+					HashSet<Long> dateSet =new HashSet<>();
 					for(int i = 0; i < len; i++) {
+						
+
+						
 						IndexHistoryDataDto indexHistoryDataDto = new IndexHistoryDataDto();
 						ArrayList data = datas.get(i);
+						
+						if(!dateSet.contains((long) data.get(0))){
+							dateSet.add((long) data.get(0));
+						}else {
+							System.out.println(new Date((long) data.get(0)));
+							continue;
+						}
+						
+						
 						indexHistoryDataDto.setIndexName(name);
 						indexHistoryDataDto.setIndexDate(new Date((long) data.get(0)));
 						indexHistoryDataDto.setOpen(Integer.parseInt((String) data.get(1)));
@@ -102,16 +118,34 @@ public class BithumbServiceImpl implements BithumbService{
 						indexHistoryDataDto.setHigh(Integer.parseInt((String) data.get(3)));
 						indexHistoryDataDto.setLow(Integer.parseInt((String) data.get(4)));
 						indexHistoryDataDto.setVolume(new BigDecimal((String) data.get(5)));
-						System.out.println(indexHistoryDataDto);
+//						System.out.println(indexHistoryDataDto);
 						
-						resultList.add(indexHistoryDataDto);
-						if(i%5000==0) {
-							indexMapper.insertAllIndex(resultList);
-							resultList.clear();
-						}
+//						indexHistoryDataDtoSet.add(indexHistoryDataDto);
+//						
+//						batchDao.initIndexHistoryDataDtoList(indexHistoryDataDtoSet);
+						
+//						resultList.add(indexHistoryDataDto);
+						indexMapper.insIndexDaishin(indexHistoryDataDto);
+
+						
+//						if(resultList.size()>5000) {
+
+//							resultList.clear();
+//						}
 					}
+//					if(resultList.size()>0) {
+//						batchDao.initIndexHistoryDataDtoList(resultList);
+//						resultList.clear();
+//					}
+					for(IndexHistoryDataDto indexHistoryDataDto:resultList) {
+//						System.out.println(indexHistoryDataDto);
+					}
+					
+					
 				}
-				indexMapper.insertAllIndex(resultList);
+				
+				
+
 			}
 		}
 		

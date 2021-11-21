@@ -36,7 +36,7 @@ public class WebClientConfig {
                 .clientConnector(
                     new ReactorClientHttpConnector(
                         HttpClient
-                            .create(ConnectionProvider.create("test", 800))
+                            .create(ConnectionProvider.create("test", 1000))
                             .secure(
                                 ThrowingConsumer.unchecked(
                                     sslContextSpec -> sslContextSpec.sslContext(

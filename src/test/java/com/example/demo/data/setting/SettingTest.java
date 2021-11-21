@@ -22,4 +22,10 @@ public class SettingTest {
 		HashMap<String, Object> map = setupMapper.checkSetting();
 		System.out.println(map==null);
 	}
+	@Test
+	public void deleteMapper() {
+		setupMapper.deleteBalanceSheet(null);
+		setupMapper.deleteHistoryData(null);
+		setupMapper.deleteIndexHistoryData(null);
+	}
 }
