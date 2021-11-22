@@ -37,7 +37,7 @@ public class DartServiceImpl implements DartService{
 	String crtfcKey;
 	@Value("${darturl}")
 	String dartUrl;
-	
+
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -134,6 +134,144 @@ public class DartServiceImpl implements DartService{
 			}
 		}
 	}
+	@Override
+	public void insertMultiBalanceSheet(HashMap<String, Object> inParam) {
+		HashMap<String, Object> queryParam = new HashMap<>();
+		queryParam.put("isCorpCode", true);
+		List<ItemDto> itemDtoList = itemMapper.selectItemList(queryParam);
+		int size = itemDtoList.size();
+		if(size%500==0) {
+			size /= 500;
+		}else {
+			size = size/500+1;
+		}
+		String[] strArr = new String[size];
+		int cnt = 0;
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < itemDtoList.size(); i++) {
+			sb.append(itemDtoList.get(i).getCorpCode()+",");
+			if(i!=0&&i%500==0||i==itemDtoList.size()-1) {
+				sb.deleteCharAt(sb.length()-1);
+				System.out.println("먼데");
+				System.out.println(sb.toString());
+				strArr[cnt] =sb.toString();
+				sb = new StringBuilder();
+				cnt++;
+			}
+		}
+		HashMap<String, Object> urlInParam = new HashMap<String, Object>();
+		int year = (int) inParam.getOrDefault("year", 0);
+		String reprtCode = (String) inParam.getOrDefault("reprtCode", null);
+		urlInParam.put("crtfcKey", crtfcKey);
+		urlInParam.put("year", year);
+		urlInParam.put("reprtCode", reprtCode);
+		for(int i = 0; i<size ;i++) {
+			urlInParam.put("corpCode",  strArr[i]);
+			HashMap<String, Object> resultMap = webClient.mutate()
+					.baseUrl(dartUrl)
+					.build()
+					.get()
+					.uri("/api/fnlttMultiAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}",urlInParam)
+					.retrieve()
+					.bodyToMono(HashMap.class)
+					.block();
+			if(((String) resultMap.get("status")).equals("000")) {
+				List<HashMap<String, Object>> dataMapList =(List<HashMap<String, Object>>) resultMap.get("list");
+				HashMap<String, BalanceSheetDto> connectBalanceMap = new HashMap<>();
+				HashMap<String, BalanceSheetDto> balanceMap = new HashMap<>();
+				for(HashMap<String, Object> data : dataMapList) {
+					dartUtil.toBalanceSheetDtoMap(data, connectBalanceMap, balanceMap);
+				}
+				for(String id : connectBalanceMap.keySet()) {
+					dartMapper.insertBalanceSheet(connectBalanceMap.get(id));
+				}
+				for(String id : balanceMap.keySet()) {
+					dartMapper.insertBalanceSheet(balanceMap.get(id));
+				}
+				try{
+				    Thread.sleep(500);
+				}catch(InterruptedException e){
+				    e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void initMultiBalanceSheet(){
+		HashMap<String, Object> inParam = new HashMap<>();
+		inParam.put("isCorpCode", true);
+		
+		List<ItemDto> itemDtoList = itemMapper.selectItemList(inParam);
+		int size = itemDtoList.size();
+		if(size%500==0) {
+			size /= 500;
+		}else {
+			size = size/500+1;
+		}
+		String[] strArr = new String[size];
+		int cnt = 0;
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < itemDtoList.size(); i++) {
+			sb.append(itemDtoList.get(i).getCorpCode()+",");
+			if(i!=0&&i%500==0||i==itemDtoList.size()-1) {
+				sb.deleteCharAt(sb.length()-1);
+				System.out.println("먼데");
+				System.out.println(sb.toString());
+				strArr[cnt] =sb.toString();
+				sb = new StringBuilder();
+				cnt++;
+			}
+		}
+
+		HashMap<String, Object> urlInParam = new HashMap<>();
+		urlInParam.put("crtfcKey", crtfcKey);
+		
+		for(int i = 0; i<=6 ; i++) {
+			Date d = new Date();
+			int year = d.getYear()+1900-i;
+			urlInParam.put("year", year);
+			for(int j =1; j<=4;j++) {
+				urlInParam.put("reprtCode", ReprtCode.getReprtCode(j));
+				for(int x = 0; x<size ; x++) {
+					urlInParam.put("corpCode", strArr[x]);
+					HashMap<String, Object> resultMap = webClient.mutate()
+							.baseUrl(dartUrl)
+							.build()
+							.get()
+							.uri("/api/fnlttMultiAcnt.json?crtfc_key={crtfcKey}&corp_code={corpCode}&bsns_year={year}&reprt_code={reprtCode}",urlInParam)
+							.retrieve()
+							.bodyToMono(HashMap.class)
+							.block();
+					if(((String) resultMap.get("status")).equals("000")) {
+						List<HashMap<String, Object>> dataMapList =(List<HashMap<String, Object>>) resultMap.get("list");
+						HashMap<String, BalanceSheetDto> connectBalanceMap = new HashMap<>();
+						HashMap<String, BalanceSheetDto> balanceMap = new HashMap<>();
+						for(HashMap<String, Object> data : dataMapList) {
+							dartUtil.toBalanceSheetDtoMap(data, connectBalanceMap, balanceMap);
+						}
+						List<BalanceSheetDto> balanceSheetDtoList = new ArrayList<>();
+						for(String id : connectBalanceMap.keySet()) {
+							balanceSheetDtoList.add(connectBalanceMap.get(id));
+							
+						}
+						batchDao.insertBalanceSheetBatch(balanceSheetDtoList);
+						balanceSheetDtoList = new ArrayList<>();
+						for(String id : balanceMap.keySet()) {
+							balanceSheetDtoList.add(balanceMap.get(id));
+						}
+						batchDao.insertBalanceSheetBatch(balanceSheetDtoList);
+						try{
+						    Thread.sleep(500);
+						}catch(InterruptedException e){
+						    e.printStackTrace();
+						}
+					}
+				}
+			} 
+		}
+	}
+	
 	
 	@Override
 	public void insAllBalaceSheet() {

@@ -65,19 +65,13 @@ public class ItemScheduler {
 	@Scheduled(cron = "0 0 17 15 * *")
 	public void BalanceSheetScheduler() throws ParseException {
 		HashMap<String, Object> inParam = new HashMap<>();
-		inParam.put("isActive", "CPC_STOCK_STATUS_NORMAL");
-		inParam.put("isCoprCode", "true");
-		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
 		inParam = new HashMap<>();
 		Calendar cal = Calendar.getInstance();
 		inParam.put("year", cal.get(Calendar.YEAR));
 		ReprtCode reportCode = new ReprtCode();
 		int quart= cal.get(Calendar.MONDAY)/3+1;
 		inParam.put("reprtCode", reportCode.getReprtCode(quart));
-		for(int i = 0; i<itemDtoList.size();i++) {
-			inParam.put("corpCode", itemDtoList.get(i).getCorpCode());
-			dartService.insBalaceSheet(inParam);
-		}
+		dartService.insertMultiBalanceSheet(inParam);
 	}
 	
 }

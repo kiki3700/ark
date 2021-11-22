@@ -66,7 +66,7 @@ public class BatchDao {
     	SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
     	try {
     		for(BalanceSheetDto balanceSheetDto : balanceSheetDtoList) {
-    			sqlSession.insert("com.example.demo.data.mapper.DartMapper.insertIndex",balanceSheetDto);
+    			sqlSession.insert("com.example.demo.data.mapper.DartMapper.insertBalanceSheetBatch",balanceSheetDto);
     		}
     	}finally {
 			sqlSession.flushStatements();

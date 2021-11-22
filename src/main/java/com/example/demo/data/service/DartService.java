@@ -14,4 +14,8 @@ public interface DartService {
 	void insAllBalaceSheet();
 	
 	void updateCorpCode() throws IOException;
+
+	void initMultiBalanceSheet();
+
+	void insertMultiBalanceSheet(HashMap<String, Object> inParam);
 }
