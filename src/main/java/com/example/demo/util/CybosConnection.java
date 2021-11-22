@@ -63,9 +63,12 @@ public class CybosConnection {
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);//Prints all the outputs.Which is coming from the executed Process
 			}
-			process.waitFor();
-			
-			return true;
+			int excitValue = process.waitFor();
+			if(excitValue == 0) {				
+				return true;
+			}else {
+				return false;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
