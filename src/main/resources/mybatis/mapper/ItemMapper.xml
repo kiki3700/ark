@@ -60,6 +60,9 @@
 			<if test = 'isActive != null and isActive !=""'>
 				AND IS_ACTIVE = #{isActive}
 			</if>
+			<if	test = 'id != null and id !=""'>
+				AND id = #{id}
+			</if>
 			<if test = 'isCorpCode != null and isCorpCode != ""'>
 				AND CORP_CODE IS NOT NULL
 			</if>
@@ -112,12 +115,36 @@ MERGE INTO HISTORY_DATA A
 		)
 	</insert>
 	
+	<insert id ='insertHistoryDataDtoBatch' parameterType = 'HistoryDataDto'>
+		INSERT INTO HISTORY_DATA(
+				id,
+				trading_date,
+				item_id,
+				open,
+				close,
+				low,
+				high,
+				volume
+				)
+			VALUES	
+				(
+				TO_CHAR(#{tradingDate}, 'YYYYMMDD')||#{itemId},
+				#{tradingDate},
+				#{itemId},
+				#{open},
+				#{close},
+				#{low},
+				#{high},
+				#{volume}
+			)
+	</insert>
+	
 	<insert id = 'insertHistoryDataDto' parameterType = 'HistoryDataDto'>
 	MERGE INTO HISTORY_DATA A
 		USING DUAL
 			ON(A.ITEM_ID = #{itemId} and A.trading_date = #{tradingDate})
 		WHEN NOT MATCHED THEN
-		INSERT(
+		INSERT (
 			id,
 			trading_date,
 			item_id,
@@ -140,38 +167,34 @@ MERGE INTO HISTORY_DATA A
 		)
 	</insert>
 	
-		<insert id = 'InitHistoryDataDtoList' parameterType = 'java.util.List'>
-			<foreach  collection="list" item="item" open="INSERT ALL" close="select * from dual">
-              
-					INTO HISTORY_DATA(
-						id,
-						trading_date,
-						item_id,
-						open,
-						close,
-						low,
-						high,
-						volume
-						)
-					VALUES
-					  
-						(
-						TO_CHAR(#{item.tradingDate}, 'YYYYMMDD')||#{item.itemId},
-						#{item.tradingDate},
-						#{item.itemId},
-						#{item.open},
-						#{item.close},
-						#{item.low},
-						#{item.high},
-						#{item.volume}
+	<insert id = 'initHistoryDataDtoList' parameterType = 'java.util.List'>
+		<foreach  collection="list" item="item" open="INSERT ALL" close="select * from dual">
+				INTO HISTORY_DATA(
+					id,
+					trading_date,
+					item_id,
+					open,
+					close,
+					low,
+					high,
+					volume
 					)
-					
-                </foreach>
-                
-		</insert>
-		
+				VALUES
+					(
+					TO_CHAR(#{item.tradingDate}, 'YYYYMMDD')||#{item.itemId},
+					#{item.tradingDate},
+					#{item.itemId},
+					#{item.open},
+					#{item.close},
+					#{item.low},
+					#{item.high},
+					#{item.volume}
+				)
+        </foreach>
+	</insert>
+	
 	<delete id="deleteHistoryData" parameterType='hashMap'>
 		DELETE FROM HISTORY_DATA WHERE ITEM_ID = #{itemId}
 	</delete>
 	
-</mapper>
+</mapper> 	

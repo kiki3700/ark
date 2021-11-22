@@ -2,6 +2,7 @@ package com.example.demo.config;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,7 +19,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 public class DataAccessConfig {
 	@Autowired
 	ApplicationContext applicationContext;
-	@Bean
+	@Bean(name = "sqlSessionFactory")
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
@@ -27,11 +28,17 @@ public class DataAccessConfig {
 		sessionFactory.setTypeAliasesPackage("com.example.demo.vo");
 		org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
 		configuration.setMapUnderscoreToCamelCase(true);
+		
 		configuration.setJdbcTypeForNull(null);
 		sessionFactory.setConfiguration(configuration);
 		return sessionFactory.getObject();
 	}
+	@Bean(name ="sqlSessionTemplate")
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
+//	@Bean(name ="batchSqlSessionTemplate")
+//	public SqlSessionTemplate batchSqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
+//		return new SqlSessionTemplate(sqlSessionFactory, ExecutorType.BATCH);
+//	}
 }

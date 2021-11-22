@@ -57,4 +57,13 @@
 			#{presence}
 		)
 	</insert>
+	<delete id = 'deleteHistoryData' parameterType='Hashmap'>
+		DELETE FROM HISTORY_DATA
+	</delete>
+	<delete id = 'deleteIndexHistoryData' parameterType="HashMap">
+		DELETE FROM INDEX_HISTORY_DATA
+	</delete>
+	<delete id = 'deleteBalanceSheet' parameterType="HashMap">
+		DELETE FROM BALANCE_SHEET
+	</delete>
 </mapper>

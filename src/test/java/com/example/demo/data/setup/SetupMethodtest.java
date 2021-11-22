@@ -1,4 +1,4 @@
-package com.example.demo.data.controller;
+package com.example.demo.data.setup;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -10,52 +10,49 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.constants.BokConst;
 import com.example.demo.data.mapper.IndexMapper;
 import com.example.demo.data.mapper.SetupMapper;
-import com.example.demo.data.service.BithumbService;
-import com.example.demo.data.service.BokService;
-import com.example.demo.data.service.DartService;
 import com.example.demo.data.service.IndexService;
-import com.example.demo.data.service.ItemService;
+import com.example.demo.data.service.impl.BithumbServiceImpl;
+import com.example.demo.data.service.impl.BokServiceImpl;
+import com.example.demo.data.service.impl.DartServiceImpl;
+import com.example.demo.data.service.impl.ItemServiceImpl;
 import com.example.demo.vo.ItemDto;
 
-@CrossOrigin
-@RestController
-public class SetupController {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-	
-	@Autowired
-	ItemService itemService;
-	
-	@Autowired
-	IndexMapper indexMapper;
-	
-	@Autowired
-	BithumbService bithumbService;
-	
-	@Autowired
-	IndexService indexService;
-	
-	@Autowired
-	BokService bokService;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SetupMethodtest {
 	
 	@Autowired
 	SetupMapper setupMapper;
 	
 	@Autowired
-	DartService dartService;
+	IndexMapper indexMapper;
+	@Autowired
+	ItemServiceImpl itemService;
 	
-	@RequestMapping("fillDb")
-	public void fillDB() throws IOException, ParseException {
+	@Autowired
+	BithumbServiceImpl bithumbService;
+	
+	@Autowired
+	IndexService indexService;
+	
+	@Autowired
+	BokServiceImpl bokService;
+	
+	@Autowired
+	DartServiceImpl dartService;
+		
+	
+	@Test
+	public void test() throws IOException, ParseException {
 		/*
 		 * 1. 아이템 채우기
 		 * 	ㄱ) 아이템
@@ -77,11 +74,8 @@ public class SetupController {
 		setupMapper.deleteIndexHistoryData(null);
 		
 		
-		logger.debug("=================================");
-		logger.debug("setUp start");
-		logger.debug("=================================");
+
 		//item table 채우기
-		logger.debug("start to insert itemTable");
 
 		//1. 아이템 insert
 		HashMap<String,Object> inParams = new HashMap<>();
@@ -90,13 +84,13 @@ public class SetupController {
 		itemService.insertItem();
 		
 		//ㄴ. item table corpNumber 컬럼 채우기
-		dartService.updateCorpCode();
+//		dartService.updateCorpCode();
 		//ㄷ. 마켓캡 insert
 		itemService.updateMarketCap();
 		
 		List<ItemDto> itemDtoList = itemService.getItemList(inParams);
 		//ㄹ. 재무재표 insert
-		dartService.insAllBalaceSheet();
+//		dartService.insAllBalaceSheet();
 		
 		//history data 삽입
 		HashMap<String, Object> threshold = new HashMap<>();

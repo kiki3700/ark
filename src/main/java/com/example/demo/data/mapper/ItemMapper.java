@@ -22,6 +22,7 @@ public interface ItemMapper {
 	
 	int insertHistoryDataDtoList(List<HistoryDataDto> historyDataDto);
 	int insertHistoryDataDto(HistoryDataDto historyDataDto);
-	int InitHistoryDataDtoList(List<HistoryDataDto> historyDataDto);
+	int insertHistoryDataDtoBatch(HistoryDataDto historyDataDto);
+	int initHistoryDataDtoList(List<HistoryDataDto> historyDataDto);
 	int deleteHistoryData(HashMap<String, Object> inParams);
 }

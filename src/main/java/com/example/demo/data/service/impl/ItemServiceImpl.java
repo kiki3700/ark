@@ -12,6 +12,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.data.dao.BatchDao;
 import com.example.demo.data.mapper.ItemMapper;
 import com.example.demo.data.service.ItemService;
 import com.example.demo.util.FormatConverter;
@@ -30,7 +31,12 @@ import dashin.cputil.LIMIT_TYPE;
 @Service
 public class ItemServiceImpl implements ItemService {
 	@Autowired
-	ItemMapper itemDao;
+	ItemMapper itemMapper;
+	
+
+	
+	@Autowired
+	BatchDao batchDao;
 	
 	public void checkRqLimit() {	
 		ICpCybos cybos = ClassFactory.createCpCybos();
@@ -96,7 +102,7 @@ public class ItemServiceImpl implements ItemService {
 //				item.setMarketCap(listedShare.multiply(new BigInteger(Long.toString(close))));
 				
 				System.out.println(item);
-				itemDao.insertItem(item);
+				itemMapper.insertItem(item);
 				}
 			tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
 		}
@@ -126,7 +132,7 @@ public class ItemServiceImpl implements ItemService {
 						item.setListedShare(listedShare);
 						item.setMarketCap(listedShare.multiply(new BigInteger(Long.toString(close))));
 						System.out.println(i+"/"+tickers.length+" "+item);
-						itemDao.updateMarketCap(item);
+						itemMapper.updateMarketCap(item);
 					}
 					tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
 		}
@@ -166,93 +172,164 @@ public class ItemServiceImpl implements ItemService {
 //				historyDataDto.setVolume(volume);
 //				historyDataDtoList.add(historyDataDto);
 //				}
-//			itemDao.insertHistoryDataDtoList(historyDataDtoList);
+//			itemMapper.insertHistoryDataDtoList(historyDataDtoList);
 //			}while(1==((int) sysDib._continue()));
 //			
 //	}
 	
 	@Override
-	public void inittHistoryData(ItemDto itemDto) throws ParseException{
+	public void initHistoryData(Map<String, Object> inParam) throws ParseException{
+		int threshold = (int) inParam.getOrDefault("threshold",1000);
 		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
 		ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
-		sysDib.setInputValue(0, itemDto.getId());
-		sysDib.setInputValue(1, (int) '1');
-		sysDib.setInputValue(3, FormatConverter.dateToLong(itemDto.getListingDate()));
-		sysDib.setInputValue(5, new int[] {0,1,2,3,4,5,8});
-		sysDib.setInputValue(6, (int) 'D');
-		sysDib.setInputValue(9,(int) '1');		
-		do {
-	 		checkRqLimit();
-			sysDib.blockRequest();
-			Object data = sysDib.getHeaderValue(3);
-			System.out.println(sysDib.getHeaderValue(5));
-			List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
-			for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
-				String time = Long.toString((long) sysDib.getDataValue(0, i));
-				Date tradingDate = FormatConverter.stringToDate(time);
-				Number open = (Number) sysDib.getDataValue(1, i);
-				Number high = (Number) sysDib.getDataValue(2, i);
-				Number low = (Number) sysDib.getDataValue(3, i);
-				Number close = (Number) sysDib.getDataValue(4, i);
-				Number volume = (Number) sysDib.getDataValue(5, i);
-				HistoryDataDto historyDataDto = new HistoryDataDto();
-				historyDataDto.setTradingDate(tradingDate);
-				historyDataDto.setOpen(open);
-				historyDataDto.setHigh(high);
-				historyDataDto.setLow(low);
-				historyDataDto.setClose(close);
-				historyDataDto.setVolume(volume);
-				historyDataDtoList.add(historyDataDto);
+		List<ItemDto> itemDtoList = itemMapper.selectItemList(null);
+		int idx = 0;
+		for(ItemDto itemDto : itemDtoList) {
+			try {
+				sysDib.setInputValue(0, itemDto.getId());
+				sysDib.setInputValue(1, (int) '1');
+				sysDib.setInputValue(3, FormatConverter.dateToLong(itemDto.getListingDate()));
+				sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
+				sysDib.setInputValue(6, (int) 'D');
+				sysDib.setInputValue(9,(int) '1');		
+				List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
+				do {
+			 		checkRqLimit();
+					sysDib.blockRequest();
+					Object data = sysDib.getHeaderValue(3);					
+					for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
+						String time = Long.toString((long) sysDib.getDataValue(0, i));
+						Date tradingDate = FormatConverter.stringToDate(time);
+						Number open = (Number) sysDib.getDataValue(1, i);
+						Number high = (Number) sysDib.getDataValue(2, i);
+						Number low = (Number) sysDib.getDataValue(3, i);
+						Number close = (Number) sysDib.getDataValue(4, i);
+						Number volume = (Number) sysDib.getDataValue(5, i);
+						HistoryDataDto historyDataDto = new HistoryDataDto();
+						historyDataDto.setTradingDate(tradingDate);
+						historyDataDto.setItemId(itemDto.getId());
+						historyDataDto.setOpen(open);
+						historyDataDto.setHigh(high);
+						historyDataDto.setLow(low);
+						historyDataDto.setClose(close);
+						historyDataDto.setVolume(volume);
+						historyDataDtoList.add(historyDataDto);
+						idx++;
+						if(idx%threshold==0) {
+							System.out.println("인서트");
+							itemMapper.initHistoryDataDtoList(historyDataDtoList);
+							}
+						if(idx==100000) return;
+							
+							
+						}
+					}while(1==((int) sysDib._continue()));
+				if(!historyDataDtoList.isEmpty()) itemMapper.initHistoryDataDtoList(historyDataDtoList);
+				}catch(com4j.ComException e) {
+					e.printStackTrace();
 				}
-			itemDao.InitHistoryDataDtoList(historyDataDtoList);
-			}while(1==((int) sysDib._continue()));
-			
-	}
+			}
+		}
 	
 	@Override
-	public void insertHistoryData(ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException{
-		int quant = (int) inParam.get("quant");
+	public void initHistoryDataBatch(Map<String, Object> inParam) throws ParseException{
+		int threshold = (int) inParam.getOrDefault("threshold",1000);
+		List<HistoryDataDto> dataList = new LinkedList<HistoryDataDto>();
 		ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
-		sysDib.setInputValue(0, itemDto.getId());
-		sysDib.setInputValue(1, (int) '2');
-		sysDib.setInputValue(4, quant);
-		sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
-		sysDib.setInputValue(6, (int) 'D');
-		sysDib.setInputValue(9,(int) '1');		
-		do {
-			checkRqLimit();
-			sysDib.blockRequest();
-			Object data = sysDib.getHeaderValue(3);
-//			System.out.println(sysDib.getHeaderValue(5));
-			List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
-			for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
-				String time = Long.toString((long) sysDib.getDataValue(0, i));
-				Date tradingDate = FormatConverter.stringToDate(time);
-				Number open = (Number) sysDib.getDataValue(1, i);
-				Number high = (Number) sysDib.getDataValue(2, i);
-				Number low = (Number) sysDib.getDataValue(3, i);
-				Number close = (Number) sysDib.getDataValue(4, i);
-				Number volume = (Number) sysDib.getDataValue(5, i);
-				HistoryDataDto historyDataDto = new HistoryDataDto();
-				historyDataDto.setItemId(itemDto.getId());
-				historyDataDto.setTradingDate(tradingDate);
-				historyDataDto.setOpen(open);
-				historyDataDto.setHigh(high);
-				historyDataDto.setLow(low);
-				historyDataDto.setClose(close);
-				historyDataDto.setVolume(volume);
-				System.out.println(historyDataDto);
-				historyDataDtoList.add(historyDataDto);
+		List<ItemDto> itemDtoList = itemMapper.selectItemList(null);
+		int idx = 0;
+		for(ItemDto itemDto : itemDtoList) {
+			try {
+				sysDib.setInputValue(0, itemDto.getId());
+				sysDib.setInputValue(1, (int) '1');
+				sysDib.setInputValue(3, FormatConverter.dateToLong(itemDto.getListingDate()));
+				sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
+				sysDib.setInputValue(6, (int) 'D');
+				sysDib.setInputValue(9,(int) '1');		
+				List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
+				do {
+			 		checkRqLimit();
+					sysDib.blockRequest();
+					Object data = sysDib.getHeaderValue(3);					
+					for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
+						String time = Long.toString((long) sysDib.getDataValue(0, i));
+						Date tradingDate = FormatConverter.stringToDate(time);
+						Number open = (Number) sysDib.getDataValue(1, i);
+						Number high = (Number) sysDib.getDataValue(2, i);
+						Number low = (Number) sysDib.getDataValue(3, i);
+						Number close = (Number) sysDib.getDataValue(4, i);
+						Number volume = (Number) sysDib.getDataValue(5, i);
+						HistoryDataDto historyDataDto = new HistoryDataDto();
+						historyDataDto.setTradingDate(tradingDate);
+						historyDataDto.setItemId(itemDto.getId());
+						historyDataDto.setOpen(open);
+						historyDataDto.setHigh(high);
+						historyDataDto.setLow(low);
+						historyDataDto.setClose(close);
+						historyDataDto.setVolume(volume);
+						historyDataDtoList.add(historyDataDto);
+						idx++;
+						if(idx%threshold==0) {
+							batchDao.initHistoryDataDtoList(historyDataDtoList);
+							historyDataDtoList.clear();
+							}
+						}
+					}while(1==((int) sysDib._continue()));
+				if(historyDataDtoList.size()>0) batchDao.initHistoryDataDtoList(historyDataDtoList);
+				}catch(com4j.ComException e) {
+					e.printStackTrace();
 				}
-				itemDao.insertHistoryDataDtoList(historyDataDtoList);
-			}while(1==((int) sysDib._continue()));
-			
+			}
+		}
+	
+		
+		@Override
+		public void insertHistoryData (ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException{
+			int quant = (int) inParam.getOrDefault("quant", 0);
+			try {
+				ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
+				sysDib.setInputValue(0, itemDto.getId());
+				sysDib.setInputValue(1, (int) '2');
+				sysDib.setInputValue(4, quant);
+				sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
+				sysDib.setInputValue(6, (int) 'D');
+				sysDib.setInputValue(9,(int) '1');	
+				do {
+					checkRqLimit();
+					sysDib.blockRequest();
+					Object data = sysDib.getHeaderValue(3);
+		//			System.out.println(sysDib.getHeaderValue(5));
+					List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
+					for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
+						String time = Long.toString((long) sysDib.getDataValue(0, i));
+						Date tradingDate = FormatConverter.stringToDate(time);
+						Number open = (Number) sysDib.getDataValue(1, i);
+						Number high = (Number) sysDib.getDataValue(2, i);
+						Number low = (Number) sysDib.getDataValue(3, i);
+						Number close = (Number) sysDib.getDataValue(4, i);
+						Number volume = (Number) sysDib.getDataValue(5, i);
+						HistoryDataDto historyDataDto = new HistoryDataDto();
+						historyDataDto.setItemId(itemDto.getId());
+						historyDataDto.setTradingDate(tradingDate);
+						historyDataDto.setOpen(open);
+						historyDataDto.setHigh(high);
+						historyDataDto.setLow(low);
+						historyDataDto.setClose(close);
+						historyDataDto.setVolume(volume);
+						System.out.println(historyDataDto);
+						historyDataDtoList.add(historyDataDto);
+						}
+						itemMapper.insertHistoryDataDtoList(historyDataDtoList);
+				}while(1==((int) sysDib._continue()));
+		}catch(com4j.ComException e) {
+			e.printStackTrace();
+		}
 	}
 	
 
 	@Override
 	public List<ItemDto> getItemList(Map<String, Object> inParams){
-		return itemDao.selectItemList(inParams);
+		return itemMapper.selectItemList(inParams);
 	}
 
 

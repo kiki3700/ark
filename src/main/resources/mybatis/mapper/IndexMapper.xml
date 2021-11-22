@@ -15,6 +15,33 @@
 		</if>
 		ORDER BY index_date
 	</select>
+	
+		<insert id ='insertIntHistoryDataDtoBatch' parameterType = 'IndexHistoryDataDto'>
+		INSERT INTO INDEX_HISTORY_DATA(
+				id,
+				index_date,
+				index_name,
+				open,
+				close,
+				low,
+				high,
+				volume,
+				update_date
+				)
+			VALUES	
+				(
+				TO_CHAR(#{indexDate}, 'YYYYMMDD')||#{indexName},
+				#{indexDate},
+				#{indexName},
+				#{open},
+				#{close},
+				#{low},
+				#{high},
+				#{volume},
+				SYSDATE
+			)
+	</insert>
+	
 	<insert id ='insertAllIndex' parameterType = 'java.util.List'>
 		<foreach collection="list" item ='item' open='INSERT ALL' close = 'SELECT * FROM DUAL'>
 			INTO INDEX_HISTORY_DATA(

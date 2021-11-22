@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.constants.ReprtCode;
+import com.example.demo.data.dao.BatchDao;
 import com.example.demo.data.mapper.DartMapper;
 import com.example.demo.data.mapper.ItemMapper;
 import com.example.demo.data.service.DartService;
@@ -40,6 +41,9 @@ public class DartServiceImpl implements DartService{
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private BatchDao batchDao;
 	
 	@Autowired
 	private WebClient webClient;
@@ -124,7 +128,7 @@ public class DartServiceImpl implements DartService{
 			}
 			//에러 잡기
 			try{
-			    Thread.sleep(300);
+			    Thread.sleep(500);
 			}catch(InterruptedException e){
 			    e.printStackTrace();
 			}
@@ -133,9 +137,10 @@ public class DartServiceImpl implements DartService{
 	
 	@Override
 	public void insAllBalaceSheet() {
-		List<ItemDto> itemDtoList = itemMapper.selectItemList(null);
-		List<BalanceSheetDto> balanceSheetDtoList = new ArrayList<>();
 		HashMap<String, Object> inParam = new HashMap<>();
+		inParam.put("isCorpCode", true);
+		List<ItemDto> itemDtoList = itemMapper.selectItemList(inParam);
+		List<BalanceSheetDto> balanceSheetDtoList = new ArrayList<>();
 		int idx=0;
 		for(ItemDto itemDto : itemDtoList) {
 			if(itemDto.getCorpCode()==null) continue;
@@ -166,6 +171,7 @@ public class DartServiceImpl implements DartService{
 							int	reportingYear = Integer.parseInt((String) bs.get(0).get("bsns_year"));
 											
 							String reportCode =(String) map.get("reprtCode");
+							System.out.println(bs);
 							String fsNm = "연결재무제표";
 							try {
 							double revenue= formatConverter.separatorStringToDouble((String) dartUtil.getAccountValue("매출액", bs)) ;					//매출
@@ -193,27 +199,24 @@ public class DartServiceImpl implements DartService{
 							balanceSheetDto.setShortTermDebt(shortTermDebt);
 							balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
 							balanceSheetDto.setTotalNonCurrentAsset(totalNonCurrentAsset);
-							balanceSheetDtoList.add(balanceSheetDto);
+							dartMapper.insertBalanceSheet(balanceSheetDto);
 							}catch(NumberFormatException e2) {
 								e2.printStackTrace();
 							}
 						//에러 잡기
 						try{
-						    Thread.sleep(200);
+						    Thread.sleep(500);
 						}catch(InterruptedException e){
 						    e.printStackTrace();
+						
 						}
-						idx++;
-						if(idx%1000==0) {
-							dartMapper.insertAllBalanceSheet(balanceSheetDtoList);
-							balanceSheetDtoList.clear();
-						}
+						
 					}
 					
 				}
 			}
+
 		}
-		if(!balanceSheetDtoList.isEmpty()) dartMapper.insertAllBalanceSheet(balanceSheetDtoList);
 	}
 	
 	@Override

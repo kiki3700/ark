@@ -10,4 +10,5 @@ import com.example.demo.vo.BalanceSheetDto;
 public interface DartMapper {
 	int insertBalanceSheet(BalanceSheetDto balanceSheetDto);
 	int insertAllBalanceSheet(List<BalanceSheetDto> balanceSheetDtoList);
+	int insertBalanceSheetBatch(BalanceSheetDto balanceSheetDtoList);
 }

@@ -42,6 +42,44 @@
 					#{longTermDebt}
 				)
 	</insert>
+	
+	<insert id ="insertBalanceSheetBatch" parameterType = 'com.example.demo.vo.BalanceSheetDto'>
+				INSERT INTO BALANCE_SHEET(
+					ID,
+					ITEM_ID,
+					REPORTING_YEAR,
+					REPORT_CODE,
+					FS_NM,
+					REVENUE,
+					OPERATING_INCOME,
+					NET_INCOME,
+					ASSET,
+					DEBT,
+					EQUITY,
+					CURRENT_ASSET,
+					TOTAL_NON_CURRENT_ASSET,
+					SHORT_TERM_DEBT,
+					LONG_TERM_DEBT
+			)
+			VALUES(
+					#{reportingYear}||#{reportCode}||#{itemId},
+					#{itemId},
+					#{reportingYear},
+					#{reportCode},
+					#{fsNm},
+					#{revenue},
+					#{operatingIncome},
+					#{netIncome},
+					#{asset},
+					#{debt},
+					#{equity},
+					#{currentAsset},
+					#{totalNonCurrentAsset},
+					#{shortTermDebt},
+					#{longTermDebt}
+			)
+	</insert>
+	
 	<insert id ="insertAllBalanceSheet" parameterType = 'java.util.List'>
 		<foreach  collection="list" item="item" open="INSERT ALL" close="select * from dual">
 			INTO BALANCE_SHEET(
