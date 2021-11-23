@@ -96,7 +96,7 @@ public class SetupController {
 		
 		List<ItemDto> itemDtoList = itemService.getItemList(inParams);
 		//ㄹ. 재무재표 insert
-		dartService.insAllBalaceSheet();
+		dartService.initMultiBalanceSheet();
 		
 		//history data 삽입
 		HashMap<String, Object> threshold = new HashMap<>();

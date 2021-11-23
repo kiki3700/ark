@@ -18,7 +18,10 @@ public class BalanceSheetDto {
 	private double totalNonCurrentAsset;	//장기자산(설비, 부동산 등)
 	private double shortTermDebt;			//단기 부채
 	private double longTermDebt;			//장기 부채
-	
+	private double retainedEarning;
+	private double earningBeforeTax;
+
+
 	public BalanceSheetDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -116,13 +119,29 @@ public class BalanceSheetDto {
 	public void setLongTermDebt(double longTermDebt) {
 		this.longTermDebt = longTermDebt;
 	}
+	public double getEarningBeforeTax() {
+		return earningBeforeTax;
+	}
 
+	public void setEarningBeforeTax(double earningBeforeTax) {
+		this.earningBeforeTax = earningBeforeTax;
+	}
+	public double getRetainedEaring() {
+		return retainedEarning;
+	}
+
+	public void setRetainedEaring(double retainedEarning) {
+		this.retainedEarning = retainedEarning;
+	}
 	@Override
 	public String toString() {
 		return "BalanceSheetDto [id=" + id + ", itemId=" + itemId + ", reportingYear=" + reportingYear + ", reportCode="
-				+ reportCode + ", fsNm=" + fsNm + ", revenue=" + revenue + ", operatinIncome=" + operatingIncome
+				+ reportCode + ", fsNm=" + fsNm + ", revenue=" + revenue + ", operatingIncome=" + operatingIncome
 				+ ", netIncome=" + netIncome + ", asset=" + asset + ", debt=" + debt + ", equity=" + equity
 				+ ", currentAsset=" + currentAsset + ", totalNonCurrentAsset=" + totalNonCurrentAsset
-				+ ", shortTermDebt=" + shortTermDebt + ", longTermDebt=" + longTermDebt + "]";
+				+ ", shortTermDebt=" + shortTermDebt + ", longTermDebt=" + longTermDebt + ", retainedEarning="
+				+ retainedEarning + ", earningBeforeTax=" + earningBeforeTax + "]";
 	}
+
+	
 }

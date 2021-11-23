@@ -22,10 +22,12 @@
 					CURRENT_ASSET,
 					TOTAL_NON_CURRENT_ASSET,
 					SHORT_TERM_DEBT,
-					LONG_TERM_DEBT
+					LONG_TERM_DEBT,
+					RETAINED_EARNING,
+					EARNING_BEFORE_TAX
 				)
 				VALUES(
-					#{reportingYear}||#{reportCode}||#{itemId},
+					#{reportingYear}||#{reportCode}||#{fsNm}||#{itemId},
 					#{itemId},
 					#{reportingYear},
 					#{reportCode},
@@ -39,7 +41,9 @@
 					#{currentAsset},
 					#{totalNonCurrentAsset},
 					#{shortTermDebt},
-					#{longTermDebt}
+					#{longTermDebt},
+					#{retainedEarning},
+					#{earningBeforeTax}
 				)
 	</insert>
 	
@@ -59,10 +63,12 @@
 					CURRENT_ASSET,
 					TOTAL_NON_CURRENT_ASSET,
 					SHORT_TERM_DEBT,
-					LONG_TERM_DEBT
+					LONG_TERM_DEBT,
+					RETAINED_EARNING,
+					EARNING_BEFORE_TAX
 			)
 			VALUES(
-					#{reportingYear}||#{reportCode}||#{itemId},
+					#{reportingYear}||#{reportCode}||#{fsNm}||#{itemId},
 					#{itemId},
 					#{reportingYear},
 					#{reportCode},
@@ -76,7 +82,9 @@
 					#{currentAsset},
 					#{totalNonCurrentAsset},
 					#{shortTermDebt},
-					#{longTermDebt}
+					#{longTermDebt},
+					#{retainedEarning},
+					#{earningBeforeTax}
 			)
 	</insert>
 	
@@ -98,9 +106,11 @@
 					TOTAL_NON_CURRENT_ASSET,
 					SHORT_TERM_DEBT,
 					LONG_TERM_DEBT
+					RETAINED_EARNING,
+					EARNING_BEFORE_TAX
 			)
 			VALUES(
-					#{item.reportingYear}||#{item.reportCode}||#{item.itemId},
+					#{item.reportingYear}||#{item.reportCode}||#{item.fsNm}||#{item.itemId},
 					#{item.itemId},
 					#{item.reportingYear},
 					#{item.reportCode},
@@ -114,7 +124,9 @@
 					#{item.currentAsset},
 					#{item.totalNonCurrentAsset},
 					#{item.shortTermDebt},
-					#{item.longTermDebt}
+					#{item.longTermDebt},
+					#{item.retainedEarning},
+					#{item.earningBeforeTax}
 			)
 		</foreach>
 	</insert>
