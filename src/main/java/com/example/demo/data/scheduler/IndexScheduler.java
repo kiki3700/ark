@@ -21,6 +21,7 @@ import com.example.demo.data.service.BithumbService;
 import com.example.demo.data.service.BokService;
 import com.example.demo.data.service.IndexService;
 import com.example.demo.data.service.impl.BokServiceImpl;
+import com.example.demo.util.CybosConnection;
 
 @Component
 public class IndexScheduler {
@@ -34,6 +35,24 @@ public class IndexScheduler {
 	@Autowired
 	BithumbService bithumbService;
 	
+	
+	//대신증권 인덱스 가져오기
+	@Scheduled(cron = "0 0 7/3 * * ?")
+	   public void cybosCheckScheduler() {
+			CybosConnection cybosCon = new CybosConnection();
+	     	try {
+	     		int connectionStatus =  cybosCon.connectionCheck();
+	     		if(connectionStatus > 0) {
+	     			logger.debug("CYBOSPLUS CONNECTION SUCCESS==============");
+				} else {
+					logger.debug("CYBOSPLUS CONNECTION FAIL==============");
+				}	
+	     		
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	     	
+	   }
 	
 	//대신증권 인덱스 가져오기
 	@Scheduled(cron = "0 0 06 * * ?")

@@ -27,7 +27,7 @@ public class CybosConnection {
 		try {
 			connectionStatus = cybos.isConnect();			
 		
-		System.out.println(connectionStatus);
+		System.out.println("cybos connection status ==> " + connectionStatus);
 		if(connectionStatus==0) {
 			//연결 안됨 => 로그인 구현 후 로그인으로
 			logger.debug(Integer.toString(connectionStatus));
