@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.data.dao.BatchDao;
@@ -29,6 +30,7 @@ import dashin.cputil.ICpCodeMgr;
 import dashin.cputil.ICpCybos;
 import dashin.cputil.LIMIT_TYPE;
 @Service
+@Primary
 public class ItemServiceImpl implements ItemService {
 	@Autowired
 	ItemMapper itemMapper;
@@ -78,7 +80,9 @@ public class ItemServiceImpl implements ItemService {
 				String industry = codeMgr.getStockIndustryCode(ticker);
 				//디버깅
 				String industryName = codeMgr.getIndustryName(industry);
-				
+				if(industryName.contains("(코스닥)")){
+					industryName = industryName.replace("(코스닥)", "").trim();
+				}
 				CPE_KSE_SECTION_KIND category = codeMgr.getStockSectionKind(ticker);
 				long date = codeMgr.getStockListedDate(ticker);
 				Date listingDate = FormatConverter.longToDate(date);

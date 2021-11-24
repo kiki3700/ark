@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -30,6 +31,7 @@ import com.example.demo.vo.BalanceSheetDto;
 import com.example.demo.vo.ItemDto;
 
 @Service
+@Primary
 public class DartServiceImpl implements DartService{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
