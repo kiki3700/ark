@@ -32,8 +32,9 @@ import com.google.gson.JsonObject;
 
 import reactor.core.publisher.Mono;
 
-@Primary
+
 @Service
+@Primary
 public class BokServiceImpl implements BokService {
 	
 	@Autowired
