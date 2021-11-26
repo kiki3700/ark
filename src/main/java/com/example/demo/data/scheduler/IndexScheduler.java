@@ -36,8 +36,8 @@ public class IndexScheduler {
 	BithumbService bithumbService;
 	
 	
-	//대신증권 인덱스 가져오기
-	@Scheduled(cron = "0 0 7/3 * * ?")
+	//사이봇
+	@Scheduled(cron = "0 0/30 * * *  ?")
 	   public void cybosCheckScheduler() {
 			CybosConnection cybosCon = new CybosConnection();
 	     	try {
@@ -55,18 +55,13 @@ public class IndexScheduler {
 	   }
 	
 	//대신증권 인덱스 가져오기
-	@Scheduled(cron = "0 0 06 * * ?")
+	@Scheduled(cron = "0 0 06 * 1-5 ?")
 	   public void dsIndexScheduler() {
 			Map<String,Object> inParam = new HashMap<String,Object>();
 			inParam.put("api", "DAISHIN");
+			inParam.put("QUANT",(short) 7);
 	     	try {
-	     		List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
-	     		codeMap = indexMapper.selectUsCodes(inParam);
-	     		short quant = 3;
-	     		for(Map<String, Object> paramMap : codeMap) {
-	     			paramMap.put("QUANT",quant);
-	     			priceService.getIndexHistory(paramMap);
-	     		}
+	     		priceService.getIndexHistory(inParam);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -186,7 +181,8 @@ public class IndexScheduler {
 					List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
 		     		codeMap = indexMapper.selectUsCodeCont(inParam);
 		     		for(Map<String, Object> paramMap : codeMap) {
-		     			bithumbService.insCrytoCurrencyHistory(inParam);
+		     			paramMap.put("quant", 3);
+		     			bithumbService.insCrytoCurrencyHistory(paramMap);
 		     		}
 		     		logger.debug("BITHUMB GET IDNEX END =====================");
 				} catch (Exception e) {

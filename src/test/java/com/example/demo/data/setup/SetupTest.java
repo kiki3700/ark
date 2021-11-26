@@ -1,5 +1,6 @@
 package com.example.demo.data.setup;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,8 +50,23 @@ public class SetupTest {
 	DartServiceImpl dartService;
 		
 	@Test
+	public void historyDataDtoTest() throws ParseException {
+//		itemService.initHistoryData(new HashMap<String, Object>());
+	}
+	@Test
+	public void itemSettingTest() throws IOException {
+		//ㄱ. 아이템 insert
+		itemService.mergeItem();
+		
+		//ㄴ. item table corpNumber 컬럼 채우기
+		dartService.updateCorpCode();
+		//ㄷ. 마켓캡 insert
+		itemService.updateMarketCap();
+	}
+	
+	@Test
 	public void fsTest() {
-		dartService.insAllBalaceSheet();
+//		dartService.initMultiBalanceSheet();
 	}
 	@Test
 	public void Bit() {

@@ -27,7 +27,7 @@ public class ItemScheduler {
 	
 	@Test
 	public void ins() {
-		itemService.insertItem();
+		itemService.mergeItem();
 	}
 	
 //	@Test
@@ -45,16 +45,14 @@ public class ItemScheduler {
 		HashMap<String, Object> inParam = new HashMap<>();
 		inParam.put("isActive", "CPC_STOCK_STATUS_NORMAL");
 		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
-		for(int i = 0 ; i < itemDtoList.size(); i++) {
-			inParam = new HashMap<>();
 			inParam.put("quant", 10000);
 			try {
-				itemService.insertHistoryData(itemDtoList.get(i), inParam);
+				itemService.insertHistoryData(inParam);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}		
+		
 	}
 //	
 //	@Test

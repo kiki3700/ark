@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.data.mapper.ItemMapper">
 
-	<update id = 'insertItem' parameterType = 'ItemDto'>
+	<update id = 'mergeItem' parameterType = 'ItemDto'>
 		MERGE INTO ITEM
 		USING DUAL
 			ON(id = #{id})
@@ -72,48 +72,6 @@
 		</where>
 	</select>
 	
-	<insert id = 'insertHistoryDataDtoList' parameterType = 'java.util.List'>
-MERGE INTO HISTORY_DATA A
-		USING (
-            SELECT * FROM (
-                <foreach  collection="list" item="item" open="" close="" separator="UNION">
-                    SELECT TO_CHAR(#{item.tradingDate}, 'YYYYMMDD')||#{item.itemId} AS id,
-                        #{item.tradingDate} as trading_date,
-                        #{item.itemId}as item_id ,
-                        #{item.open} as open,
-                        #{item.close} as close,
-                        #{item.low} as low,
-                        #{item.high} as high,
-                        #{item.volume} as volume
-                    FROM DUAL
-                </foreach>
-                ) 
-            )B
-			ON(A.ITEM_ID = B.ITEM_ID and A.trading_date = B.trading_date)
-		WHEN NOT MATCHED THEN
-		INSERT(
-			id,
-			trading_date,
-			item_id,
-			open,
-			close,
-			low,
-			high,
-			volume
-			)
-		VALUES
-		
-			(
-			B.id,
-			B.trading_date,
-			B.item_id,
-			B.open,
-			B.close,
-			B.low,
-			B.high,
-			B.volume
-		)
-	</insert>
 	
 	<insert id ='insertHistoryDataDtoBatch' parameterType = 'HistoryDataDto'>
 		INSERT INTO HISTORY_DATA(
@@ -139,7 +97,7 @@ MERGE INTO HISTORY_DATA A
 			)
 	</insert>
 	
-	<insert id = 'insertHistoryDataDto' parameterType = 'HistoryDataDto'>
+	<insert id = 'mergeHistoryDataDto' parameterType = 'HistoryDataDto'>
 	MERGE INTO HISTORY_DATA A
 		USING DUAL
 			ON(A.ITEM_ID = #{itemId} and A.trading_date = #{tradingDate})
@@ -167,31 +125,7 @@ MERGE INTO HISTORY_DATA A
 		)
 	</insert>
 	
-	<insert id = 'initHistoryDataDtoList' parameterType = 'java.util.List'>
-		<foreach  collection="list" item="item" open="INSERT ALL" close="select * from dual">
-				INTO HISTORY_DATA(
-					id,
-					trading_date,
-					item_id,
-					open,
-					close,
-					low,
-					high,
-					volume
-					)
-				VALUES
-					(
-					TO_CHAR(#{item.tradingDate}, 'YYYYMMDD')||#{item.itemId},
-					#{item.tradingDate},
-					#{item.itemId},
-					#{item.open},
-					#{item.close},
-					#{item.low},
-					#{item.high},
-					#{item.volume}
-				)
-        </foreach>
-	</insert>
+
 	
 	<delete id="deleteHistoryData" parameterType='hashMap'>
 		DELETE FROM HISTORY_DATA WHERE ITEM_ID = #{itemId}

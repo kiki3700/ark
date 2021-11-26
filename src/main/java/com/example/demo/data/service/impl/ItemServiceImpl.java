@@ -35,33 +35,77 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	ItemMapper itemMapper;
 	
-
+	@Autowired
+	ItemService itemService;
 	
 	@Autowired
 	BatchDao batchDao;
 	
-	public void checkRqLimit() {	
+	public boolean checkRqLimit() {	
 		ICpCybos cybos = ClassFactory.createCpCybos();
 		int cnt = cybos.getLimitRemainCount(LIMIT_TYPE.LT_NONTRADE_REQUEST);
-		int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_NONTRADE_REQUEST);
+		
 		if(cnt == 0) {
 			try {
+				
+				int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_NONTRADE_REQUEST);
 				System.out.println("동작 그만"+time);
 				Thread.sleep(time);
 			}catch (InterruptedException e) {
 				System.out.println("error");
 			}
 		}
+		return false;
 	}
 	
+	public boolean checkRqLimit(List<HistoryDataDto> historyDataDtoList) {	
+		ICpCybos cybos = ClassFactory.createCpCybos();
+		int cnt = cybos.getLimitRemainCount(LIMIT_TYPE.LT_NONTRADE_REQUEST);
+		
+		if(cnt == 0) {
+			try {
+				batchDao.mergeHistoryDataDtoList(historyDataDtoList);
+				historyDataDtoList.clear();
+				int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_NONTRADE_REQUEST);
+				System.out.println("동작 그만"+time);
+				Thread.sleep(time);
+			}catch (InterruptedException e) {
+				System.out.println("error");
+			}
+		}
+		return false;
+	}
+	public boolean checkRqLimitForUpdateMarketCap(List<ItemDto> ItemDtoList) {	
+		ICpCybos cybos = ClassFactory.createCpCybos();
+		int cnt = cybos.getLimitRemainCount(LIMIT_TYPE.LT_NONTRADE_REQUEST);
+		
+		if(cnt == 0) {
+			try {
+				batchDao.updateMarketCap(ItemDtoList);
+				ItemDtoList.clear();
+				int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_NONTRADE_REQUEST);
+				System.out.println("동작 그만"+time);
+				Thread.sleep(time);
+			}catch (InterruptedException e) {
+				System.out.println("error");
+			}
+		}
+		return false;
+	}
+
+
 	
+	
+	//종목들 
+	//사용중
 	@Override
-	public int insertItem() {
+	public int mergeItem() {
 		// TODO Auto-generated method stub
 		ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
 		Object[] tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSPI);
+
 		for(int j = 0; j<2; j++) {
-			
+			List<ItemDto> itemDtoList = new ArrayList<>();
 			for(int i = 0; i < tickers.length; i++) {
 				String ticker = (String) tickers[i];
 				//종목명
@@ -102,12 +146,9 @@ public class ItemServiceImpl implements ItemService {
 				item.setIndustry(industryName);
 				item.setCorpSize(corpSize.name());
 				item.setListingDate(listingDate);
-//				item.setListedShare(listedShare);
-//				item.setMarketCap(listedShare.multiply(new BigInteger(Long.toString(close))));
-				
-				System.out.println(item);
-				itemMapper.insertItem(item);
+				itemDtoList.add(item);
 				}
+			batchDao.mergeItemDtoList(itemDtoList);
 			tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
 		}
 		return 0;		
@@ -117,28 +158,31 @@ public class ItemServiceImpl implements ItemService {
 	public void updateMarketCap() {
 		ICpCodeMgr codeMgr = ClassFactory.createCpCodeMgr();
 		Object[] tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSPI);
-		for(int j = 0; j<2; j++) {					
-					for(int i = 0; i < tickers.length; i++) {
-						checkRqLimit();
-						String ticker = (String) tickers[i];
-						ISysDib marketEye = dashin.cpsysdib.ClassFactory.createMarketEye();
-						int[] reqArr = new int[] {1,20};
-						marketEye.setInputValue(0, reqArr);
-						marketEye.setInputValue(1, ticker);
-						marketEye.blockRequest();
-						long close = (long) marketEye.getDataValue(0, 0);
-						BigInteger listedShare = (BigInteger) marketEye.getDataValue(1, 0);
-						if(codeMgr.isBigListingStock(ticker)==1) {
-							listedShare = listedShare.multiply(new BigInteger("1000"));
-						}
-						ItemDto item = new ItemDto();
-						item.setId(ticker);
-						item.setListedShare(listedShare);
-						item.setMarketCap(listedShare.multiply(new BigInteger(Long.toString(close))));
-						System.out.println(i+"/"+tickers.length+" "+item);
-						itemMapper.updateMarketCap(item);
+		
+		for(int j = 0; j<2; j++) {
+			List<ItemDto> ItemDtoList = new ArrayList<>();
+			for(int i = 0; i < tickers.length; i++) {
+					checkRqLimitForUpdateMarketCap(ItemDtoList);
+					String ticker = (String) tickers[i];
+					ISysDib marketEye = dashin.cpsysdib.ClassFactory.createMarketEye();
+					int[] reqArr = new int[] {1,20};
+					marketEye.setInputValue(0, reqArr);
+					marketEye.setInputValue(1, ticker);
+					marketEye.blockRequest();
+					long close = (long) marketEye.getDataValue(0, 0);
+					BigInteger listedShare = (BigInteger) marketEye.getDataValue(1, 0);
+					if(codeMgr.isBigListingStock(ticker)==1) {
+						listedShare = listedShare.multiply(new BigInteger("1000"));
 					}
-					tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
+					ItemDto item = new ItemDto();
+					item.setId(ticker);
+					item.setListedShare(listedShare);
+					item.setMarketCap(listedShare.multiply(new BigInteger(Long.toString(close))));
+					ItemDtoList.add(item);
+					System.out.println(i+"/"+tickers.length+" "+item);
+			}
+			batchDao.updateMarketCap(ItemDtoList);
+			tickers = (Object[]) codeMgr.getStockListByMarket(CPE_MARKET_KIND.CPC_MARKET_KOSDAQ);
 		}
 	}
 	
@@ -176,7 +220,7 @@ public class ItemServiceImpl implements ItemService {
 //				historyDataDto.setVolume(volume);
 //				historyDataDtoList.add(historyDataDto);
 //				}
-//			itemMapper.insertHistoryDataDtoList(historyDataDtoList);
+//			itemMapper.mergeHistoryDataDtoList(historyDataDtoList);
 //			}while(1==((int) sysDib._continue()));
 //			
 //	}
@@ -188,6 +232,7 @@ public class ItemServiceImpl implements ItemService {
 		ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
 		List<ItemDto> itemDtoList = itemMapper.selectItemList(null);
 		int idx = 0;
+		List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
 		for(ItemDto itemDto : itemDtoList) {
 			try {
 				sysDib.setInputValue(0, itemDto.getId());
@@ -196,9 +241,9 @@ public class ItemServiceImpl implements ItemService {
 				sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
 				sysDib.setInputValue(6, (int) 'D');
 				sysDib.setInputValue(9,(int) '1');		
-				List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
+			
 				do {
-			 		checkRqLimit();
+			 		checkRqLimit(historyDataDtoList);
 					sysDib.blockRequest();
 					Object data = sysDib.getHeaderValue(3);					
 					for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
@@ -218,21 +263,18 @@ public class ItemServiceImpl implements ItemService {
 						historyDataDto.setClose(close);
 						historyDataDto.setVolume(volume);
 						historyDataDtoList.add(historyDataDto);
-						idx++;
-						if(idx%threshold==0) {
-							System.out.println("인서트");
-							itemMapper.initHistoryDataDtoList(historyDataDtoList);
+						if(historyDataDtoList.size()%1000==0) {
+							 batchDao.initHistoryDataDtoList(historyDataDtoList);
+							 historyDataDtoList.clear();
 							}
-						if(idx==100000) return;
-							
-							
 						}
 					}while(1==((int) sysDib._continue()));
-				if(!historyDataDtoList.isEmpty()) itemMapper.initHistoryDataDtoList(historyDataDtoList);
+				
 				}catch(com4j.ComException e) {
 					e.printStackTrace();
 				}
 			}
+		if(!historyDataDtoList.isEmpty()) batchDao.initHistoryDataDtoList(historyDataDtoList);
 		}
 	
 	@Override
@@ -252,7 +294,7 @@ public class ItemServiceImpl implements ItemService {
 				sysDib.setInputValue(9,(int) '1');		
 				List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
 				do {
-			 		checkRqLimit();
+			 		checkRqLimit(historyDataDtoList);
 					sysDib.blockRequest();
 					Object data = sysDib.getHeaderValue(3);					
 					for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
@@ -272,11 +314,6 @@ public class ItemServiceImpl implements ItemService {
 						historyDataDto.setClose(close);
 						historyDataDto.setVolume(volume);
 						historyDataDtoList.add(historyDataDto);
-						idx++;
-						if(idx%threshold==0) {
-							batchDao.initHistoryDataDtoList(historyDataDtoList);
-							historyDataDtoList.clear();
-							}
 						}
 					}while(1==((int) sysDib._continue()));
 				if(historyDataDtoList.size()>0) batchDao.initHistoryDataDtoList(historyDataDtoList);
@@ -286,48 +323,53 @@ public class ItemServiceImpl implements ItemService {
 			}
 		}
 	
-		
+		//사용중
 		@Override
-		public void insertHistoryData (ItemDto itemDto, HashMap<String, Object> inParam) throws ParseException{
-			int quant = (int) inParam.getOrDefault("quant", 0);
-			try {
-				ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
-				sysDib.setInputValue(0, itemDto.getId());
-				sysDib.setInputValue(1, (int) '2');
-				sysDib.setInputValue(4, quant);
-				sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
-				sysDib.setInputValue(6, (int) 'D');
-				sysDib.setInputValue(9,(int) '1');	
-				do {
-					checkRqLimit();
-					sysDib.blockRequest();
-					Object data = sysDib.getHeaderValue(3);
-		//			System.out.println(sysDib.getHeaderValue(5));
-					List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
-					for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
-						String time = Long.toString((long) sysDib.getDataValue(0, i));
-						Date tradingDate = FormatConverter.stringToDate(time);
-						Number open = (Number) sysDib.getDataValue(1, i);
-						Number high = (Number) sysDib.getDataValue(2, i);
-						Number low = (Number) sysDib.getDataValue(3, i);
-						Number close = (Number) sysDib.getDataValue(4, i);
-						Number volume = (Number) sysDib.getDataValue(5, i);
-						HistoryDataDto historyDataDto = new HistoryDataDto();
-						historyDataDto.setItemId(itemDto.getId());
-						historyDataDto.setTradingDate(tradingDate);
-						historyDataDto.setOpen(open);
-						historyDataDto.setHigh(high);
-						historyDataDto.setLow(low);
-						historyDataDto.setClose(close);
-						historyDataDto.setVolume(volume);
-						System.out.println(historyDataDto);
-						historyDataDtoList.add(historyDataDto);
-						}
-						itemMapper.insertHistoryDataDtoList(historyDataDtoList);
-				}while(1==((int) sysDib._continue()));
-		}catch(com4j.ComException e) {
-			e.printStackTrace();
+		public void insertHistoryData (HashMap<String, Object> inParam) throws ParseException{
+			int quant = (int) inParam.getOrDefault("quant", 3);
+			inParam.put("isActive", "CPC_STOCK_STATUS_NORMAL");
+			List<ItemDto> itemDtoList = getItemList(inParam);
+			List<HistoryDataDto> historyDataDtoList = new ArrayList<HistoryDataDto>();
+			for(ItemDto itemDto: itemDtoList) {
+				try {
+					ISysDib sysDib = dashin.cpsysdib.ClassFactory.createStockChart();
+					sysDib.setInputValue(0, itemDto.getId());
+					sysDib.setInputValue(1, (int) '2');
+					sysDib.setInputValue(4, quant);
+					sysDib.setInputValue(5, new int[] {0,2,3,4,5,8});
+					sysDib.setInputValue(6, (int) 'D');
+					sysDib.setInputValue(9,(int) '1');	
+					do {
+						checkRqLimit(historyDataDtoList);
+						sysDib.blockRequest();
+						Object data = sysDib.getHeaderValue(3);
+			//			System.out.println(sysDib.getHeaderValue(5));
+						for(int i =0 ; i < Integer.parseInt(data.toString()); i++) {
+							String time = Long.toString((long) sysDib.getDataValue(0, i));
+							Date tradingDate = FormatConverter.stringToDate(time);
+							Number open = (Number) sysDib.getDataValue(1, i);
+							Number high = (Number) sysDib.getDataValue(2, i);
+							Number low = (Number) sysDib.getDataValue(3, i);
+							Number close = (Number) sysDib.getDataValue(4, i);
+							Number volume = (Number) sysDib.getDataValue(5, i);
+							HistoryDataDto historyDataDto = new HistoryDataDto();
+							historyDataDto.setItemId(itemDto.getId());
+							historyDataDto.setTradingDate(tradingDate);
+							historyDataDto.setOpen(open);
+							historyDataDto.setHigh(high);
+							historyDataDto.setLow(low);
+							historyDataDto.setClose(close);
+							historyDataDto.setVolume(volume);
+							System.out.println(historyDataDto);
+							historyDataDtoList.add(historyDataDto);
+							}
+							
+					}while(1==((int) sysDib._continue()));
+			}catch(com4j.ComException e) {
+				e.printStackTrace();
+			}
 		}
+		batchDao.mergeHistoryDataDtoList(historyDataDtoList);
 	}
 	
 

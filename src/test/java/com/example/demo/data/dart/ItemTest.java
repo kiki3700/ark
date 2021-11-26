@@ -57,7 +57,7 @@ public class ItemTest {
 //	}
 	@Test
 	public void insTest() {
-		itemService.insertItem();
+		itemService.mergeItem();
 	}
 	@Test
 	public void updateCapTest() {

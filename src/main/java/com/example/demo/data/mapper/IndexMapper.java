@@ -10,7 +10,7 @@ import com.example.demo.vo.IndexHistoryDataDto;
 import com.example.demo.vo.PriceVo;
 @Mapper
 public interface IndexMapper {
-	List<PriceVo> getPrice(HashMap param);
+	List<PriceVo> getPrice(HashMap<String,Object> param);
 	void insertPrice(PriceVo vo);
 	
 	List<HashMap<String,Object>> selectUsCodeCont (Map<String, Object> paramMap);

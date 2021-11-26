@@ -4,15 +4,14 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import com.example.demo.constants.ReprtCode;
 import com.example.demo.data.service.DartService;
 import com.example.demo.data.service.ItemService;
-import com.example.demo.vo.ItemDto;
 
 /*작성장 : 이성현 
  *아이템과 관련된 스케쥴러
@@ -24,6 +23,7 @@ import com.example.demo.vo.ItemDto;
  *
  *
 */
+@Component
 public class ItemScheduler {
 	@Autowired
 	ItemService itemService;
@@ -31,38 +31,40 @@ public class ItemScheduler {
 	@Autowired
 	DartService dartService;
 	
-	@Scheduled(cron = "0 0 08 * * *")
+	//종목들 인서트
+	@Scheduled(cron = "0 0 08 * 1-5 *")
 	public void itemListScheduler(){
-		itemService.insertItem();
+		itemService.mergeItem();
 	}
 	
-	@Scheduled(cron = "0 5 08 * * *")
+	//기업 번호 업데이트 => 다트 (밸런스 시트 쿼리용) 
+	@Scheduled(cron = "0 5 08 * 6 *")
 	public void corpNumScheduler() throws IOException {
 		dartService.updateCorpCode();
 	}
 	
-	@Scheduled(cron = "0 35 15 * * *")
+	//종목들의 가격을 한꺼번에 merge
+	@Scheduled(cron = "0 35 15 * 1-5 *")
 	public void historyDataScheduler() {
 		HashMap<String, Object> inParam = new HashMap<>();
-		inParam.put("isActive", "CPC_STOCK_STATUS_NORMAL");
-		List<ItemDto> itemDtoList = itemService.getItemList(inParam);
-		for(int i = 0 ; i < itemDtoList.size(); i++) {
-			inParam = new HashMap<>();
-			inParam.put("quant", 3);
-			try {
-				itemService.insertHistoryData(itemDtoList.get(i), inParam);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		inParam.put("quant", 3);
+		try {
+			itemService.insertHistoryData(inParam);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}
-	@Scheduled(cron="0 30 08 * * *")
+
+		}
+	
+	//시가총액 업데이트
+	@Scheduled(cron="0 30 08 * 6 *")
 	public void renewMarketCap() {
 		itemService.updateMarketCap();
 	}
 	
-	@Scheduled(cron = "0 0 17 15 * *")
+	//밸런스 시트 인서트
+	@Scheduled(cron = "0 0 17 *  7 *")
 	public void BalanceSheetScheduler() throws ParseException {
 		HashMap<String, Object> inParam = new HashMap<>();
 		inParam = new HashMap<>();
@@ -73,5 +75,4 @@ public class ItemScheduler {
 		inParam.put("reprtCode", reportCode.getReprtCode(quart));
 		dartService.insertMultiBalanceSheet(inParam);
 	}
-	
 }

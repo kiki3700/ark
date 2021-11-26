@@ -154,8 +154,6 @@ public class DartServiceImpl implements DartService{
 			sb.append(itemDtoList.get(i).getCorpCode()+",");
 			if(i!=0&&i%500==0||i==itemDtoList.size()-1) {
 				sb.deleteCharAt(sb.length()-1);
-				System.out.println("먼데");
-				System.out.println(sb.toString());
 				strArr[cnt] =sb.toString();
 				sb = new StringBuilder();
 				cnt++;
@@ -359,6 +357,7 @@ public class DartServiceImpl implements DartService{
 		}
 	}
 	
+	//사용중
 	@Override
 	public void updateCorpCode() throws IOException{
 		String targetUrl = dartUrl+"/api/corpCode.xml?crtfc_key="+crtfcKey;

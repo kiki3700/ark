@@ -144,11 +144,4 @@ public class BokServiceImpl implements BokService {
 		}
 		return null;
 	}
-
-
-	@Override
-	public HashMap<Object, Object> getBokIndex() throws Exception {
-		return null;
-	}
-
 }
