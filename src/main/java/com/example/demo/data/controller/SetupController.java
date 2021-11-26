@@ -87,7 +87,7 @@ public class SetupController {
 		HashMap<String,Object> inParams = new HashMap<>();
 		
 		//ㄱ. 아이템 insert
-		itemService.insertItem();
+		itemService.mergeItem();
 		
 		//ㄴ. item table corpNumber 컬럼 채우기
 		dartService.updateCorpCode();

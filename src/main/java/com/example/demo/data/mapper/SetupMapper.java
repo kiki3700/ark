@@ -9,7 +9,7 @@ import com.example.demo.vo.ItemDto;
 
 @Mapper
 public interface SetupMapper {
-	int insertItem(ItemDto item);
+	int mergeItem(ItemDto item);
 	int insertHistoryData(HistoryDataDto historyData);
 	HashMap<String, Object> checkSetting();
 	int insertSetting(HashMap<String, Object> inParam);

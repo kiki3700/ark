@@ -12,17 +12,13 @@ import com.example.demo.vo.ItemDto;
 @Mapper
 public interface ItemMapper {
 	
-	void insertItem(ItemDto itemDto);
-	
+	void mergeItem(ItemDto itemDto);
 	void updateCorpCode(HashMap<String, String>map);
-	
 	int updateMarketCap(ItemDto itemDto);
-	
 	List<ItemDto> selectItemList(Map<String, Object> inParams);
 	
-	int insertHistoryDataDtoList(List<HistoryDataDto> historyDataDto);
-	int insertHistoryDataDto(HistoryDataDto historyDataDto);
+	
+	int mergeHistoryDataDto(HistoryDataDto historyDataDto);
 	int insertHistoryDataDtoBatch(HistoryDataDto historyDataDto);
-	int initHistoryDataDtoList(List<HistoryDataDto> historyDataDto);
 	int deleteHistoryData(HashMap<String, Object> inParams);
 }

@@ -98,10 +98,8 @@ public class BithumbServiceImpl implements BithumbService{
 					int len = datas.size();
 					HashSet<IndexHistoryDataDto> indexHistoryDataDtoSet = new HashSet<>();
 					HashSet<Long> dateSet =new HashSet<>();
+					List<IndexHistoryDataDto> indexHistoryDataDtoList = new ArrayList<>();
 					for(int i = 0; i < len; i++) {
-						
-
-						
 						IndexHistoryDataDto indexHistoryDataDto = new IndexHistoryDataDto();
 						ArrayList data = datas.get(i);
 						
@@ -120,14 +118,14 @@ public class BithumbServiceImpl implements BithumbService{
 						indexHistoryDataDto.setHigh(Integer.parseInt((String) data.get(3)));
 						indexHistoryDataDto.setLow(Integer.parseInt((String) data.get(4)));
 						indexHistoryDataDto.setVolume(new BigDecimal((String) data.get(5)));
-//						System.out.println(indexHistoryDataDto);
+						indexHistoryDataDtoList.add(indexHistoryDataDto);
 						
 //						indexHistoryDataDtoSet.add(indexHistoryDataDto);
 //						
 //						batchDao.initIndexHistoryDataDtoList(indexHistoryDataDtoSet);
 						
 //						resultList.add(indexHistoryDataDto);
-						indexMapper.insIndexDaishin(indexHistoryDataDto);
+//						indexMapper.insIndexDaishin(indexHistoryDataDto);
 
 						
 //						if(resultList.size()>5000) {
@@ -135,14 +133,7 @@ public class BithumbServiceImpl implements BithumbService{
 //							resultList.clear();
 //						}
 					}
-//					if(resultList.size()>0) {
-//						batchDao.initIndexHistoryDataDtoList(resultList);
-//						resultList.clear();
-//					}
-					for(IndexHistoryDataDto indexHistoryDataDto:resultList) {
-//						System.out.println(indexHistoryDataDto);
-					}
-					
+					batchDao.mergeIndexHistoryDataDtoList(indexHistoryDataDtoList);		
 					
 				}
 				
