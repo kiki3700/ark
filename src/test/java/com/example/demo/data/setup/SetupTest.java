@@ -55,13 +55,13 @@ public class SetupTest {
 	}
 	@Test
 	public void itemSettingTest() throws IOException {
-		//ㄱ. 아이템 insert
-		itemService.mergeItem();
-		
-		//ㄴ. item table corpNumber 컬럼 채우기
-		dartService.updateCorpCode();
-		//ㄷ. 마켓캡 insert
-		itemService.updateMarketCap();
+//		//ㄱ. 아이템 insert
+//		itemService.mergeItem();
+//		
+//		//ㄴ. item table corpNumber 컬럼 채우기
+//		dartService.updateCorpCode();
+//		//ㄷ. 마켓캡 insert
+//		itemService.updateMarketCap();
 	}
 	
 	@Test
@@ -96,19 +96,19 @@ public class SetupTest {
 	}
 	@Test
 	public void globInd() {
-//		Map<String,Object> inParam = new HashMap<String,Object>();
-//		inParam.put("api", "DAISHIN");
-//     	try {
-//     		List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
-//     		codeMap = indexMapper.selectUsCodes(inParam);
-//     		int quant = 32767;
-//     		for(Map<String, Object> map : codeMap) {
-//     			map.put("QUANT",quant);
-//     			indexService.insAllIndexHistory(map);
-//     		}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		Map<String,Object> inParam = new HashMap<String,Object>();
+		inParam.put("api", "DAISHIN");
+     	try {
+     		List<HashMap<String, Object>> codeMap = new ArrayList<HashMap<String,Object>>();
+     		codeMap = indexMapper.selectUsCodes(inParam);
+     		int quant = 32767;
+     		for(Map<String, Object> map : codeMap) {
+     			map.put("QUANT",quant);
+     			indexService.insAllIndexHistory(map);
+     		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	@Test
 	public void BokInd() {

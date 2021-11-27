@@ -140,6 +140,7 @@ public class BokServiceImpl implements BokService {
 			historyDataDto.setIndexName(INDEX_NAME);
 			historyDataDto.setIndexDate(date);
 			historyDataDto.setClose(close);
+			System.out.println(historyDataDto);
 			indexDao.insIndexDaishin(historyDataDto);
 		}
 		return null;
