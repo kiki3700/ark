@@ -136,6 +136,7 @@ public class BatchDao {
 			sqlSession.flushStatements();
 			sqlSession.close();
 			sqlSession.clearCache();
+			indexHistoryDataDtoList.clear();
 		}
 	}
 

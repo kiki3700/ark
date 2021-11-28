@@ -58,7 +58,7 @@ public class IndexServiceImpl implements IndexService {
 		if(cnt == 0) {
 			try {
 				batchDao.mergeIndexHistoryDataDtoList(indexHistoryDataDtoList);
-				indexHistoryDataDtoList= new ArrayList<>();
+				indexHistoryDataDtoList.clear();;
 				int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_NONTRADE_REQUEST);
 				System.out.println("동작 그만"+time);
 				Thread.sleep(time);
