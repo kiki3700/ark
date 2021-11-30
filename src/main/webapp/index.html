@@ -4,19 +4,21 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
+
 <body>
+메인페이지 테스트
+test
     <script>
         function makeChar(a){
             var PriceVo ={
                 name : 'kospi'
             };
             $.ajax({
-                url:"localhost:8080/test",
-                type: "POST",
+                url:"localhost:8080/getItemList",
+                type: "GET",
                 dataType : "json",
-                data : PriceVo
-            }).done(function (data){
-                console.log(data);
+            }).done(function (){
+
             })
         }
     </script>   

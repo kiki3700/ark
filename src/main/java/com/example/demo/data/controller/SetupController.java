@@ -94,9 +94,13 @@ public class SetupController {
 		//ㄷ. 마켓캡 insert
 		itemService.updateMarketCap();
 		
+		logger.debug("start to insert balance sheet");
+		
 		List<ItemDto> itemDtoList = itemService.getItemList(inParams);
 		//ㄹ. 재무재표 insert
 		dartService.initMultiBalanceSheet();
+		
+		logger.debug("start to insert history data");
 		
 		//history data 삽입
 		HashMap<String, Object> threshold = new HashMap<>();
@@ -106,9 +110,12 @@ public class SetupController {
 		
 		
 		//2.비트코인 
+		logger.debug("start insert crypto currency");
 		bithumbService.insAllCrytoCurrencyHistory();
 		
+		
 		//3-ㄱ 한국주요 인덱스
+		logger.debug("start to insert kor index");
 		List<HashMap<String, Object>> list = new LinkedList<HashMap<String, Object>>();
 		HashMap<String, Object> paramMap = new HashMap<>();
 		paramMap.put("api","DAISHIN_KOR");		
@@ -119,7 +126,9 @@ public class SetupController {
 			indexService.insAllKorIndexDaishin(inParam);
 		}
 		
+		
 		//3-ㄴ 전세계인덱스
+		logger.debug("start to insert glob index");
 		HashMap<String,Object> inParam = new HashMap<String,Object>();
 		inParam.put("api", "DAISHIN");
      	try {
@@ -135,6 +144,7 @@ public class SetupController {
 		}
 		//4. BOK인덱스
 		// 월간
+     	logger.debug("start to bok index");
 	SimpleDateFormat format1 = new SimpleDateFormat ("yyyyMM");
 	SimpleDateFormat format2 = new SimpleDateFormat ("yyyy");
 
@@ -148,7 +158,7 @@ public class SetupController {
 	String YEAR_START_DATE = format2.format(cal.getTime());
 		//한국은행 기준금리
      	try {
-//     		logger.debug("BOK GET BASE RATE START =====================");
+     		logger.debug("BOK GET BASE RATE START =====================");
      		Map<String,String> inParamMap = new HashMap<String,String>();
      		inParamMap.put("REQUEST_TYPE", "/" + "json");
      		inParamMap.put("REQUEST_LANG", "/" + "kr");
@@ -163,13 +173,13 @@ public class SetupController {
      		inParamMap.put("ATCL_CODE2", "");
      		inParamMap.put("ATCL_CODE3", "");
      		bokService.getBokIndex(inParamMap);
-//     		logger.debug("BOK GET BASE RATE END =====================");
+     		logger.debug("BOK GET BASE RATE END =====================");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
      	//생산자 물가총지수
      	try {
-//     		logger.debug("BOK GET PPI START =====================");
+     		logger.debug("BOK GET PPI START =====================");
      		Map<String,String> inParamMap = new HashMap<String,String>();
      		inParamMap.put("REQUEST_TYPE", "/" + "json");
      		inParamMap.put("REQUEST_LANG", "/" + "kr");
@@ -184,14 +194,14 @@ public class SetupController {
      		inParamMap.put("ATCL_CODE2", "");
      		inParamMap.put("ATCL_CODE3", "");
      		bokService.getBokIndex(inParamMap);
-//     		logger.debug("BOK GET PPI END =====================");
+     		logger.debug("BOK GET PPI END =====================");
      	} catch(Exception e) {
      		e.printStackTrace();
      	}
      	
      	//소비자 물가 총지수
      	try {
-//     		logger.debug("BOK GET CPI START =====================");
+     		logger.debug("BOK GET CPI START =====================");
      		Map<String,String> inParamMap = new HashMap<String,String>();
      		inParamMap.put("REQUEST_TYPE", "/" + "json");
      		inParamMap.put("REQUEST_LANG", "/" + "kr");
@@ -206,14 +216,14 @@ public class SetupController {
      		inParamMap.put("ATCL_CODE2", "");
      		inParamMap.put("ATCL_CODE3", "");
      		bokService.getBokIndex(inParamMap);
-//     		logger.debug("BOK GET CPI END =====================");
+     		logger.debug("BOK GET CPI END =====================");
      	} catch(Exception e) {
      		e.printStackTrace();
      	}
      	
      	//GDP
      	try {
-//     		logger.debug("BOK GET GDP START =====================");
+     		logger.debug("BOK GET GDP START =====================");
      		Map<String,String> inParamMap = new HashMap<String,String>();
      		inParamMap.put("REQUEST_TYPE", "/" + "json");
      		inParamMap.put("REQUEST_LANG", "/" + "kr");
@@ -228,7 +238,7 @@ public class SetupController {
      		inParamMap.put("ATCL_CODE2", "");
      		inParamMap.put("ATCL_CODE3", "");
      		bokService.getBokIndex(inParamMap);
-//     		logger.debug("BOK GET GDP END =====================");
+     		logger.debug("BOK GET GDP END =====================");
      	} catch(Exception e) {
      		e.printStackTrace();
      	}
