@@ -365,6 +365,7 @@ public class ItemServiceImpl implements ItemService {
 							}
 							
 					}while(1==((int) sysDib._continue()));
+					
 			}catch(com4j.ComException e) {
 				e.printStackTrace();
 			}

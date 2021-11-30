@@ -1,15 +1,11 @@
 package com.example.demo.data.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,24 +56,13 @@ public class ItemController {
 //			itemService.insertKoreaItem(itemDto);
 		}		
 	}
-	@RequestMapping(value ="/updateCorpCode")
-	public void updateCorpCode() {		
-		HashMap<String, String> corpMap = new HashMap<>();
-//		try {
-////			corpMap = dartService.getCorpCodeMap();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+	@RequestMapping(value ="/getItemList")
+	public List<ItemDto> updateCorpCode() {		
 		HashMap<String, Object> inParam = new HashMap<>();
-		List<ItemDto> itemList = itemService.getItemList(inParam);
-		for(int i = 0 ; i< itemList.size();i++) {
-			HashMap<String, String> tickerMap = new HashMap<>();
-			String ticker = itemList.get(i).getId();
-			String corpCode = corpMap.get(ticker);
-			tickerMap.put("ticker", ticker);
-			tickerMap.put("corpCode", corpCode);
-//			itemService.updateCorpCode(tickerMap);
-		}
+		return itemService.getItemList(inParam);
+	}
+	@RequestMapping(value ="/index")
+	public String toIndex() {		
+		return "index";
 	}
 }

@@ -96,7 +96,7 @@ public class IndexServiceImpl implements IndexService {
 			System.out.println(paramMap.get("CODE_VALUE"));
 			index.setInputValue(0,paramMap.get("CODE_VALUE"));
 			index.setInputValue(1, (int) 'D'); 
-			index.setInputValue(3, (int) inParam.getOrDefault("QUANT", 3));
+			index.setInputValue(3, (short) inParam.getOrDefault("QUANT", 3));
 			index.blockRequest();
 			IndexHistoryDataDto historyDataDto = new IndexHistoryDataDto();
 			String indexCode = (String) index.getHeaderValue(0);

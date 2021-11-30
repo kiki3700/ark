@@ -30,7 +30,7 @@
 				)
 			VALUES	
 				(
-				TO_CHAR(#{indexDate}, 'YYYYMMDD')||#{indexName},
+				TO_CHAR(#{indexDate}, 'YYYYMMDDHH24MISS')||#{indexName},
 				#{indexDate},
 				#{indexName},
 				#{open},
@@ -163,7 +163,7 @@
 				UPDATE_DATE
 				)
 			VALUES(
-				TO_CHAR(#{indexDate},'YYYYMMDD') || #{indexName},
+				TO_CHAR(#{indexDate},'YYYYMMDDHH24MISS') || #{indexName},
 				#{indexName,jdbcType=VARCHAR},
 				#{indexDate,jdbcType=DATE},
 				#{open,jdbcType=FLOAT},

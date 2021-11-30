@@ -3,6 +3,7 @@ package com.example.demo.trade.service.serviceImpl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.trade.eventHandler.TradeEventHandler;
@@ -16,6 +17,7 @@ import dashin.cptrade.ClassFactory;
 import dashin.cptrade.ICpTdDib;
 import dashin.cptrade.ICpTdUtil;
 @Service
+@Primary
 public class TradeServiceImpl implements TradeService {
 	static ICpTdUtil tdUtil = ClassFactory.createCpTdUtil();
 	static String account;

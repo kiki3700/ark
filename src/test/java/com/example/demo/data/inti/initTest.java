@@ -1,4 +1,4 @@
-package com.example.demo.data.setting;
+package com.example.demo.data.inti;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ import com.example.demo.data.mapper.SetupMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SettingTest {
+public class initTest {
 	@Autowired
 	SetupMapper setupMapper;
 	
