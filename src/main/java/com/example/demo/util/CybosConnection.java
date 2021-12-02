@@ -1,7 +1,6 @@
 package com.example.demo.util;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -9,7 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import dashin.cputil.*;
+import dashin.cputil.ClassFactory;
+import dashin.cputil.ICpCybos;
 /*
  * 문서 작성자 : 이성현
  */
@@ -20,9 +20,10 @@ public class CybosConnection {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	private ICpCybos cybos = ClassFactory.createCpCybos();
+	
 	
 	public int connectionCheck() throws Exception {
+		ICpCybos cybos = ClassFactory.createCpCybos();
 		int connectionStatus = 0;
 		try {
 			connectionStatus = cybos.isConnect();			
@@ -53,8 +54,10 @@ public class CybosConnection {
 	
 	public boolean runCybos() throws Exception {
 		try {
-			
-			String[] command = new String[] {"C:\\DAISHIN\\STARTER\\ncStarter.exe","/prj:cp","/id:25GUSWLS","/pwd:Aktwlq2@","/pwdcert:aktwlq2525@", "/autostart"};
+			String id = System.getenv("CybosId");
+			String pwd = System.getenv("CybosPwd");
+			String certPwd = System.getenv("CybosCertPwd");
+			String[] command = new String[] {"C:\\DAISHIN\\STARTER\\ncStarter.exe","/prj:cp","/id:"+id,"/pwd:"+pwd,"/pwdcert:"+certPwd, "/autostart"};
 			Process process = new ProcessBuilder(command).start();
 			InputStream is = process.getInputStream();//Get an inputstream from the process which is being executed
 			InputStreamReader isr = new InputStreamReader(is);
