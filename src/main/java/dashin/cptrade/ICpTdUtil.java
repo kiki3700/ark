@@ -1,10 +1,20 @@
 package dashin.cptrade  ;
 
-import com4j.*;
+import org.springframework.stereotype.Component;
+
+import com4j.Com4jObject;
+import com4j.DISPID;
+import com4j.DefaultValue;
+import com4j.IID;
+import com4j.NativeType;
+import com4j.Optional;
+import com4j.ReturnValue;
+import com4j.VTID;
 
 /**
  * ICpTdUtil Interface
  */
+
 @IID("{15CA8DD1-1CF9-4544-A1A4-5593CE63A845}")
 public interface ICpTdUtil extends Com4jObject {
   // Methods:
