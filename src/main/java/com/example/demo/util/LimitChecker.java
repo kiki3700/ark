@@ -8,9 +8,10 @@ import dashin.cputil.LIMIT_TYPE;
 
 @Component
 public class LimitChecker {
-	private 	ICpCybos cybos = ClassFactory.createCpCybos();
+	
 	
 	public void checkRQLimit() {
+		ICpCybos cybos = ClassFactory.createCpCybos();
 		int cnt = cybos.getLimitRemainCount(LIMIT_TYPE.LT_NONTRADE_REQUEST);
 		int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_NONTRADE_REQUEST);
 		if(cnt == 0) {
@@ -23,6 +24,7 @@ public class LimitChecker {
 		}
 	}
 	public void checkSubLimit() {
+		ICpCybos cybos = ClassFactory.createCpCybos();
 		int cnt = cybos.getLimitRemainCount(LIMIT_TYPE.LT_SUBSCRIBE);
 		int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_SUBSCRIBE);
 		if(cnt == 0) {
@@ -35,6 +37,7 @@ public class LimitChecker {
 		}
 	}
 	public void checkRqTradeLimit() {
+		ICpCybos cybos = ClassFactory.createCpCybos();
 		int cnt = cybos.getLimitRemainCount(LIMIT_TYPE.LT_TRADE_REQUEST);
 		int time = cybos.getLimitRemainTime(LIMIT_TYPE.LT_TRADE_REQUEST);
 		if(cnt == 0) {
