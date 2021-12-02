@@ -1,6 +1,7 @@
 package com.example.demo.data.dart;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
@@ -11,10 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.example.demo.data.mapper.ItemMapper;
 import com.example.demo.data.service.impl.ItemServiceImpl;
 import com.example.demo.vo.ItemDto;
 
-import dashin.cputil.CPE_MARKET_KIND;
 import dashin.cputil.ClassFactory;
 import dashin.cputil.ICpCodeMgr;
 
@@ -24,6 +25,9 @@ import dashin.cputil.ICpCodeMgr;
 public class ItemTest {
 	@Autowired
 	ItemServiceImpl itemService;
+	
+	@Autowired
+	ItemMapper itemMapper;
 	
 	Map<String, Object> inParam;
 	
@@ -57,11 +61,16 @@ public class ItemTest {
 //	}
 	@Test
 	public void insTest() {
-		itemService.mergeItem();
+//		itemService.mergeItem();
 	}
 	@Test
 	public void updateCapTest() {
-		itemService.updateMarketCap();
+		HashMap<String, Object> inParams = new HashMap<>();
+		List<ItemDto> aa = itemMapper.selectItemList(inParams);
+		for(ItemDto item : aa) {
+			System.out.println(item);
+		}
+	
 	}
 //	@Test
 //	public void updateCorpNum() {
