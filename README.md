@@ -1,3 +1,4 @@
+![](https://www.baccarat.kr/dw/image/v2/BBLJ_PRD/on/demandware.static/-/Sites-baccarat-master-products/default/dwdff970b7/original/Chat/2612997.jpg?sw=1700&sh=1700&sm=fit)
 # 마네키 네코 프로젝트란?
 
  마네키 네코 프로젝트는 계량적 방법론과 투자자동화를 통해 과학적 투자를 위한 웹어플리케이션입니다. 원하는 정보를 편리하게 시각화하고, 이를 통해 투자의사결정을 내릴 수 있고, 다양한 전략을 비교해 볼수 있도록 할 수 있는 금융 샌드박스를 만드는 것이 목적입니다.
