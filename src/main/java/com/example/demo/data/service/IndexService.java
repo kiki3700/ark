@@ -7,7 +7,10 @@ import java.util.Map;
 
 import com.example.demo.vo.PriceVo;
 
+import dashin.cputil.ICpCybos;
+
 public interface IndexService {
+	
 	List<PriceVo> getPrice(HashMap param);
 	
 	void insertPrice(PriceVo vo);

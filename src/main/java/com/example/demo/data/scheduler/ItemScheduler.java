@@ -47,7 +47,7 @@ public class ItemScheduler {
 	@Scheduled(cron = "0 35 15 * 1-5 *")
 	public void historyDataScheduler() {
 		HashMap<String, Object> inParam = new HashMap<>();
-		inParam.put("quant", 3);
+		inParam.put("quant", 7);
 		try {
 			itemService.insertHistoryData(inParam);
 		} catch (ParseException e) {

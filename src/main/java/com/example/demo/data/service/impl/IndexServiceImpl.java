@@ -28,6 +28,8 @@ import dashin.cputil.LIMIT_TYPE;
 @Service
 public class IndexServiceImpl implements IndexService {
 
+	static ICpCybos cybos;
+	
 	@Autowired
 	IndexMapper indexMapper;
 	
@@ -35,7 +37,7 @@ public class IndexServiceImpl implements IndexService {
 	BatchDao batchDao;
 	
 	public boolean checkRqLimit() {	
-		ICpCybos cybos = dashin.cputil.ClassFactory.createCpCybos();
+		cybos = dashin.cputil.ClassFactory.createCpCybos();
 		int cnt = cybos.getLimitRemainCount(LIMIT_TYPE.LT_NONTRADE_REQUEST);
 		
 		if(cnt == 0) {
