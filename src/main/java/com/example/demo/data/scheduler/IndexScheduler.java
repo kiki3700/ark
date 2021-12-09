@@ -27,7 +27,7 @@ import com.example.demo.util.CybosConnection;
 public class IndexScheduler {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
-	IndexService priceService;
+	IndexService indexService;
 	@Autowired
 	IndexMapper indexMapper;
 	@Autowired
@@ -61,7 +61,7 @@ public class IndexScheduler {
 			inParam.put("api", "DAISHIN");
 			inParam.put("QUANT",(short) 7);
 	     	try {
-	     		priceService.getIndexHistory(inParam);
+	     		indexService.getIndexHistory(inParam);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -39,4 +39,8 @@ public class TotalSchdulerTest {
 		indexScheduler.bokIndexScheduler();
 		indexScheduler.bitScheduler();
 	}
+//	@Test
+	public void historyTest() {
+		itemScheduler.historyDataScheduler();
+	}
 }
