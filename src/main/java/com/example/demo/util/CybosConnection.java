@@ -57,7 +57,7 @@ public class CybosConnection {
 			String id = System.getenv("CybosId");
 			String pwd = System.getenv("CybosPwd");
 			String certPwd = System.getenv("CybosCertPwd");
-			String[] command = new String[] {"C:\\DAISHIN\\STARTER\\ncStarter.exe","/prj:cp","/id:"+id,"/pwd:"+pwd,"/pwdcert:"+certPwd, "/autostart"};
+			String[] command = new String[] {"C:\\CREON\\STARTER\\coStarter.exe","/prj:cp","/id:"+id,"/pwd:"+pwd,"/pwdcert:"+certPwd, "/autostart"};
 			Process process = new ProcessBuilder(command).start();
 			InputStream is = process.getInputStream();//Get an inputstream from the process which is being executed
 			InputStreamReader isr = new InputStreamReader(is);
